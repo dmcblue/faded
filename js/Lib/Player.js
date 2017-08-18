@@ -10,14 +10,16 @@ var Player =
 		args.classes.push('player');
 		Character.call(this, args);
 		this.health = 90;
+		this.counterFade = new Counter({turns : Player.TURNS_FADE});
 	};
 
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
+Player.ID = 0;
 Player.PLACEMENT_RADIUS = 50;
 Player.SPEED = 10;
-Player.ID = 0;
+Player.TURNS_FADE = 5;
 
 Player.create = 
 	function(frame, args, id){
@@ -35,4 +37,12 @@ Player.prototype.heal =
 Player.prototype.hurt =
 	function(damage){
 		this.health = Math.max(this.health - damage, 0);
+	};
+
+Player.prototype.update =
+	function(){
+		if(this.counterFade.updateAndCheck()){
+			this.hurt(1);
+		}
+		this.element.style.opacity = (this.health/100);
 	};

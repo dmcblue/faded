@@ -119,6 +119,7 @@
 						}
 					}
 					map.checkAndMove(characters);
+					player.update();
 					frame.updatePosition(player);
 					health.set(player.health);
 				}
