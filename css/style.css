@@ -1,0 +1,47 @@
+/*Page Styles*/
+*{
+	color:#DDD;
+	font-family: 'Fjord One', serif;
+	font-size:1rem;
+	font-weight:400;
+	line-height:1.4rem;
+	margin:0;
+	padding:0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Quicksand', sans-serif;
+}
+h1{
+	font-size:2.4rem;
+	line-height:2.8rem;
+	margin:1.5rem 0 1rem;
+}
+h2{
+	font-size:1.8rem;
+	line-height:2.1rem;
+	margin:1rem 0 0.75rem;
+}
+h3{
+	font-size:1.4rem;
+	line-height:1.6rem;
+	margin:0.75rem 0 0.5rem;
+}
+p{
+	line-height:1.2rem;
+	margin:1rem 0;
+}
+
+section, .section{
+	padding:1rem;
+}
+
+html,body{
+	background:#212121;
+}
+
+button{
+	background:#DDD;
+	color:#212121;
+	border : none;
+	padding: 0.25rem;
+}
