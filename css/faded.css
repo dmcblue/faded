@@ -12,6 +12,7 @@
 
 .faded .frame{
 	display  : block;
+	background:#000;
 }
 
 .faded .healthbar{
@@ -62,4 +63,33 @@
 	width : 10px;
 	height : 10px;
 	background:yellow;
+}
+
+.faded .message-box{
+	position:absolute;
+	width:calc(80% - 2rem);
+	height:calc(80% - 2rem);
+	margin: 10%;
+	padding: 1rem;
+	z-index:2;
+	background:#888;
+	
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.faded .message-box *{
+	color:#212121;
+	text-align:left;
+}
+
+.faded .message-box h1{
+	font-size:1.4rem;
+}
+
+.faded .message-box button{
+	position:absolute;
+	bottom:1rem;
+	right:1rem;
+	background:transparent;
+	text-align:right;
 }

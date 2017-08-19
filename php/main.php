@@ -6,18 +6,19 @@
 
 	<div class="faded">
 		<div id="view" style="display:inline-block;margin-right:1rem;vertical-align:top;">
-			<div id="frame" style="background:#000;">
+			<div id="frame">
 				<div id="map">
 
 				</div>
 			</div>
+			<div id="message-box"></div>
 		</div>
 		<div style="display:inline-block;height:4rem;vertical-align:top;">
 			<div id="health"></div>
 			
 			<br/>
 			
-			<button onclick="isPlaying = !isPlaying;this.innerHTML = isPlaying ? 'Pause' : 'Play';">Pause</button>
+			<button onclick="game.toggle();this.innerHTML = game.isPlaying ? 'Pause' : 'Play';">Pause</button>
 		</div>
 	</div>
 	<div class="section" style="line-height:3rem;">
@@ -28,13 +29,13 @@
 	</div>
 </section>
 <script>
-	var isPlaying   = true,
-		map_width   = 1000,
+	var map_width   = 1000,
 		map_height  = 1000,
 		view_width  = 500,
 		view_height = 500,
 		num_zombies = 10,
 		num_candles = 10;
+	var game = new Lib.Game();
 	var view = 
 		new Lib.View({
 			selector : 'view', 
@@ -56,6 +57,13 @@
 			blockSize : 20,
 			position : new Lib.Point(0, 0)
 		});
+	var messageBox  = 
+		new Lib.MessageBox({
+			selector : 'message-box',
+			onOpen : function(){game.pause();},
+			onClose : function(){game.play();}
+		});messageBox.setText('Hi there', 'This is a message.');
+		
 	var health = 
 		new Lib.HealthBar({
 			selector : 'health'
@@ -79,12 +87,12 @@
 	}
 	
 	frame.updatePosition(player);
-	
+	game.play();messageBox.open();
 	var left = 0;
 	var interval = 
 		setInterval(
 			function(){
-				if(isPlaying){
+				if(game.isPlaying){
 				
 					var direction = Lib.Point.HERE;
 					if(Lib.Keys.isPressed(Lib.Keys.KEY_W) || Lib.Keys.isPressed(Lib.Keys.KEY_UP)){
@@ -111,11 +119,13 @@
 							direction : zombie.getNextMove(player)
 						});
 					}
-					for(var i = 0; i < candles.length; i++){
-						var candle = candles[i];
-						if(player.touches(candle)){
-							candle.pickup(player);
-							candles.splice(i--, 1);
+					if(Lib.Keys.isPressed(Lib.Keys.KEY_E)){
+						for(var i = 0; i < candles.length; i++){
+							var candle = candles[i];
+							if(player.touches(candle)){
+								candle.pickup(player);
+								candles.splice(i--, 1);
+							}
 						}
 					}
 					map.checkAndMove(characters);

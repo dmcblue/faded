@@ -24,7 +24,8 @@ Movable.prototype.handleEvent =
 	function(event){
 		switch(event.type){
 			case 'move' : 
-				var position = this.getPosition().add(event.direction.scale(event.speed));
+				var position = 
+					this.getPosition().add(event.direction.scale(event.speed));
 
 				this.element.style.left = Math.round(position.x) + 'px';
 				this.element.style.top  = Math.round(position.y) + 'px';
