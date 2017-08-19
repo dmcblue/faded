@@ -1,7 +1,6 @@
 var Noble = 
 	function(args){
 		if(args.damage === undefined){args.damage = Noble.DAMAGE;}
-		if(args.radius === undefined){args.radius = Noble.RADIUS;}
 		if(args.speed === undefined){args.speed = Noble.SPEED;}
 		if(args.sight === undefined){args.sight = Noble.SIGHT;}
 		if(args.placementRadius === undefined){args.placementRadius = Noble.PLACEMENT_RADIUS;}
@@ -10,28 +9,34 @@ var Noble =
 		}
 		args.classes.push('noble');
 		Chaser.call(this, args);
+		this.addProperty(args, 'map');
 		this.counterMove = new Counter({turns : Noble.TURNS_MOVE});
 		this.counterAttack = new Counter({turns : Noble.TURNS_ATTACK});
-		this.setTarget();
+		this.element.addEventListener(Noble.EVENT_RESET, this, false);
+		this.eventHandlers[Noble.EVENT_RESET] = 
+			function(self, event){
+				self.setPosition(self.map.findPosition(self));
+			};
 	};
 
 Noble.prototype = Object.create(Chaser.prototype);
 Noble.prototype.constructor = Noble;
 
 Noble.DAMAGE = 10;
+Noble.EVENT_RESET = 'faded_noble_event_reset';
 Noble.ID = 0;
-Noble.PLACEMENT_RADIUS = 30;
-Noble.RADIUS = 15;
-Noble.SPEED = 1;
-Noble.SIGHT = 150;
-Noble.TARGET_RADIUS = 100;
-Noble.TURNS_MOVE = 3;
-Noble.TURNS_ATTACK = 6;
+Noble.PLACEMENT_RADIUS = 50;
+Noble.SPEED = 5;
+Noble.SIGHT = 250;
+Noble.TURNS_MOVE = 1;
+Noble.TURNS_ATTACK = 3;
 
 Noble.prototype.attack =
 	function(player){
 		if(this.counterAttack.updateAndCheck()){
 			Mob.prototype.attack.call(this, player);
+			var event = new CustomEvent(Noble.EVENT_RESET);
+			this.element.dispatchEvent(event);
 		}
 	};
 
@@ -45,18 +50,8 @@ Noble.create =
 
 Noble.prototype.getNextMove =
 	function(player){
-		if(this.counterMove.updateAndCheck()){
-			this.setTarget();
-		}
-		
-		return Chaser.prototype.getNextMove.call(this, this.target);
-	};
-
-Noble.prototype.setTarget =
-	function(){
-		this.target = 
-			new Target({
-				point : this.getRandomMove().scale(Noble.TARGET_RADIUS),
-				radius : 0
-			});
+		return this.counterMove.updateAndCheck()
+			? Chaser.prototype.getNextMove.call(this, player)
+			: Point.HERE
+		;
 	};

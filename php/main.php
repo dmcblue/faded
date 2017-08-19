@@ -33,7 +33,9 @@
 		map_height  = 1000,
 		view_width  = 500,
 		view_height = 500,
-		num_zombies = 10,
+		num_zombies = 15,
+		num_ghosts  = 5,
+		num_nobles  = 5,
 		num_candles = 10;
 	var game = new Lib.Game();
 	var view = 
@@ -86,15 +88,22 @@
 		candles.push(candle);
 	}
 	
+	var ghosts = [];
+	for(var i = 0; i < num_ghosts; i++){
+		var ghost = Lib.Ghost.create(frame);
+		ghost.setPosition(map.findPosition(ghost));
+		ghosts.push(ghost);
+	}
+	
 	var nobles = [];
-	for(var i = 0; i < 1; i++){
-		var noble = Lib.Noble.create(frame);
+	for(var i = 0; i < num_nobles; i++){
+		var noble = Lib.Noble.create(frame, {map:map});
 		noble.setPosition(map.findPosition(noble));
 		nobles.push(noble);
 	}
-	console.log(nobles);
 	
 	frame.updatePosition(player);
+	var mobs = zombies.concat(ghosts).concat(nobles);
 	game.play();
 	var left = 0;
 	var interval = 
@@ -117,29 +126,18 @@
 					}
 
 					var characters = [{movable : player, direction : direction}];
-					for(var i = 0; i < zombies.length; i++){
-						var zombie = zombies[i];
-						if(player.touches(zombie)){
-							zombie.attack(player);
+					for(var i = 0; i < mobs.length; i++){
+						var mob = mobs[i];
+						if(player.touches(mob)){
+							mob.attack(player);
 						}
 						characters.push({
-							movable : zombie, 
-							direction : zombie.getNextMove(player)
+							movable : mob, 
+							direction : mob.getNextMove(player)
 						});
 					}
-					//*
-					for(var i = 0; i < nobles.length; i++){
-						var noble = nobles[i];
-						if(player.touches(noble)){
-							noble.attack(player);
-						}
-						characters.push({
-							movable : noble, 
-							direction : noble.getNextMove(player)
-						});
-					}
-					//*/
-					if(Lib.Keys.isPressed(Lib.Keys.KEY_E)){
+					
+					if(Lib.Keys.isPressed(Lib.Keys.KEY_E) || Lib.Keys.isPressed(Lib.Keys.KEY_SPACE)){
 						for(var i = 0; i < candles.length; i++){
 							var candle = candles[i];
 							if(player.touches(candle)){

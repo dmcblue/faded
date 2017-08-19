@@ -8,16 +8,16 @@ Chaser.prototype = Object.create(Mob.prototype);
 Chaser.prototype.constructor = Chaser;
 
 Chaser.prototype.getNextMove =
-	function(player){
+	function(target){
 		var 
 			direction = Point.HERE,
-			distance = this.getPosition().distanceTo(player.getPosition())
+			distance = this.getPosition().distanceTo(target.getPosition())
 		;
 		if(distance < this.sight){
-			if(distance <= this.radius + player.radius){
+			if(distance <= this.radius + target.radius){
 				;//console.log(this.radius, player.radius);
 			}else{
-				direction = this.getPosition().directionOf(player.getPosition());
+				direction = this.getPosition().directionOf(target.getPosition());
 			}
 		}else{
 			 direction = this.getRandomMove();

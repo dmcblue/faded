@@ -67,6 +67,12 @@
 .faded .noble{
 	width : 10px;
 	height : 10px;
+	background:#0A8;
+}
+
+.faded .ghost{
+	width : 10px;
+	height : 10px;
 	background:#008;
 	border:20px solid rgba(0, 0, 230, 0.1);
 	border-radius:50%;

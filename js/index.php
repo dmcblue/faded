@@ -26,6 +26,7 @@
 					'Mob',
 					'Chaser',
 					'Zombie',
+					'Ghost',
 					'Noble',
 					'Pickup',
 					'Candle',

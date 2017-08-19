@@ -15,6 +15,7 @@ var Item =
 		this.addProperty(args,'width', false, this.element.offsetWidth, parseInt);    //in px
 		this.addProperty(args,'height', false, this.element.offsetHeight, parseInt);   //in px
 		this.addProperty(args,'radius', false, (this.width + this.height)/4, parseFloat);   //in px
+		this.addProperty(args,'eventHandlers', false, {});
 	};
 
 Item.prototype = Object.create(Base.prototype);
@@ -59,6 +60,13 @@ Item.prototype.getPosition =
 			this.element.style.left ? parseInt(this.element.style.left.replace('px', '')) : 0,
 			this.element.style.top  ? parseInt(this.element.style.top.replace('px', ''))  : 0
 		);
+	};
+
+Item.prototype.handleEvent =
+	function(event){
+		if(this.eventHandlers.hasOwnProperty(event.type)){
+			this.eventHandlers[event.type](this, event);
+		}
 	};
 
 Item.prototype.removeClass =
