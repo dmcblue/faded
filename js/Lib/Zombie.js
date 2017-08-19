@@ -24,19 +24,19 @@ Zombie.SIGHT = 150;
 Zombie.TURNS_MOVE = 3;
 Zombie.TURNS_ATTACK = 3;
 
+Zombie.prototype.attack =
+	function(player){
+		if(this.counterAttack.updateAndCheck()){
+			Mob.prototype.attack.call(this, player);
+		}
+	};
+
 Zombie.create = 
 	function(frame, args, id){
 		if(args === undefined){args = {};}
 		if(id === undefined){id = 'zombie' + Zombie.ID++;}
 		args.selector = Item.createElement(frame, id);
 		return new Zombie(args);
-	};
-
-Zombie.prototype.attack =
-	function(player){
-		if(this.counterAttack.updateAndCheck()){
-			Mob.prototype.attack.call(this, player);
-		}
 	};
 
 Zombie.prototype.getNextMove =

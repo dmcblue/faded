@@ -62,7 +62,7 @@
 			selector : 'message-box',
 			onOpen : function(){game.pause();},
 			onClose : function(){game.play();}
-		});messageBox.setText('Hi there', 'This is a message.');
+		});
 		
 	var health = 
 		new Lib.HealthBar({
@@ -86,8 +86,16 @@
 		candles.push(candle);
 	}
 	
+	var nobles = [];
+	for(var i = 0; i < 1; i++){
+		var noble = Lib.Noble.create(frame);
+		noble.setPosition(map.findPosition(noble));
+		nobles.push(noble);
+	}
+	console.log(nobles);
+	
 	frame.updatePosition(player);
-	game.play();messageBox.open();
+	game.play();
 	var left = 0;
 	var interval = 
 		setInterval(
@@ -119,6 +127,18 @@
 							direction : zombie.getNextMove(player)
 						});
 					}
+					//*
+					for(var i = 0; i < nobles.length; i++){
+						var noble = nobles[i];
+						if(player.touches(noble)){
+							noble.attack(player);
+						}
+						characters.push({
+							movable : noble, 
+							direction : noble.getNextMove(player)
+						});
+					}
+					//*/
 					if(Lib.Keys.isPressed(Lib.Keys.KEY_E)){
 						for(var i = 0; i < candles.length; i++){
 							var candle = candles[i];

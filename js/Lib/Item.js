@@ -14,7 +14,7 @@ var Item =
 		}
 		this.addProperty(args,'width', false, this.element.offsetWidth, parseInt);    //in px
 		this.addProperty(args,'height', false, this.element.offsetHeight, parseInt);   //in px
-		this.radius = (this.width + this.height)/4;
+		this.addProperty(args,'radius', false, (this.width + this.height)/4, parseFloat);   //in px
 	};
 
 Item.prototype = Object.create(Base.prototype);
