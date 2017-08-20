@@ -10,6 +10,7 @@
 					'Type',
 					'Keys',
 					'Game',
+					'Level',
 					'Counter',
 					'Point',
 					'Target',

@@ -10,6 +10,7 @@ var Grid =
 		this.addProperty(args, 'height', true, null, parseInt);   //in px
 		this.addProperty(args, 'blockSize', true, null, parseInt);//in px
 		this.addProperty(args, 'initializeCell', false, function(td){return td;});
+		this.element.innerHTML = '';
 		this.element.style.width = this.width + 'px';
 		this.element.style.height = this.height + 'px';
 		
