@@ -4,12 +4,14 @@ var Candle =
 			args.classes = [];
 		}
 		args.classes.push('candle');
+		if(args.placementRadius === undefined){args.placementRadius = Candle.PLACEMENT_RADIUS;}
 		Pickup.call(this, args);
 		//this.addProperty(args,'onpickup');
 	};
 
 Candle.HEALING_FACTOR = 10;
 Candle.ID = 0;
+Candle.PLACEMENT_RADIUS = 30;
 
 Candle.prototype = Object.create(Pickup.prototype);
 Candle.prototype.constructor = Candle;

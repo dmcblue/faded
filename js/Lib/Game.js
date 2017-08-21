@@ -9,12 +9,25 @@ var Game =
 		this.addProperty(args, 'frame');
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
+		
+		var self = this;
+		this.frame.eventHandlers[Message.EVENT_SEND] = 
+			function(item, data, event){
+				self.handleMessage(item, data.message);
+				event.stopPropagation(); //confine to this game
+			};
 	};
 
 Game.prototype = Object.create(Base.prototype);
 Game.prototype.constructor = Game;
 
 Game.BLOCK_SIZE = 20;
+
+Game.prototype.handleMessage =
+	function(item, message, event){
+		this.messageBox.setText(message.header, message.text);
+		this.messageBox.open();
+	};
 
 Game.prototype.load =
 	function(){
@@ -79,15 +92,41 @@ Game.prototype.load =
 			noble.setPosition(this.map.findPosition(noble));
 			this.nobles.push(noble);
 		}
+		
+		this.exit = Exit.create(this.frame, {game : this});
+		this.exit.setPosition(this.map.findPosition(this.exit));
+		var minDistance = level.width/4;
+		while(this.exit.getPosition().distanceTo(this.player.getPosition()) < minDistance){
+			this.exit.setPosition(this.map.findPosition(this.exit));
+		}
 
 		this.frame.updatePosition(this.player);
 		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles);
-		this.pickups = this.candles;
+		this.pickups = this.candles.concat([this.exit]);
 		this.updateInterval = 
 			setInterval(
 				(function(self){return function(){self.update();};})(this), 
 				this.interval
 			);
+	};
+
+Game.prototype.nextLevel =
+	function(){
+		this.pause();
+		clearInterval(this.updateInterval);
+		this.currentLevel++;
+		if(this.currentLevel < this.levels.length){
+			this.load();
+			this.play();
+		}else{
+			var message = 
+				new Message({
+					target : this.frame.element,
+					header : 'Congratulations!',
+					text   : 'You finished.'
+				});
+			message.send();
+		}
 	};
 
 Game.prototype.pause =
@@ -136,7 +175,7 @@ Game.prototype.update =
 			}
 
 			if(Keys.isPressed(Keys.KEY_E) || Keys.isPressed(Keys.KEY_SPACE)){
-				for(var i = 0; i < this.candles.length; i++){
+				for(var i = 0; i < this.pickups.length; i++){
 					var pickup = this.pickups[i];
 					if(this.player.touches(pickup)){
 						pickup.pickup(this.player);

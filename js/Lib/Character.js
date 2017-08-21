@@ -5,7 +5,6 @@ var Character =
 		}
 		args.classes.push('character');
 		Movable.call(this, args);
-		this.addProperty(args, 'placementRadius', true, null, parseInt);    //in px
 	};
 
 Character.prototype = Object.create(Movable.prototype);

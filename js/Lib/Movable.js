@@ -9,14 +9,13 @@ var Movable =
 		if(args.position !== undefined){
 			this.move(args.position);
 		}
-		this.element.addEventListener(Movable.EVENT_MOVE, this, false);
+		
 		this.eventHandlers[Movable.EVENT_MOVE] = 
-			function(self, event){
-				var position = 
-					self.getPosition().add(event.direction.scale(event.speed));
+			function(self, data, event){
+				//var position = self.getPosition().add(data.direction.scale(data.speed));
 
-				self.element.style.left = Math.round(position.x) + 'px';
-				self.element.style.top  = Math.round(position.y) + 'px';
+				self.element.style.left = Math.round(data.position.x) + 'px';
+				self.element.style.top  = Math.round(data.position.y) + 'px';
 			};
 	};
 
@@ -42,6 +41,6 @@ Movable.prototype.moveToward =
 		this.element.style.top  = Math.round(position.y) + 'px';
 		//*/
 		if(speed === undefined){speed = this.speed;}
-		var event = new CustomEvent(Movable.EVENT_MOVE, { direction: direction, speed: speed});
+		var event = new CEvent({type : Movable.EVENT_MOVE, data : { direction: direction, speed: speed}});
 		this.element.dispatchEvent(event);
 	};

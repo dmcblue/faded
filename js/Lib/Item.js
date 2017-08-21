@@ -16,6 +16,7 @@ var Item =
 		this.addProperty(args,'height', false, this.element.offsetHeight, parseInt);   //in px
 		this.addProperty(args,'radius', false, (this.width + this.height)/4, parseFloat);   //in px
 		this.addProperty(args,'eventHandlers', false, {});
+		this.element.addEventListener(CEvent.EVENT_TYPE, this, false);
 	};
 
 Item.prototype = Object.create(Base.prototype);
@@ -64,8 +65,12 @@ Item.prototype.getPosition =
 
 Item.prototype.handleEvent =
 	function(event){
-		if(this.eventHandlers.hasOwnProperty(event.type)){
-			this.eventHandlers[event.type](this, event);
+		if(this.eventHandlers.hasOwnProperty(event.detail[CEvent.CUSTOM_TYPE_FIELD])){
+			this.eventHandlers[event.detail[CEvent.CUSTOM_TYPE_FIELD]](
+				this, 
+				event.detail[CEvent.CUSTOM_DATA_FIELD],
+				event
+			);
 		}
 	};
 

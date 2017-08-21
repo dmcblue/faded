@@ -86,6 +86,12 @@
 	background:yellow;
 }
 
+.faded .exit{
+	width : 10px;
+	height : 10px;
+	background:white;
+}
+
 .faded .message-box{
 	position:absolute;
 	width:calc(80% - 2rem);

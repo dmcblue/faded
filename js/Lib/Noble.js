@@ -14,7 +14,7 @@ var Noble =
 		this.counterAttack = new Counter({turns : Noble.TURNS_ATTACK});
 		this.element.addEventListener(Noble.EVENT_RESET, this, false);
 		this.eventHandlers[Noble.EVENT_RESET] = 
-			function(self, event){
+			function(self, data, event){
 				self.setPosition(self.map.findPosition(self));
 			};
 	};
@@ -35,8 +35,14 @@ Noble.prototype.attack =
 	function(player){
 		if(this.counterAttack.updateAndCheck()){
 			Mob.prototype.attack.call(this, player);
-			var event = new CustomEvent(Noble.EVENT_RESET);
-			this.element.dispatchEvent(event);
+			//var event = new CEvent(Noble.EVENT_RESET);
+			var event = 
+				new CEvent({
+					target : this.element, 
+					type : Noble.EVENT_RESET, 
+					data : {}
+				});
+			event.trigger();
 		}
 	};
 
