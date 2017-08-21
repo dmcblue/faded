@@ -54,9 +54,14 @@ Ghost.prototype.getNextMove =
 
 Ghost.prototype.setTarget =
 	function(){
+		var move = this.getRandomMove();
+		while(move.x === 0 && move.y === 0){
+			move = this.getRandomMove();
+		}
+		
 		this.target = 
 			new Target({
-				point : this.getRandomMove().scale(Ghost.TARGET_RADIUS).add(this.getPosition()),
-				radius : 10
+				point : move.scale(Ghost.TARGET_RADIUS).add(this.getPosition()),
+				radius : 35
 			});
 	};
