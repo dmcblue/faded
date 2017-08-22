@@ -7,9 +7,8 @@
 	<div class="faded">
 		<div id="view" style="display:inline-block;margin-right:1rem;vertical-align:top;">
 			<div id="frame">
-				<div id="map">
-
-				</div>
+				<div id="map"></div>
+				<div id="mask"></div>
 			</div>
 			<div id="message-box"></div>
 		</div>
@@ -49,6 +48,7 @@
 		});
 	var game = new Lib.Game({
 		mapSelector : 'map',
+		maskSelector : 'mask',
 		healthSelector : 'health',
 		messageSelector : 'message-box',
 		frame : frame,

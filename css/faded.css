@@ -44,12 +44,22 @@
 	height:100%;
 }
 
-.faded .grid td{
+.faded .grid.map td{
 	background:#000;
 }
 
-.faded .grid td.walkable{
+.faded .grid.map td.walkable{
 	background:#444;
+}
+
+.faded .frame.grid.mask{
+	position:relative;
+	background:transparent;
+	z-index:10;
+}
+.faded .grid.mask td{
+	background:rgba(0,0,0,1);
+	opacity:0;
 }
 
 .faded .player{

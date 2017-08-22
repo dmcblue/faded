@@ -24,7 +24,7 @@ var Grid =
 			var tr = document.createElement('tr');
 			for(var j = 0; j < cols; j++){
 				var td = this.initializeCell(document.createElement('td'), i, j);
-						
+				
 				tr.appendChild(td);
 			}
 			tbody.appendChild(tr);
@@ -42,4 +42,12 @@ Grid.prototype.constructor = Grid;
 Grid.prototype.elementAt =
 	function(i, j){
 		return this.table.children[0].children[j].children[i];
+	};
+
+Grid.prototype.pixelToIndex =
+	function(point){
+		return new Point(
+			Math.floor(point.x/this.blockSize),
+			Math.floor(point.y/this.blockSize)
+		);
 	};

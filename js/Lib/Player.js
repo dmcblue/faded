@@ -9,7 +9,9 @@ var Player =
 		}
 		args.classes.push('player');
 		Character.call(this, args);
-		this.health = 90;
+		this.addProperty(args, 'luminance', false, Player.LUMINANCE, parseInt);
+		this.addProperty(args, 'luminosity', false, Player.LUMINOSITY, parseInt);
+		this.health = Player.HEALTH_MAX;
 		this.counterFade = new Counter({turns : Player.TURNS_FADE});
 	};
 
@@ -17,8 +19,11 @@ Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
 Player.ID = 0;
+Player.HEALTH_MAX = 100;
+Player.LUMINANCE = 4; //distance
+Player.LUMINOSITY = 10; //strength
 Player.PLACEMENT_RADIUS = 50;
-Player.SPEED = 10;
+Player.SPEED = 8;
 Player.TURNS_FADE = 5;
 
 Player.create = 
@@ -31,7 +36,7 @@ Player.create =
 
 Player.prototype.heal =
 	function(healing){
-		this.health = Math.min(this.health + healing, 100);
+		this.health = Math.min(this.health + healing, Player.HEALTH_MAX);
 	};
 
 Player.prototype.hurt =
@@ -45,4 +50,5 @@ Player.prototype.update =
 			this.hurt(1);
 		}
 		this.element.style.opacity = (this.health/100);
+		this.luminosity = 5 + (this.health/100)*5;
 	};

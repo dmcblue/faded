@@ -1,5 +1,9 @@
 var Map = 
 	function(args){
+		if(args.classes === undefined){
+			args.classes = [];
+		}
+		args.classes.push('map');
 		Grid.call(this, args);
 		if(args.arr === undefined){
 			this.arr = this.makeArray(30, 10, 10);
@@ -233,5 +237,5 @@ Map.prototype.makeArray =
 
 Map.prototype.resetCache =
 	function(){
-		this.cache = this.cloneArray();
+		this.cache = Tools.clonePlane(this.arr);//this.cloneArray();
 	};

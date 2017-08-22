@@ -3,6 +3,7 @@ var Game =
 		Base.call(this, args);
 		this.isPlaying = false;
 		this.addProperty(args, 'mapSelector');
+		this.addProperty(args, 'maskSelector');
 		this.addProperty(args, 'healthSelector');
 		this.addProperty(args, 'messageSelector');
 		this.addProperty(args, 'levels');
@@ -14,6 +15,12 @@ var Game =
 		this.frame.eventHandlers[Message.EVENT_SEND] = 
 			function(item, data, event){
 				self.handleMessage(item, data.message);
+				event.stopPropagation(); //confine to this game
+			};
+		
+		this.frame.eventHandlers[Candle.EVENT_PICKUP] = 
+			function(item, data, event){
+				self.mask.staticsSet = false;
 				event.stopPropagation(); //confine to this game
 			};
 	};
@@ -102,7 +109,19 @@ Game.prototype.load =
 
 		this.frame.updatePosition(this.player);
 		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles);
-		this.pickups = this.candles.concat([this.exit]);
+		this.pickups = [this.exit];
+		this.luminousPickups = this.candles;
+		
+		this.mask  = 
+			new Mask({
+				selector : this.maskSelector, 
+				width : level.width, 
+				height : level.height, 
+				blockSize : Game.BLOCK_SIZE,
+				position : new Point(0, 0)
+			});
+		this.mask.set([this.player], this.candles);
+		
 		this.updateInterval = 
 			setInterval(
 				(function(self){return function(){self.update();};})(this), 
@@ -182,10 +201,18 @@ Game.prototype.update =
 						this.pickups.splice(i--, 1);
 					}
 				}
+				for(var i = 0; i < this.luminousPickups.length; i++){
+					var pickup = this.luminousPickups[i];
+					if(this.player.touches(pickup)){
+						pickup.pickup(this.player);
+						this.luminousPickups.splice(i--, 1);
+					}
+				}
 			}
 			this.map.checkAndMove(characters);
 			this.player.update();
 			this.frame.updatePosition(this.player);
 			this.health.set(this.player.health);
+			this.mask.set([this.player], this.luminousPickups);
 		}
 	};

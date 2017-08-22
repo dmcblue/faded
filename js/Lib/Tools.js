@@ -1,5 +1,18 @@
 var Tools = 
 	{
+		clonePlane :
+			function(array){
+				var clonedArray = [];
+				for(var i = 0, ilen = array.length; i < ilen; i++){
+					var row = array[i];
+					var clonedRow = [];
+					for(var j = 0, jlen = row.length; j < jlen; j++){
+						clonedRow[j] = row[j];
+					}
+					clonedArray.push(clonedRow);
+				}
+				return clonedArray;
+			},
 		inRange :
 			function(min, val, max){
 				return Math.max(Math.min(val, max), min);

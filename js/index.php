@@ -25,6 +25,7 @@
 					'View',
 					'Grid',
 					'Map',
+					'Mask',
 					'Character',
 					'Player',
 					'Mob',
