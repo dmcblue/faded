@@ -14,7 +14,6 @@ var Game =
 		var self = this;
 		this.frame.eventHandlers[Message.EVENT_SEND] = 
 			function(item, data, event){
-				console.log('Message', data.message);
 				self.handleMessage(item, data.message);
 				event.stopPropagation(); //confine to this game
 			};
@@ -74,16 +73,6 @@ Game.prototype.load =
 					position : new Point(0, 0)
 				}
 			);
-		/*
-		this.map  = 
-			new Map({
-				selector : this.mapSelector, 
-				width : level.width, 
-				height : level.width, 
-				blockSize : Game.BLOCK_SIZE,
-				position : new Point(0, 0)
-			});
-		//*/
 		
 		this.player = Player.create(this.frame);
 		this.player.move(this.map.findPosition(this.player));
@@ -100,6 +89,13 @@ Game.prototype.load =
 			var candle = Candle.create(this.frame);
 			candle.setPosition(this.map.findPosition(candle));
 			this.candles.push(candle);
+		}
+		
+		this.papers = [];
+		for(var i = 0; i < level.papers.length; i++){
+			var paper = Paper.create(this.frame, level.papers[i]);
+			paper.setPosition(this.map.findPosition(paper));
+			this.papers.push(paper);
 		}
 
 		this.ghosts = [];
@@ -125,7 +121,7 @@ Game.prototype.load =
 
 		this.frame.updatePosition(this.player);
 		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles);
-		this.pickups = [this.exit];
+		this.pickups = this.papers.concat([this.exit]);
 		this.luminousPickups = this.candles;
 		
 		this.mask  = 
@@ -138,16 +134,7 @@ Game.prototype.load =
 					position : new Point(0, 0)
 				}
 			);
-		/*		
-			new Mask({
-				selector : this.maskSelector, 
-				width : level.width, 
-				height : level.height, 
-				blockSize : Game.BLOCK_SIZE,
-				position : new Point(0, 0)
-			});
-		//*/
-		this.mask.set([this.player], this.candles);
+		this.mask.set([this.player], this.luminousPickups);
 		
 		this.updateInterval = 
 			setInterval(
@@ -158,7 +145,6 @@ Game.prototype.load =
 
 Game.prototype.nextLevel =
 	function(){
-		console.log('next');
 		this.pause();
 		clearInterval(this.updateInterval);
 		this.currentLevel++;
@@ -220,7 +206,7 @@ Game.prototype.update =
 					direction : mob.getNextMove(this.player)
 				});
 			}
-
+			
 			if(Keys.isPressed(Keys.KEY_E) || Keys.isPressed(Keys.KEY_SPACE)){
 				for(var i = 0; i < this.pickups.length; i++){
 					var pickup = this.pickups[i];

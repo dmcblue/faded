@@ -102,6 +102,12 @@
 	background:white;
 }
 
+.faded .paper{
+	width : 10px;
+	height : 10px;
+	background:pink;
+}
+
 .faded .message-box{
 	position:absolute;
 	width:calc(80% - 2rem);

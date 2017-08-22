@@ -55,7 +55,12 @@
 				zombies : 1,
 				ghosts : 1,
 				nobles : 1,
-				candles : 4
+				candles : 4,
+				papers : 
+					[{
+						'header' : 'This is a message',
+						'text'   : 'Text for a message'
+					}]
 			}),
 			new Lib.Level({
 				width : map_width,
@@ -63,7 +68,12 @@
 				zombies : 1,
 				ghosts : 1,
 				nobles : 1,
-				candles : 10
+				candles : 10,
+				papers : 
+					[{
+						'header' : 'This is a message',
+						'text'   : 'Text for a message'
+					}]
 			})
 		]
 	});

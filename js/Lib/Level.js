@@ -7,6 +7,7 @@ var Level =
 		this.addProperty(args, 'ghosts', true, null, parseInt);
 		this.addProperty(args, 'nobles', true, null, parseInt);
 		this.addProperty(args, 'candles', true, null, parseInt);
+		this.addProperty(args, 'papers', false, {});
 	};
 
 Level.prototype = Object.create(Base.prototype);

@@ -13,5 +13,7 @@ Pickup.prototype.constructor = Pickup;
 
 Pickup.prototype.pickup = 
 	function(actor){
-		this.element.parentNode.removeChild(this.element);
+		if(this.element.parentNode){
+			this.element.parentNode.removeChild(this.element);
+		}
 	};

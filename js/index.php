@@ -36,6 +36,7 @@
 					'Pickup',
 					'Candle',
 					'Exit',
+					'Paper',
 				),
 		);
 	

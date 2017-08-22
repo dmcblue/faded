@@ -17,7 +17,7 @@ Message.prototype.send =
 			new CEvent({
 				target : this.target, 
 				type : Message.EVENT_SEND, 
-				data : {message: this, speed: 45}
+				data : {message: this}
 			});
 		event.trigger();
 	};
