@@ -6,10 +6,7 @@
 
 	<div class="faded">
 		<div id="view" style="display:inline-block;margin-right:1rem;vertical-align:top;">
-			<div id="frame">
-				<div id="map"></div>
-				<div id="mask"></div>
-			</div>
+			<div id="frame"></div>
 			<div id="message-box"></div>
 		</div>
 		<div style="display:inline-block;height:4rem;vertical-align:top;">
@@ -47,8 +44,6 @@
 			view : view
 		});
 	var game = new Lib.Game({
-		mapSelector : 'map',
-		maskSelector : 'mask',
 		healthSelector : 'health',
 		messageSelector : 'message-box',
 		frame : frame,
@@ -65,9 +60,9 @@
 			new Lib.Level({
 				width : map_width,
 				height : map_height,
-				zombies : 15,
-				ghosts : 5,
-				nobles : 5,
+				zombies : 1,
+				ghosts : 1,
+				nobles : 1,
 				candles : 10
 			})
 		]

@@ -2,8 +2,8 @@ var Game =
 	function(args){
 		Base.call(this, args);
 		this.isPlaying = false;
-		this.addProperty(args, 'mapSelector');
-		this.addProperty(args, 'maskSelector');
+		//this.addProperty(args, 'mapSelector');
+		//this.addProperty(args, 'maskSelector');
 		this.addProperty(args, 'healthSelector');
 		this.addProperty(args, 'messageSelector');
 		this.addProperty(args, 'levels');
@@ -14,6 +14,7 @@ var Game =
 		var self = this;
 		this.frame.eventHandlers[Message.EVENT_SEND] = 
 			function(item, data, event){
+				console.log('Message', data.message);
 				self.handleMessage(item, data.message);
 				event.stopPropagation(); //confine to this game
 			};
@@ -23,30 +24,7 @@ var Game =
 				self.mask.staticsSet = false;
 				event.stopPropagation(); //confine to this game
 			};
-	};
-
-Game.prototype = Object.create(Base.prototype);
-Game.prototype.constructor = Game;
-
-Game.BLOCK_SIZE = 20;
-
-Game.prototype.handleMessage =
-	function(item, message, event){
-		this.messageBox.setText(message.header, message.text);
-		this.messageBox.open();
-	};
-
-Game.prototype.load =
-	function(){
-		var level = this.levels[this.currentLevel];
-		this.map  = 
-			new Map({
-				selector : this.mapSelector, 
-				width : level.width, 
-				height : level.width, 
-				blockSize : Game.BLOCK_SIZE,
-				position : new Point(0, 0)
-			});
+		
 		var messageOnOpen =
 			function(self){
 				return function(){
@@ -69,6 +47,44 @@ Game.prototype.load =
 			new HealthBar({
 				selector : this.healthSelector
 			});
+	};
+
+Game.prototype = Object.create(Base.prototype);
+Game.prototype.constructor = Game;
+
+Game.BLOCK_SIZE = 20;
+
+Game.prototype.handleMessage =
+	function(item, message, event){
+		this.messageBox.setText(message.header, message.text);
+		this.messageBox.open();
+	};
+
+Game.prototype.load =
+	function(){
+		var level = this.levels[this.currentLevel];
+		this.frame.element.innerHTML = '';
+		this.map = 
+			Map.create(
+				this.frame,
+				{
+					width : level.width, 
+					height : level.width, 
+					blockSize : Game.BLOCK_SIZE,
+					position : new Point(0, 0)
+				}
+			);
+		/*
+		this.map  = 
+			new Map({
+				selector : this.mapSelector, 
+				width : level.width, 
+				height : level.width, 
+				blockSize : Game.BLOCK_SIZE,
+				position : new Point(0, 0)
+			});
+		//*/
+		
 		this.player = Player.create(this.frame);
 		this.player.move(this.map.findPosition(this.player));
 
@@ -113,6 +129,16 @@ Game.prototype.load =
 		this.luminousPickups = this.candles;
 		
 		this.mask  = 
+			Mask.create(
+				this.frame,
+				{
+					width : level.width, 
+					height : level.height, 
+					blockSize : Game.BLOCK_SIZE,
+					position : new Point(0, 0)
+				}
+			);
+		/*		
 			new Mask({
 				selector : this.maskSelector, 
 				width : level.width, 
@@ -120,6 +146,7 @@ Game.prototype.load =
 				blockSize : Game.BLOCK_SIZE,
 				position : new Point(0, 0)
 			});
+		//*/
 		this.mask.set([this.player], this.candles);
 		
 		this.updateInterval = 
@@ -131,6 +158,7 @@ Game.prototype.load =
 
 Game.prototype.nextLevel =
 	function(){
+		console.log('next');
 		this.pause();
 		clearInterval(this.updateInterval);
 		this.currentLevel++;

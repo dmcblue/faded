@@ -12,6 +12,16 @@ var Frame =
 Frame.prototype = Object.create(Movable.prototype);
 Frame.prototype.constructor = Frame;
 
+Frame.ID = 0;
+
+Frame.create = 
+	function(frame, args, id){
+		if(args === undefined){args = {};}
+		if(id === undefined){id = 'frame' + Exit.ID++;}
+		args.selector = Item.createElement(frame, id);
+		return new Frame(args);
+	};
+
 Frame.prototype.getOffset =
 	function(){
 		return new Point(

@@ -25,9 +25,18 @@ var Map =
 Map.prototype = Object.create(Grid.prototype);
 Map.prototype.constructor = Map;
 
+Map.ID = 0;
 Map.STATE_UNWALKABLE = 0;
 Map.STATE_WALKABLE   = 1;
 Map.TRIES = 3;
+
+Map.create = 
+	function(frame, args, id){
+		if(args === undefined){args = {};}
+		if(id === undefined){id = 'map' + Map.ID++;}
+		args.selector = Item.createElement(frame, id);
+		return new Map(args);
+	};
 
 Map.prototype.checkAndMove =
 	function(movables){

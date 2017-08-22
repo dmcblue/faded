@@ -32,6 +32,15 @@ Mask.prototype = Object.create(Grid.prototype);
 Mask.prototype.constructor = Mask;
 
 Mask.EVENT_PROPAGATE = 'faded_mask_event_propagate';
+Mask.ID = 0;
+
+Mask.create = 
+	function(frame, args, id){
+		if(args === undefined){args = {};}
+		if(id === undefined){id = 'mask' + Mask.ID++;}
+		args.selector = Item.createElement(frame, id);
+		return new Mask(args);
+	};
 
 Mask.prototype.propagate =
 	function(){

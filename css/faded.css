@@ -55,7 +55,7 @@
 .faded .frame.grid.mask{
 	position:relative;
 	background:transparent;
-	z-index:10;
+	z-index:5;
 }
 .faded .grid.mask td{
 	background:rgba(0,0,0,1);
@@ -108,7 +108,7 @@
 	height:calc(80% - 2rem);
 	margin: 10%;
 	padding: 1rem;
-	z-index:2;
+	z-index:10;
 	background:#888;
 	
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
