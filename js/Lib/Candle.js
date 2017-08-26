@@ -8,9 +8,11 @@ var Candle =
 		Pickup.call(this, args);
 		this.addProperty(args, 'luminance', false, Candle.LUMINANCE, parseInt);
 		this.addProperty(args, 'luminosity', false, Candle.LUMINOSITY, parseInt);
-		//this.addProperty(args,'onpickup');
+		this.counterFlicker = new Counter({turns : Candle.COUNTER_FLICKER});
+		this.flicker = Tools.randomBoolean();
 	};
 
+Candle.COUNTER_FLICKER = 3;
 Candle.HEALING_FACTOR = 10;
 Candle.ID = 0;
 Candle.LUMINANCE  = 2; //distance
@@ -43,4 +45,17 @@ Candle.prototype.pickup =
 		Pickup.prototype.pickup.call(this, actor);
 		
 		event.trigger();
+	};
+
+Candle.prototype.update =
+	function(){
+		if(this.counterFlicker.updateAndCheck()){
+			if(this.flicker){
+				this.addClass('flicker');
+			}else{
+				this.removeClass('flicker');
+			}
+			
+			this.flicker = !this.flicker;
+		}
 	};

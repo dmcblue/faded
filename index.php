@@ -9,7 +9,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Fjord+One|Quicksand" rel="stylesheet"> 
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/faded.css">
+		<link rel="stylesheet" type="text/css" href="css/faded.php">
 		
 		<script src="js/index.php" type="text/javascript"></script>
 	</head>

@@ -138,9 +138,9 @@
 }
 
 .faded .candle{
-	width : 10px;
-	height : 10px;
-	background:url('images/Candle-01.png');
+	width : 40px;
+	height : 40px;
+	background:url('images/Candle-01.svg');
 }
 
 .faded .exit{

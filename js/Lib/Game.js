@@ -228,6 +228,11 @@ Game.prototype.update =
 					}
 				}
 			}
+			
+			for(var i = 0; i < this.candles.length; i++){
+				this.candles[i].update();
+			}
+			
 			this.map.checkAndMove(characters);
 			this.player.update();
 			this.frame.updatePosition(this.player);
