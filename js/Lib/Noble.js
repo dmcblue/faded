@@ -4,6 +4,8 @@ var Noble =
 		if(args.speed === undefined){args.speed = Noble.SPEED;}
 		if(args.sight === undefined){args.sight = Noble.SIGHT;}
 		if(args.placementRadius === undefined){args.placementRadius = Noble.PLACEMENT_RADIUS;}
+		if(args.spriteCounter === undefined){args.spriteCounter = Noble.SPRITE_COUNTER;}
+		if(args.spriteClasses === undefined){args.spriteClasses = Noble.SPRITE_CLASSES;}
 		if(args.classes === undefined){
 			args.classes = [];
 		}
@@ -28,6 +30,8 @@ Noble.ID = 0;
 Noble.PLACEMENT_RADIUS = 50;
 Noble.SPEED = 5;
 Noble.SIGHT = 250;
+Noble.SPRITE_CLASSES = ['sprite1'];
+Noble.SPRITE_COUNTER = 1000;
 Noble.TURNS_MOVE = 1;
 Noble.TURNS_ATTACK = 3;
 

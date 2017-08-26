@@ -4,6 +4,8 @@ var Zombie =
 		if(args.speed === undefined){args.speed = Zombie.SPEED;}
 		if(args.sight === undefined){args.sight = Zombie.SIGHT;}
 		if(args.placementRadius === undefined){args.placementRadius = Zombie.PLACEMENT_RADIUS;}
+		if(args.spriteCounter === undefined){args.spriteCounter = Zombie.SPRITE_COUNTER;}
+		if(args.spriteClasses === undefined){args.spriteClasses = Zombie.SPRITE_CLASSES;}
 		if(args.classes === undefined){
 			args.classes = [];
 		}
@@ -21,6 +23,8 @@ Zombie.ID = 0;
 Zombie.PLACEMENT_RADIUS = 30;
 Zombie.SPEED = 5;
 Zombie.SIGHT = 150;
+Zombie.SPRITE_CLASSES = ['sprite1'];
+Zombie.SPRITE_COUNTER = 1000;
 Zombie.TURNS_MOVE = 3;
 Zombie.TURNS_ATTACK = 3;
 

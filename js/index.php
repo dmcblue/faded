@@ -21,6 +21,7 @@
 					'HealthBar',
 					'MapItem',
 					'Movable',
+					'Sprite',
 					'Frame',
 					'View',
 					'Grid',

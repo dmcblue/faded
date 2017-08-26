@@ -15,17 +15,17 @@ var Point =
 Point.prototype = Object.create(Base.prototype);
 Point.prototype.constructor = Point;
 
-var DIAGONAL = 0.707;//0.70710678 , sqrt(2)/2
+Point.DIAGONAL = 0.707;//0.70710678 , sqrt(2)/2
 
 Point.HERE  = Point.HOME = Point.CENTER = new Point({ x : 0,  y : 0 });
 Point.UP    = Point.N = Point.NORTH = new Point({ x : 0,  y : -1 });
 Point.DOWN  = Point.S = Point.SOUTH = new Point({ x : 0,  y : 1  });
 Point.RIGHT = Point.E = Point.EAST  = new Point({ x : 1,  y : 0  });
 Point.LEFT  = Point.W = Point.WEST  = new Point({ x : -1, y : 0  });
-Point.UP_RIGHT    = Point.NE = Point.NORTH_EAST = new Point({ x : DIAGONAL,       y : -1 * DIAGONAL });
-Point.DOWN_RIGHT  = Point.SE = Point.SOUTH_EAST = new Point({ x : DIAGONAL,       y : DIAGONAL });
-Point.DOWN_LEFT   = Point.SW = Point.SOUTH_WEST = new Point({ x : -1 * DIAGONAL,  y : DIAGONAL });
-Point.UP_LEFT     = Point.NW = Point.NORTH_WEST = new Point({ x : -1 * DIAGONAL,  y : -1 * DIAGONAL });
+Point.UP_RIGHT    = Point.NE = Point.NORTH_EAST = new Point({ x : Point.DIAGONAL,       y : -1 * Point.DIAGONAL });
+Point.DOWN_RIGHT  = Point.SE = Point.SOUTH_EAST = new Point({ x : Point.DIAGONAL,       y : Point.DIAGONAL });
+Point.DOWN_LEFT   = Point.SW = Point.SOUTH_WEST = new Point({ x : -1 * Point.DIAGONAL,  y : Point.DIAGONAL });
+Point.UP_LEFT     = Point.NW = Point.NORTH_WEST = new Point({ x : -1 * Point.DIAGONAL,  y : -1 * Point.DIAGONAL });
 
 Point.prototype.absCeil =
 	function(){
@@ -65,7 +65,7 @@ Point.prototype.directionOf =
 		}
 		
 		if(direction.x && direction.y){
-			direction = direction.scale(DIAGONAL);
+			direction = direction.scale(Point.DIAGONAL);
 		}
 		
 		return direction;
@@ -116,7 +116,7 @@ Point.prototype.subtract =
 			this.y - point.y
 		);
 	};
-	
+
 Point.prototype.unit =
 	function(){
 		return new Point(

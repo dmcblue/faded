@@ -8,6 +8,7 @@ var Game =
 		this.addProperty(args, 'messageSelector');
 		this.addProperty(args, 'levels');
 		this.addProperty(args, 'frame');
+		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
 		
@@ -69,7 +70,7 @@ Game.prototype.load =
 				{
 					width : level.width, 
 					height : level.width, 
-					blockSize : Game.BLOCK_SIZE,
+					blockSize : this.blockSize,
 					position : new Point(0, 0)
 				}
 			);
@@ -130,7 +131,7 @@ Game.prototype.load =
 				{
 					width : level.width, 
 					height : level.height, 
-					blockSize : Game.BLOCK_SIZE,
+					blockSize : this.blockSize,
 					position : new Point(0, 0)
 				}
 			);
@@ -194,7 +195,11 @@ Game.prototype.update =
 			if(Keys.isPressed(Keys.KEY_A) || Keys.isPressed(Keys.KEY_LEFT)){
 				direction = direction.add(Point.WEST);
 			}
-
+			
+			if(direction.x && direction.y){
+				direction.scale(Point.DIAGONAL);
+			}
+			
 			var characters = [{movable : this.player, direction : direction}];
 			for(var i = 0; i < this.mobs.length; i++){
 				var mob = this.mobs[i];

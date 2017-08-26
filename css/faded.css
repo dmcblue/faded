@@ -65,8 +65,54 @@
 .faded .player{
 	width : 10px;
 	height : 10px;
-	background:#0F0;
 }
+.faded .player.sprite1.here,
+.faded .player.sprite1.north,
+.faded .player.sprite1.south{
+	background:url('images/Player_N_1.png');
+}
+.faded .player.sprite2.here,
+.faded .player.sprite2.north,
+.faded .player.sprite2.south{
+	background:url('images/Player_N_2.png');
+}
+.faded .player.sprite1.northeast{
+	background:url('images/Player_NE_1.png');
+}
+.faded .player.sprite2.northeast{
+	background:url('images/Player_NE_2.png');
+}
+.faded .player.sprite1.northwest{
+	background:url('images/Player_NW_1.png');
+}
+.faded .player.sprite2.northwest{
+	background:url('images/Player_NW_2.png');
+}
+.faded .player.sprite1.southeast{
+	background:url('images/Player_SE_1.png');
+}
+.faded .player.sprite2.southeast{
+	background:url('images/Player_SE_2.png');
+}
+.faded .player.sprite1.southwest{
+	background:url('images/Player_SW_1.png');
+}
+.faded .player.sprite2.southwest{
+	background:url('images/Player_SW_2.png');
+}
+.faded .player.sprite1.west{
+	background:url('images/Player_W_1.png');
+}
+.faded .player.sprite2.west{
+	background:url('images/Player_W_2.png');
+}
+.faded .player.sprite1.east{
+	background:url('images/Player_E_1.png');
+}
+.faded .player.sprite2.east{
+	background:url('images/Player_E_2.png');
+}
+
 
 .faded .zombie{
 	width : 10px;

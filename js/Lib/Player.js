@@ -4,6 +4,8 @@ var Player =
 			args.placementRadius = Player.PLACEMENT_RADIUS;
 		}
 		if(args.speed === undefined){args.speed = Player.SPEED;}
+		if(args.spriteCounter === undefined){args.spriteCounter = Player.SPRITE_COUNTER;}
+		if(args.spriteClasses === undefined){args.spriteClasses = Player.SPRITE_CLASSES;}
 		if(args.classes === undefined){
 			args.classes = [];
 		}
@@ -24,6 +26,8 @@ Player.LUMINANCE = 4; //distance
 Player.LUMINOSITY = 10; //strength
 Player.PLACEMENT_RADIUS = 50;
 Player.SPEED = 8;
+Player.SPRITE_CLASSES = ['sprite1','sprite2'];
+Player.SPRITE_COUNTER = 5;
 Player.TURNS_FADE = 5;
 
 Player.create = 
@@ -49,6 +53,6 @@ Player.prototype.update =
 		if(this.counterFade.updateAndCheck()){
 			this.hurt(1);
 		}
-		this.element.style.opacity = (this.health/100);
+		//this.element.style.opacity = (this.health/100);
 		this.luminosity = 5 + (this.health/100)*5;
 	};

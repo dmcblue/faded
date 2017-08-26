@@ -44,7 +44,7 @@ Map.prototype.checkAndMove =
 			var row = movables[i];
 			var movable = row.movable,
 				direction = row.direction;
-			if(direction == Point.HOME){
+			if(direction.equals(Point.HOME)){
 				continue;
 			}
 			var position = movable.getPosition(),
