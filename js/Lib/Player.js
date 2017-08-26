@@ -3,7 +3,7 @@ var Player =
 		if(args.placementRadius === undefined){
 			args.placementRadius = Player.PLACEMENT_RADIUS;
 		}
-		if(args.speed === undefined){args.speed = Player.SPEED;}
+		if(args.speedFactor === undefined){args.speedFactor = Player.SPEED_FACTOR;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Player.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Player.SPRITE_CLASSES;}
 		if(args.classes === undefined){
@@ -25,7 +25,7 @@ Player.HEALTH_MAX = 100;
 Player.LUMINANCE = 4; //distance
 Player.LUMINOSITY = 10; //strength
 Player.PLACEMENT_RADIUS = 50;
-Player.SPEED = 8;
+Player.SPEED_FACTOR = 0.8;
 Player.SPRITE_CLASSES = ['sprite1','sprite2'];
 Player.SPRITE_COUNTER = 5;
 Player.TURNS_FADE = 5;

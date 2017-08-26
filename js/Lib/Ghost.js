@@ -2,8 +2,8 @@ var Ghost =
 	function(args){
 		if(args.damage === undefined){args.damage = Ghost.DAMAGE;}
 		if(args.radius === undefined){args.radius = Ghost.RADIUS;}
-		if(args.speed === undefined){args.speed = Ghost.SPEED;}
-		if(args.sight === undefined){args.sight = Ghost.SIGHT;}
+		if(args.speedFactor === undefined){args.speedFactor = Ghost.SPEED_FACTOR;}
+		if(args.sightFactor === undefined){args.sightFactor = Ghost.SIGHT_FACTOR;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Ghost.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Ghost.SPRITE_CLASSES;}
 		if(args.placementRadius === undefined){args.placementRadius = Ghost.PLACEMENT_RADIUS;}
@@ -24,8 +24,8 @@ Ghost.DAMAGE = 10;
 Ghost.ID = 0;
 Ghost.PLACEMENT_RADIUS = 30;
 Ghost.RADIUS = 15;
-Ghost.SPEED = 3;
-Ghost.SIGHT = 150;
+Ghost.SPEED_FACTOR = 0.3;
+Ghost.SIGHT_FACTOR = 15;
 Ghost.SPRITE_CLASSES = ['sprite1'];
 Ghost.SPRITE_COUNTER = 1000;
 Ghost.TARGET_RADIUS = 100;

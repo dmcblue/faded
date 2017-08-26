@@ -15,8 +15,8 @@ var Grid =
 		this.element.style.height = this.height + 'px';
 		
 		var 
-			rows = Math.round(this.height/this.blockSize),
-			cols = Math.round(this.height/this.blockSize),
+			rows = Math.ceil(this.height/this.blockSize),
+			cols = Math.ceil(this.height/this.blockSize),
 			tbody = document.createElement('tbody');
 		;
 		
@@ -34,6 +34,8 @@ var Grid =
 		table.appendChild(tbody);
 		this.element.appendChild(table);
 		this.table = table;
+		this.rows = rows;
+		this.cols = cols;
 	};
 
 Grid.prototype = Object.create(Frame.prototype);

@@ -25,10 +25,11 @@
 	</div>
 </section>
 <script>
-	var map_width   = 1000,
-		map_height  = 1000,
+	var map_width   = 50,
+		map_height  = 50,
 		view_width  = 500,
-		view_height = 500;
+		view_height = 500,
+		blockSize   = 40;
 	
 	var view = 
 		new Lib.View({
@@ -39,8 +40,8 @@
 	var frame = 
 		new Lib.Frame({
 			selector : 'frame', 
-			width : map_width, 
-			height : map_height, 
+			width : map_width*blockSize, 
+			height : map_height*blockSize, 
 			view : view
 		});
 	var game = new Lib.Game({
@@ -48,10 +49,11 @@
 		messageSelector : 'message-box',
 		frame : frame,
 		interval : 100,
+		blockSize : blockSize,
 		levels : [
 			new Lib.Level({
-				width : map_width,
-				height : map_height,
+				width : map_width*blockSize,
+				height : map_height*blockSize,
 				zombies : 1,
 				ghosts : 1,
 				nobles : 1,
@@ -63,8 +65,8 @@
 					}]
 			}),
 			new Lib.Level({
-				width : map_width,
-				height : map_height,
+				width : map_width*blockSize,
+				height : map_height*blockSize,
 				zombies : 1,
 				ghosts : 1,
 				nobles : 1,

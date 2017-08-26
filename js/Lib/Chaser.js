@@ -1,7 +1,8 @@
 var Chaser = 
 	function(args){
 		Mob.call(this, args);
-		this.addProperty(args, 'sight', true, null, parseInt);    //in px
+		this.addProperty(args,'sightFactor', false, 1, parseFloat);
+		this.addProperty(args, 'sight', false, Math.round(this.width*this.sightFactor), parseInt);    //in px
 	};
 
 Chaser.prototype = Object.create(Mob.prototype);

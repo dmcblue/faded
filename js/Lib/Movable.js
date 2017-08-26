@@ -5,7 +5,8 @@ var Movable =
 		}
 		args.classes.push('movable');
 		Item.call(this, args);
-		this.addProperty(args,'speed');
+		this.addProperty(args,'speedFactor', false, 1, parseFloat);
+		this.addProperty(args,'speed', false, Math.round(this.width*this.speedFactor), parseInt);
 		if(args.position !== undefined){
 			this.move(args.position);
 		}

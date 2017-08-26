@@ -129,23 +129,23 @@
 }
 
 .faded .player{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 }<?php movable(".faded .player", "Player"); ?>
 
 .faded .zombie{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 }<?php movable(".faded .zombie", "Zombie"); ?>
 
 .faded .noble{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 }<?php movable(".faded .noble", "Noble"); ?>
 
 .faded .ghost{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 	background:#008;
 	border:20px solid rgba(0, 0, 230, 0.1);
 	border-radius:50%;
@@ -162,14 +162,14 @@
 ); ?>
 
 .faded .exit{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 	background:url('images/Exit.svg');
 }
 
 .faded .paper{
-	width : 10px;
-	height : 10px;
+	width : 40px;
+	height : 40px;
 	background:url('images/Paper.svg');
 }
 

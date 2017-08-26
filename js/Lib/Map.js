@@ -6,7 +6,8 @@ var Map =
 		args.classes.push('map');
 		Grid.call(this, args);
 		if(args.arr === undefined){
-			this.arr = this.makeArray(30, 10, 10);
+			var times = Math.round((this.rows+this.cols)/1);
+			this.arr = this.makeArray(times, 10, 10);
 		}else{
 			this.arr = args.arr;
 		}
@@ -176,9 +177,30 @@ Map.prototype._findPosition =
 	function(movable){
 		var x = 0,
 			y = 0;
+		var count = 0;
+		var col = 0,
+			row = 0,
+			width = Math.ceil(this.width/this.blockSize),
+			height = Math.ceil(this.height/this.blockSize);
+			
 		do{
-			x = Tools.randomInteger(0, this.width);
-			y = Tools.randomInteger(0, this.height);
+			do{
+				col = Tools.randomInteger(0, width);
+				row = Tools.randomInteger(0, height);
+			}while(!this.arr[col][row]);
+		
+			x = col*this.blockSize + Tools.randomInteger(0, this.blockSize);
+			y = col*this.blockSize + Tools.randomInteger(0, this.blockSize);
+			
+			/*
+			count++;
+			if(count > 100){
+				console.log(movable, col, row, x, y);
+				console.log(this.arr[col][row], this.check(movable, new Point(x, y)));
+				console.log(this.arr);
+				throw new Error('AAAAAAAAA');
+			}
+			//*/
 		} while (!this.check(movable, new Point(x, y)));
 		
 		return new Point(x, y);

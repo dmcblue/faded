@@ -1,8 +1,8 @@
 var Noble = 
 	function(args){
 		if(args.damage === undefined){args.damage = Noble.DAMAGE;}
-		if(args.speed === undefined){args.speed = Noble.SPEED;}
-		if(args.sight === undefined){args.sight = Noble.SIGHT;}
+		if(args.speedFactor === undefined){args.speedFactor = Noble.SPEED_FACTOR;}
+		if(args.sightFactor === undefined){args.sightFactor = Noble.SIGHT_FACTOR;}
 		if(args.placementRadius === undefined){args.placementRadius = Noble.PLACEMENT_RADIUS;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Noble.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Noble.SPRITE_CLASSES;}
@@ -28,8 +28,8 @@ Noble.DAMAGE = 10;
 Noble.EVENT_RESET = 'faded_noble_event_reset';
 Noble.ID = 0;
 Noble.PLACEMENT_RADIUS = 50;
-Noble.SPEED = 5;
-Noble.SIGHT = 250;
+Noble.SPEED_FACTOR = 0.5;
+Noble.SIGHT_FACTOR = 15;
 Noble.SPRITE_CLASSES = ['sprite1'];
 Noble.SPRITE_COUNTER = 1000;
 Noble.TURNS_MOVE = 1;
