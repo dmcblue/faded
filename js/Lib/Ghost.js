@@ -23,12 +23,12 @@ Ghost.prototype.constructor = Ghost;
 Ghost.DAMAGE = 10;
 Ghost.ID = 0;
 Ghost.PLACEMENT_RADIUS = 30;
-Ghost.RADIUS = 15;
-Ghost.SPEED_FACTOR = 0.3;
+Ghost.RADIUS = 100;
+Ghost.SPEED_FACTOR = 0.1;
 Ghost.SIGHT_FACTOR = 15;
 Ghost.SPRITE_CLASSES = ['sprite1'];
 Ghost.SPRITE_COUNTER = 1000;
-Ghost.TARGET_RADIUS = 100;
+Ghost.TARGET_RADIUS = 250;
 Ghost.TURNS_MOVE = 50;
 Ghost.TURNS_ATTACK = 6;
 
