@@ -53,6 +53,6 @@ Player.prototype.update =
 		if(this.counterFade.updateAndCheck()){
 			this.hurt(1);
 		}
-		//this.element.style.opacity = (this.health/100);
+		this.element.style.opacity = (this.health/100);
 		this.luminosity = 5 + (this.health/100)*5;
 	};
