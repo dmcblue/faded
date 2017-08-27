@@ -7,7 +7,8 @@
 	<div class="faded">
 		<div id="view" style="display:inline-block;margin-right:1rem;vertical-align:top;">
 			<div id="frame"></div>
-			<div id="message-box"></div>
+			<div id="paper-message-box"></div>
+			<div id="screen-message-box"></div>
 		</div>
 		<div style="display:inline-block;height:4rem;vertical-align:top;">
 			<div id="health"></div>
@@ -46,7 +47,8 @@
 		});
 	var game = new Lib.Game({
 		healthSelector : 'health',
-		messageSelector : 'message-box',
+		paperMessageSelector  : 'paper-message-box',
+		screenMessageSelector : 'screen-message-box',
 		frame : frame,
 		interval : 100,
 		blockSize : blockSize,

@@ -20,6 +20,7 @@ var Player =
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
+Player.EVENT_DEATH = 'faded_player_event_death';
 Player.ID = 0;
 Player.HEALTH_MAX = 100;
 Player.LUMINANCE = 4; //distance
@@ -57,12 +58,12 @@ Player.prototype.update =
 		this.luminosity = 5 + (this.health/100)*5;
 		
 		if(!this.health){
-			var message = 
-				new Message({
-					target : this.element.parentElement,
-					header : 'Dun Dun Dun',
-					text   : 'You died.'
+			var event = 
+				new CEvent({
+					target : this.element.parentElement, 
+					type : Player.EVENT_DEATH, 
+					data : {}
 				});
-			message.send();
+			event.trigger();
 		}
 	};

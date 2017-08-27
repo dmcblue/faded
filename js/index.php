@@ -19,6 +19,7 @@
 					'Item',
 					'MessageBox',
 					'PaperMessageBox',
+					'ScreenMessageBox',
 					'HealthBar',
 					'MapItem',
 					'Movable',

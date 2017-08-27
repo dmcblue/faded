@@ -184,17 +184,37 @@
 	
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
 .faded .message-box.paper-message-box *{
 	color:#534741;
 	text-align:left;
 }
-
-.faded .message-box h1{
+.faded .message-box.paper-message-box h1{
 	font-size:1.4rem;
 }
+.faded .message-box.paper-message-box button{
+	position:absolute;
+	bottom:1rem;
+	right:1rem;
+	background:transparent;
+	text-align:right;
+}
 
-.faded .message-box button{
+.faded .message-box.screen-message-box{
+	position:absolute;
+	width:calc(100% - 4rem);
+	height:calc(100% - 4rem);
+	padding: 2rem;
+	z-index:15;
+	background:rgba(0,0,0,0.9);
+}
+.faded .message-box.screen-message-box *{
+	color:#FFF;
+	text-align:left;
+}
+.faded .message-box.screen-message-box h1{
+	font-size:1.4rem;
+}
+.faded .message-box.screen-message-box button{
 	position:absolute;
 	bottom:1rem;
 	right:1rem;

@@ -5,7 +5,8 @@ var Game =
 		//this.addProperty(args, 'mapSelector');
 		//this.addProperty(args, 'maskSelector');
 		this.addProperty(args, 'healthSelector');
-		this.addProperty(args, 'messageSelector');
+		this.addProperty(args, 'screenMessageSelector');
+		this.addProperty(args, 'paperMessageSelector');
 		this.addProperty(args, 'levels');
 		this.addProperty(args, 'frame');
 		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
@@ -25,6 +26,13 @@ var Game =
 				event.stopPropagation(); //confine to this game
 			};
 		
+		this.frame.eventHandlers[Player.EVENT_DEATH] = 
+			function(item, data, event){
+				self.screenMessageBox.setText("Dun Dun Dun.", "You died.");
+				self.screenMessageBox.open();
+				event.stopPropagation(); //confine to this game
+			};
+		
 		var messageOnOpen =
 			function(self){
 				return function(){
@@ -37,9 +45,15 @@ var Game =
 					self.play();
 				};
 			};
-		this.messageBox  = 
+		this.paperMessageBox  = 
 			new PaperMessageBox({
-				selector : this.messageSelector,
+				selector : this.paperMessageSelector,
+				onOpen : messageOnOpen(this),
+				onClose : messageOnClose(this)
+			});
+		this.screenMessageBox  = 
+			new ScreenMessageBox({
+				selector : this.screenMessageSelector,
 				onOpen : messageOnOpen(this),
 				onClose : messageOnClose(this)
 			});
@@ -56,8 +70,14 @@ Game.BLOCK_SIZE = 20;
 
 Game.prototype.handleMessage =
 	function(item, message, event){
-		this.messageBox.setText(message.header, message.text);
-		this.messageBox.open();
+		this.paperMessageBox.setText(message.header, message.text);
+		this.paperMessageBox.open();
+	};
+
+Game.prototype.handleScreenMessage =
+	function(item, message, event){
+		this.screenMessageBox.setText(message.header, message.text);
+		this.screenMessageBox.open();
 	};
 
 Game.prototype.load =
