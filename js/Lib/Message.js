@@ -4,6 +4,7 @@ var Message =
 		this.addProperty(args, 'target');
 		this.addProperty(args, 'header', false, '');
 		this.addProperty(args, 'text');
+		this.addProperty(args, 'type', false, Message.EVENT_SEND);
 	};
 
 Message.prototype = Object.create(Base.prototype);
@@ -16,7 +17,7 @@ Message.prototype.send =
 		var event = 
 			new CEvent({
 				target : this.target, 
-				type : Message.EVENT_SEND, 
+				type : this.type, 
 				data : {message: this}
 			});
 		event.trigger();

@@ -38,7 +38,7 @@ var Game =
 				};
 			};
 		this.messageBox  = 
-			new MessageBox({
+			new PaperMessageBox({
 				selector : this.messageSelector,
 				onOpen : messageOnOpen(this),
 				onClose : messageOnClose(this)

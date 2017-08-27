@@ -18,6 +18,7 @@
 					'Target',
 					'Item',
 					'MessageBox',
+					'PaperMessageBox',
 					'HealthBar',
 					'MapItem',
 					'Movable',

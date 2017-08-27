@@ -173,20 +173,20 @@
 	background:url('images/Paper.svg');
 }
 
-.faded .message-box{
+.faded .message-box.paper-message-box{
 	position:absolute;
 	width:calc(80% - 2rem);
 	height:calc(80% - 2rem);
 	margin: 10%;
 	padding: 1rem;
 	z-index:10;
-	background:#888;
+	background:#C7B299;
 	
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.faded .message-box *{
-	color:#212121;
+.faded .message-box.paper-message-box *{
+	color:#534741;
 	text-align:left;
 }
 
