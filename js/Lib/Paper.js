@@ -4,7 +4,9 @@ var Paper =
 			args.classes = [];
 		}
 		args.classes.push('paper');
-		if(args.placementRadius === undefined){args.placementRadius = Paper.PLACEMENT_RADIUS;}
+		if(args.placementRadius === undefined){
+			args.placementRadius = Paper.PLACEMENT_RADIUS;
+		}
 		Pickup.call(this, args);
 		this.addProperty(args, 'header');
 		this.addProperty(args, 'text');

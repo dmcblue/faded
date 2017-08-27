@@ -55,4 +55,14 @@ Player.prototype.update =
 		}
 		this.element.style.opacity = (this.health/100);
 		this.luminosity = 5 + (this.health/100)*5;
+		
+		if(!this.health){
+			var message = 
+				new Message({
+					target : this.element.parentElement,
+					header : 'Dun Dun Dun',
+					text   : 'You died.'
+				});
+			message.send();
+		}
 	};

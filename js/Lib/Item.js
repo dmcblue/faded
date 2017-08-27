@@ -15,7 +15,9 @@ var Item =
 		this.addProperty(args,'width', false, this.element.offsetWidth, parseInt);    //in px
 		this.addProperty(args,'height', false, this.element.offsetHeight, parseInt);   //in px
 		this.addProperty(args,'radius', false, (this.width + this.height)/4, parseFloat);   //in px
-		this.addProperty(args,'eventHandlers', false, {});
+		if(!this.hasOwnProperty('eventHandlers')){
+			this.addProperty(args,'eventHandlers', false, {});
+		}
 		this.element.addEventListener(CEvent.EVENT_TYPE, this, false);
 	};
 
