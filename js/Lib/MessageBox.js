@@ -11,20 +11,20 @@ var MessageBox =
 		var header = document.createElement('h1');
 		var text = document.createElement('p');
 		var close = document.createElement('button');
-		var onclick =
-			function(self){
-				return function(){
-					self.close();
-				};
-			};
-		close.onclick = onclick(this);
-		close.innerHTML = 'Close (E)';
 		this.element.appendChild(header);
 		this.element.appendChild(text);
 		this.element.appendChild(close);
 		this.close();
 		this.header = header;
 		this.text = text;
+		this.button = close;
+		var onclick =
+			function(self){
+				return function(){
+					self.close();
+				};
+			};
+		this.setButton('Close (E)', onclick(this));
 	};
 
 MessageBox.prototype = Object.create(Item.prototype);
@@ -45,6 +45,12 @@ MessageBox.prototype.open =
 	function(){
 		this.element.style.display = 'block';
 		this.onOpen();
+	};
+
+MessageBox.prototype.setButton = 
+	function(label, callback){
+		this.button.onclick = callback;
+		this.button.innerHTML = label;
 	};
 
 MessageBox.prototype.setText = 
