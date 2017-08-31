@@ -180,6 +180,17 @@ Game.prototype.nextLevel =
 			this.load();
 			this.play();
 		}else{
+			var self = this;
+			this.screenMessageBox.setButton(
+				"Restart Game", 
+				function(){
+					self.restart();
+					self.screenMessageBox.close();
+				}
+			);
+			this.screenMessageBox.setText("Congratulations!", "You finished.");
+			this.screenMessageBox.open();
+			/*
 			var message = 
 				new Message({
 					target : this.frame.element,
@@ -187,6 +198,7 @@ Game.prototype.nextLevel =
 					text   : 'You finished.'
 				});
 			message.send();
+			//*/
 		}
 	};
 

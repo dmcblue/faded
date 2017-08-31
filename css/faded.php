@@ -146,12 +146,11 @@
 .faded .ghost{
 	width : 40px;
 	height : 40px;
-	background:#008;
-	border:80px solid rgba(0, 0, 230, 0.1);
+	border:80px solid rgba(255, 255, 255, 0.1);
 	border-radius:50%;
 	-webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-}
+}<?php movable(".faded .ghost", "Ghost"); ?>
 
 .faded .candle{
 	width : 40px;
