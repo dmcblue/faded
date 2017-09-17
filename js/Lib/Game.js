@@ -148,8 +148,10 @@ Game.prototype.load =
 		}
 
 		this.frame.updatePosition(this.player);
+		this.mobs = [];
 		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles);
-		this.pickups = this.papers.concat([this.exit]);
+		this.pickups = [];
+		this.pickups = this.papers;
 		this.luminousPickups = this.candles;
 		
 		this.mask  = 
@@ -277,11 +279,14 @@ Game.prototype.update =
 					}
 				}
 				for(var i = 0; i < this.luminousPickups.length; i++){
-					var pickup = this.luminousPickups[i];
-					if(this.player.touches(pickup)){
-						pickup.pickup(this.player);
+					var luminousPickup = this.luminousPickups[i];
+					if(this.player.touches(luminousPickup)){
+						luminousPickup.pickup(this.player);
 						this.luminousPickups.splice(i--, 1);
 					}
+				}
+				if(this.player.touches(this.exit)){
+					this.exit.pickup(this.player);
 				}
 			}
 			

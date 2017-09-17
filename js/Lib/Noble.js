@@ -14,7 +14,7 @@ var Noble =
 		this.addProperty(args, 'map');
 		this.counterMove = new Counter({turns : Noble.TURNS_MOVE});
 		this.counterAttack = new Counter({turns : Noble.TURNS_ATTACK});
-		this.element.addEventListener(Noble.EVENT_RESET, this, false);
+		//this.element.addEventListener(Noble.EVENT_RESET, this, false);
 		this.eventHandlers[Noble.EVENT_RESET] = 
 			function(self, data, event){
 				self.setPosition(self.map.findPosition(self));

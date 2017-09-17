@@ -25,6 +25,6 @@ Exit.create =
 
 Exit.prototype.pickup = 
 	function(actor){
-		this.game.nextLevel();
 		Pickup.prototype.pickup.call(this, actor);
+		this.game.nextLevel();
 	};

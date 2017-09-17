@@ -57,7 +57,7 @@
 				width : map_width*blockSize,
 				height : map_height*blockSize,
 				zombies : 0,
-				ghosts : 4,
+				ghosts : 1,
 				nobles : 0,
 				candles : 5,
 				papers : 
@@ -71,7 +71,7 @@
 				height : map_height*blockSize,
 				zombies : 1,
 				ghosts : 1,
-				nobles : 1,
+				nobles : 0,
 				candles : 10,
 				papers : 
 					[{
@@ -83,4 +83,18 @@
 	});
 	game.load();
 	game.play();
+	
+	function checkTouch(){
+		var pos = game.player.getPosition();
+		console.log('Player', pos);
+		console.log('Pickups', game.pickups);
+		for(var i = 0; i < game.pickups.length; i++){
+			var pickup = game.pickups[i];
+			var pos = pickup.getPosition();
+			console.log('--', pickup.selector, pos);
+			if(game.player.touches(pickup)){
+				console.log('-- Player touches ' + pickup.selector);
+			}
+		}
+	}
 </script>

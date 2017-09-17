@@ -212,6 +212,7 @@
 }
 .faded .message-box.screen-message-box h1{
 	font-size:1.4rem;
+	margin-bottom:0.5rem;
 }
 .faded .message-box.screen-message-box button{
 	position:absolute;

@@ -142,7 +142,7 @@ Map.prototype.findPosition =
 		if(tries === undefined){tries = Map.TRIES;}
 		if(!this.cache){this.resetCache();}
 		
-		var radius = character.placementRadius;// Math.ceil(character.placementRadius/this.blockSize),
+		var radius = character.placementRadius,// Math.ceil(character.placementRadius/this.blockSize),
 			count = 0,
 			width = Math.ceil(this.width/this.blockSize),
 			height = Math.ceil(this.height/this.blockSize);
@@ -189,7 +189,7 @@ Map.prototype._findPosition =
 				row = Tools.randomInteger(0, height);
 			}while(!this.arr[col][row]);
 		
-			x = col*this.blockSize + Tools.randomInteger(0, this.blockSize);
+			x = row*this.blockSize + Tools.randomInteger(0, this.blockSize);
 			y = col*this.blockSize + Tools.randomInteger(0, this.blockSize);
 			
 			/*
