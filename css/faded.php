@@ -60,6 +60,10 @@
 	}
 ?>
 
+.faded{
+	position:relative;
+}
+
 .faded *{
 	font-family: 'Fjord One', serif;
 	font-size:1rem;
@@ -215,6 +219,31 @@
 	margin-bottom:0.5rem;
 }
 .faded .message-box.screen-message-box button{
+	position:absolute;
+	bottom:1rem;
+	right:1rem;
+	background:transparent;
+	text-align:right;
+}
+
+.faded .message-box.full-screen-message-box{
+	position:absolute;
+	top:0;
+	width:calc(100% - 4rem);
+	height:calc(100% - 4rem);
+	padding: 2rem;
+	z-index:15;
+	background:#000;
+}
+.faded .message-box.full-screen-message-box *{
+	color:#FFF;
+	text-align:left;
+}
+.faded .message-box.full-screen-message-box h1{
+	font-size:1.4rem;
+	margin-bottom:0.5rem;
+}
+.faded .message-box.full-screen-message-box button{
 	position:absolute;
 	bottom:1rem;
 	right:1rem;

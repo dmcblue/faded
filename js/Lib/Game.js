@@ -28,13 +28,14 @@ var Game =
 		
 		this.frame.eventHandlers[Player.EVENT_DEATH] = 
 			function(item, data, event){
-				self.screenMessageBox.setButton(
-					"Restart Level", 
-					function(){
+				self.screenMessageBox.clearButtons();
+				self.screenMessageBox.addButton({
+					label : "Restart Level", 
+					onClick : function(){
 						self.restartLevel();
 						self.screenMessageBox.close();
 					}
-				);
+				});
 				self.screenMessageBox.setText("Dun Dun Dun.", "You died.");
 				self.screenMessageBox.open();
 				event.stopPropagation(); //confine to this game
@@ -183,13 +184,14 @@ Game.prototype.nextLevel =
 			this.play();
 		}else{
 			var self = this;
-			this.screenMessageBox.setButton(
-				"Restart Game", 
-				function(){
+			self.screenMessageBox.clearButtons();
+			self.screenMessageBox.addButton({
+				label : "Restart Game", 
+				onClick : function(){
 					self.restart();
 					self.screenMessageBox.close();
 				}
-			);
+			});
 			this.screenMessageBox.setText("Congratulations!", "You finished.");
 			this.screenMessageBox.open();
 			/*

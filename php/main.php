@@ -17,6 +17,7 @@
 			
 			<button onclick="game.toggle();this.innerHTML = game.isPlaying ? 'Pause' : 'Play';">Pause</button>
 		</div>
+		<div id="full-screen-message-box"></div>
 	</div>
 	<div class="section" style="line-height:3rem;">
 		<button onclick="checkTouch();">Check Touch</button>
@@ -82,7 +83,20 @@
 		]
 	});
 	game.load();
-	game.play();
+	
+	var fullScreenMessageBox  = 
+		new Lib.FullScreenMessageBox({
+			selector : 'full-screen-message-box',
+			onOpen : function(){},
+			onClose : function(){}
+		});
+	fullScreenMessageBox.setText(
+		'Welcome to Faded', //header
+		'Be cautious.  Everything that moves will hurt you.'  //text
+	);
+	fullScreenMessageBox.open();
+	
+	//game.play();
 	
 	function checkTouch(){
 		var pos = game.player.getPosition();

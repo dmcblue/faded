@@ -13,6 +13,7 @@ var Candle =
 	};
 
 Candle.COUNTER_FLICKER = 3;
+Candle.EVENT_PICKUP = 'faded_candle_event_pickup';
 Candle.HEALING_FACTOR = 10;
 Candle.ID = 0;
 Candle.LUMINANCE  = 2; //distance
@@ -21,8 +22,6 @@ Candle.PLACEMENT_RADIUS = 30;
 
 Candle.prototype = Object.create(Pickup.prototype);
 Candle.prototype.constructor = Candle;
-
-Candle.EVENT_PICKUP = 'faded_candle_event_pickup';
 
 Candle.create = 
 	function(frame, args, id){
