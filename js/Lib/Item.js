@@ -46,15 +46,7 @@ Item.createElement =
 
 Item.prototype.addClass =
 	function(className){
-		var classes = this.element.className.split(' ');
-		for(var i = 0, ilen = classes.length; i < ilen; i++){
-			if(classes[i] === className){
-				return;
-			}
-		}
-		
-		classes.push(className);
-		this.element.className = classes.join(' ');
+		Tools.addClass(this.element, className);
 	};
 
 Item.prototype.getPosition =
@@ -78,23 +70,7 @@ Item.prototype.handleEvent =
 
 Item.prototype.removeClass =
 	function(className){
-		var index = -1;
-		var classes = 
-			this.element.className.length 
-				? this.element.className.split(' ') 
-				: []
-			;
-		for(var i = 0, ilen = classes.length; i < ilen; i++){
-			if(classes[i] === className){
-				index = i;
-				break;
-			}
-		}
-		
-		if(index !== -1){
-			classes.splice(i, 1);
-			this.element.className = classes.join(' ');
-		}
+		Tools.removeClass(this.element, className);
 	};
 
 Item.prototype.setPosition =

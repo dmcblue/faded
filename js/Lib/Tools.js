@@ -1,5 +1,17 @@
 var Tools = 
 	{
+		addClass :
+			function(element, className){
+				var classes = element.className.split(' ');
+				for(var i = 0, ilen = classes.length; i < ilen; i++){
+					if(classes[i] === className){
+						return;
+					}
+				}
+
+				classes.push(className);
+				element.className = classes.join(' ');
+			},
 		clonePlane :
 			function(array){
 				var clonedArray = [];
@@ -34,5 +46,25 @@ var Tools =
 				max = Math.floor(max);
 				var added = inclusive ? 1 : 0;
 				return Math.floor(Math.random() * (max - min + added)) + min;
+			},
+		removeClass :
+			function(element, className){
+				var index = -1;
+				var classes = 
+					element.className.length 
+						? element.className.split(' ') 
+						: []
+					;
+				for(var i = 0, ilen = classes.length; i < ilen; i++){
+					if(classes[i] === className){
+						index = i;
+						break;
+					}
+				}
+
+				if(index !== -1){
+					classes.splice(i, 1);
+					element.className = classes.join(' ');
+				}
 			}
 	};

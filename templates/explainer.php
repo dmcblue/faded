@@ -66,4 +66,4 @@
 		</tr>
 	</tbody>
 </table>
-<em>* Press (E) to interact with these objects in the game.</em>
+<em>* Press (e) to interact with these objects in the game.</em>
