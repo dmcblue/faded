@@ -19,7 +19,7 @@ var MessageBox =
 		var text = document.createElement('p');
 		this.element.appendChild(header);
 		this.element.appendChild(text);
-		this.close();
+		this.close(true);
 		this.header = header;
 		this.text = text;
 		
@@ -74,9 +74,11 @@ MessageBox.prototype.clearButtons =
 	};
 
 MessageBox.prototype.close = 
-	function(){
+	function(init){
 		this.element.style.display = 'none';
-		this.onClose();
+		if(!init){
+			this.onClose();
+		}
 	};
 
 MessageBox.prototype.isOpen =

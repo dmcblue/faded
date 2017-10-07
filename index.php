@@ -1,4 +1,5 @@
 <?php
+	require(__DIR__."/php/Tools.php");
     $page = isset($_GET['page']) ? $_GET['page'] : 'main';
 ?><!DOCTYPE html>
 <html>
@@ -14,6 +15,6 @@
 		<script src="js/index.php" type="text/javascript"></script>
 	</head>
 	<body>
-		<?php require(__DIR__."/php/$page.php"); ?>
+		<?php require(__DIR__."/pages/$page.php"); ?>
 	</body>
 </html>

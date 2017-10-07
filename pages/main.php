@@ -88,7 +88,21 @@
 		new Lib.FullScreenMessageBox({
 			selector : 'full-screen-message-box',
 			onOpen : function(){},
-			onClose : function(){}
+			onClose : function(){
+				console.log(this);
+				this.setText(
+					'What you will find:',
+					'<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>'
+				);
+				this.clearButtons();
+				this.addButton({onClick : Lib.MessageBox.CLOSE(), label : 'Close (e)'});
+				this.onOpen =
+					function(){
+						this.onClose = function(){};
+					};
+				this.open();
+			},
+			buttons : [{onClick : Lib.MessageBox.CLOSE(), label : 'Next (e)'}]
 		});
 	fullScreenMessageBox.setText(
 		'Welcome to Faded', //header

@@ -156,6 +156,11 @@
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 }<?php movable(".faded .ghost", "Ghost"); ?>
 
+.faded .ghost.borderless{
+	border:none;
+	border-radius:0%;
+}
+
 .faded .candle{
 	width : 40px;
 	height : 40px;
@@ -194,7 +199,7 @@
 .faded .message-box.paper-message-box h1{
 	font-size:1.4rem;
 }
-.faded .message-box.paper-message-box button{
+.faded .message-box.paper-message-box button.message-box-button{
 	position:absolute;
 	bottom:1rem;
 	right:1rem;
@@ -218,7 +223,7 @@
 	font-size:1.4rem;
 	margin-bottom:0.5rem;
 }
-.faded .message-box.screen-message-box button{
+.faded .message-box.screen-message-box button.message-box-button{
 	position:absolute;
 	bottom:1rem;
 	right:1rem;
@@ -243,7 +248,7 @@
 	font-size:1.4rem;
 	margin-bottom:0.5rem;
 }
-.faded .message-box.full-screen-message-box button{
+.faded .message-box.full-screen-message-box button.message-box-button{
 	position:absolute;
 	bottom:1rem;
 	right:1rem;
