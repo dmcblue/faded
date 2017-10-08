@@ -98,7 +98,29 @@
 				this.addButton({onClick : Lib.MessageBox.CLOSE(), label : 'Close (e)'});
 				this.onOpen =
 					function(){
-						this.onClose = function(){};
+						var self = this;
+						var which = false;
+						var interval = 
+							setInterval(function(){
+								var icons = self.element.querySelectorAll('.icon');
+								var classesToAdd = which ? ['sprite1'] : ['sprite2','flicker'];
+								var classesToRemove = which ? ['sprite2','flicker'] : ['sprite1'];
+								for(var i = 0, ilen = icons.length; i < ilen; i++){
+									var icon = icons.item(i);
+									for(var j = 0, jlen = classesToRemove.length; j < jlen; j++){
+										Lib.Tools.removeClass(icon, classesToRemove[j]);
+									}
+									for(var j = 0, jlen = classesToAdd.length; j < jlen; j++){
+										Lib.Tools.addClass(icon, classesToAdd[j]);
+									}
+								}
+								which = !which;
+							}, 500);
+						this.onClose = 
+							function(){
+								clearInterval(interval);
+								game.play();
+							};
 					};
 				this.open();
 			},

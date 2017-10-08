@@ -52,7 +52,7 @@
 					<tbody>
 						<?php foreach($items as $item): ?>
 						<tr>
-							<td class="icons"><div class="<?php echo implode(' ', $item['classes']); ?>"></div></td>
+							<td class="icons"><div class="<?php echo implode(' ', $item['classes']); ?> icon"></div></td>
 							<td>
 								<h2><?php echo $item['name']; ?></h2>
 								<p><?php echo $item['description']; ?></p>
