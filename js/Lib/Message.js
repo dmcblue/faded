@@ -10,7 +10,7 @@ var Message =
 Message.prototype = Object.create(Base.prototype);
 Message.prototype.constructor = Message;
 
-Message.EVENT_SEND = 'faded_message_event_save';
+Message.EVENT_SEND = 'faded_message_event_send';
 
 Message.prototype.send = 
 	function(){
