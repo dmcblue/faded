@@ -14,14 +14,14 @@
 			[
 				'name' => 'Messages',
 				'classes' => ['pickup','paper'],
-				'description' => 'Along your way, you may find notes left behind by other explorers attempting to plunder the treasures of the Dark Monarch\\\'s castle.'
+				'description' => 'Along your way, you may find notes left behind by other explorers attempting to plunder the treasures of the Dread Monarch\\\'s castle.'
 			],
 		],
 		'Bad Stuff' => [
 			[
 				'name' => 'Zombies',
 				'classes' => ['zombie', 'sprite1', 'northeast',],
-				'description' => 'The former servants of the Dark Monarch transformed. Follow you slowly and attack you slowly.'
+				'description' => 'The former servants of the Dread Monarch transformed. Follow you slowly and attack you slowly.'
 			],
 			[
 				'name' => 'Nobles',
@@ -31,7 +31,7 @@
 			[
 				'name' => 'Handmaidens',
 				'classes' => ['ghost','borderless', 'sprite1', 'northeast',],
-				'description' => 'Those closest to the Dark Monarch have been changed into listless ghosts who notice nothing but their own sorrow.  That said, their very presence will drain your life.'
+				'description' => 'Those closest to the Dread Monarch have been changed into listless ghosts who notice nothing but their own sorrow.  That said, their very presence will drain your life.'
 			],
 		]
 	];

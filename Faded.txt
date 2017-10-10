@@ -1,0 +1,41 @@
+Faded
+=====
+
+A game.
+
+You find yourself in a dark (castle, dungeon, netherland).  You feel your life fading out.
+Wandering the dungeon, you find a candle.  Taking it, you feel the light of the candle filling your soul.  You feel a bit stronger; you can see a bit farther.  The candle is gone.  But still, your life force is still fading slowly out.
+As your energy leaves you, the room gets darker.
+
+Gameplay
+--------
+
+You travel around the dark searching for candles to keep yourself alive by restoring some of your energy, which slowly but continually drains away.
+
+You can only see in a small radius.  The light within that radius and size of it are determined by your energy/life.
+
+There are things in the darkness:
+ - Zombies: They travel slowly.  They have their own radius of sight and will move towards you for some time after they see you (value for interest). Otherwise, travel randomly.  They kill on contact.
+ - Ghosts?: They have a large aura which will sap your life.  They do not notice the presence of the player.
+ - (Handmaidens,Noble): Fast zombies who take half your life when they touch you, then disappear and respawn elsewhere on the map.
+
+* Objective *
+Find the exit on each level to progress through the levels.  Levels are randomly generated to be harder as you continue (larger, more enemies).
+
+Messages
+--------
+
+You find messages in each level that tell the story of what the castle is, why it is haunted, and why you are there.
+
+People go into the castle of the Dread Monarch to steal treasure. The messages lead you to believe you are a treasure hunter.  They also tell, slowly, the truth of the Dread Monarch.  They were cursed to become a Lich and lead the darkness against the people of the kingdom.  But the Monarch fights the curse and stays in the castle to protect their subjects. It is slowly revealed that you are in fact the Dread Monarch and you are losing your battle against the curse.
+
+
+Music 
+-----
+Rachmaninov - Isle of the Dead Op. 29
+https://www.youtube.com/watch?v=dbbtmskCRUY
+
+https://www.ableton.com/en/packs/retro-computers/
+
+
+http://www.afrodjmac.com/blog/2017/9/25/8-bitify-free-ableton-live-audio-effect-rack
