@@ -18,6 +18,7 @@
 					'Target',
 					'Item',
 					'Button',
+					'MessageEvent',
 					'MessageBox',
 					'PaperMessageBox',
 					'ScreenMessageBox',

@@ -89,7 +89,6 @@
 			selector : 'full-screen-message-box',
 			onOpen : function(){},
 			onClose : function(){
-				console.log(this);
 				this.setText(
 					'What you will find:',
 					'<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>'

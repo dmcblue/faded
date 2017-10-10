@@ -14,7 +14,7 @@ var Game =
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
 		
 		var self = this;
-		this.frame.eventHandlers[Message.EVENT_SEND] = 
+		this.frame.eventHandlers[MessageEvent.EVENT_SEND] = 
 			function(item, data, event){
 				self.handleMessage(item, data.message);
 				event.stopPropagation(); //confine to this game
@@ -194,15 +194,6 @@ Game.prototype.nextLevel =
 			});
 			this.screenMessageBox.setText("Congratulations!", "You finished.");
 			this.screenMessageBox.open();
-			/*
-			var message = 
-				new Message({
-					target : this.frame.element,
-					header : 'Congratulations!',
-					text   : 'You finished.'
-				});
-			message.send();
-			//*/
 		}
 	};
 

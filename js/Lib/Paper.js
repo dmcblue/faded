@@ -29,11 +29,13 @@ Paper.create =
 Paper.prototype.pickup = 
 	function(actor){
 		var message = 
-			new Message({
+			new MessageEvent({
 				target : this.element.parentElement,
-				header : this.header,
-				text   : this.text
+				message : new Message({
+					header : this.header,
+					text   : this.text
+				})
 			});
-		message.send();
+		message.trigger();
 		Pickup.prototype.pickup.call(this, actor);
 	};
