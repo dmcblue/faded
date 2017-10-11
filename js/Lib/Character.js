@@ -98,5 +98,5 @@ Character.prototype.move =
 			this.addClass(this.directionClass);
 		}
 		
-		Sprite.prototype.setPosition.call(this, x, y);
+		Sprite.prototype.move.call(this, x, y);
 	};

@@ -28,7 +28,7 @@ Player.LUMINOSITY = 10; //strength
 Player.PLACEMENT_RADIUS = 50;
 Player.SPEED_FACTOR = 0.8;
 Player.SPRITE_CLASSES = ['sprite1','sprite2'];
-Player.SPRITE_COUNTER = 5;
+Player.SPRITE_COUNTER = 2;
 Player.TURNS_FADE = 5;
 
 Player.create = 

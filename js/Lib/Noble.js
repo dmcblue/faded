@@ -30,8 +30,8 @@ Noble.ID = 0;
 Noble.PLACEMENT_RADIUS = 50;
 Noble.SPEED_FACTOR = 0.5;
 Noble.SIGHT_FACTOR = 15;
-Noble.SPRITE_CLASSES = ['sprite1'];
-Noble.SPRITE_COUNTER = 1000;
+Noble.SPRITE_CLASSES = ['sprite1','sprite2'];
+Noble.SPRITE_COUNTER = 2;
 Noble.TURNS_MOVE = 1;
 Noble.TURNS_ATTACK = 3;
 

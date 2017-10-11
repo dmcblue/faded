@@ -23,8 +23,8 @@ Zombie.ID = 0;
 Zombie.PLACEMENT_RADIUS = 30;
 Zombie.SPEED_FACTOR = 0.5;
 Zombie.SIGHT_FACTOR = 15;
-Zombie.SPRITE_CLASSES = ['sprite1'];
-Zombie.SPRITE_COUNTER = 1000;
+Zombie.SPRITE_CLASSES = ['sprite1','sprite2'];
+Zombie.SPRITE_COUNTER = 2;
 Zombie.TURNS_MOVE = 3;
 Zombie.TURNS_ATTACK = 3;
 
