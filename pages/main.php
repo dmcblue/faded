@@ -57,8 +57,8 @@
 			new Lib.Level({
 				width : map_width*blockSize,
 				height : map_height*blockSize,
-				zombies : 0,
-				ghosts : 1,
+				zombies : 5,
+				ghosts : 5,
 				nobles : 0,
 				candles : 5,
 				papers : 
