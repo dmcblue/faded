@@ -13,7 +13,8 @@ var MessageBox =
 					self.close();
 				};
 			};
-		buttons = args.buttons || [{onClick : MessageBox.CLOSE(), label : 'Close (e)'}];
+		this.messages = args.messages || [];
+		this.currentMessage = 0;
 		
 		var header = document.createElement('h1');
 		var text = document.createElement('p');
@@ -29,9 +30,14 @@ var MessageBox =
 				self.close();
 				event.stopPropagation(); //confine to this box
 			};
-		
-		for(var i = 0, ilen = buttons.length; i < ilen; i++){
-			this.addButton(buttons[i]);
+		this.eventHandlers[MessageBox.EVENT_NEXT] = 
+			function(item, data, event){
+				self.next();
+				event.stopPropagation(); //confine to this box
+			};
+			
+		if(this.messages.length){
+			this.loadCurrentMessage();
 		}
 	};
 
@@ -51,8 +57,24 @@ MessageBox.CLOSE =
 			event.trigger();
 		};
 	};
+MessageBox.NEXT = 
+	function(callback){
+		callback = callback || function(){};
+		return function(){
+			var event = 
+				new CEvent({
+					target : this.parentElement, 
+					type : MessageBox.EVENT_NEXT, 
+					data : {}
+				});		
+			event.trigger();
+		};
+	};
+MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
+MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
 MessageBox.CLASS_BUTTON = 'message-box-button';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
+MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
 
 
 MessageBox.prototype.addButton = 
@@ -77,7 +99,10 @@ MessageBox.prototype.close =
 	function(init){
 		this.element.style.display = 'none';
 		if(!init){
-			this.onClose();
+			this.onMessageClose();
+			if(this.currentMessage === this.messages.length - 1){
+				this.onClose();
+			}
 		}
 	};
 
@@ -86,14 +111,40 @@ MessageBox.prototype.isOpen =
 		return this.element.style.display !== 'none';
 	};
 
+MessageBox.prototype.loadCurrentMessage = 
+	function(){
+		this.loadMessage(this.messages[this.currentMessage]);
+	};
+
+MessageBox.prototype.loadMessage = 
+	function(message){
+		this.header.innerHTML = message.header;
+		this.text.innerHTML = message.text;
+		this.clearButtons();
+		for(var i = 0, ilen = message.buttons.length; i < ilen; i++){
+			this.addButton(message.buttons[i]);
+		}
+		this.onMessageOpen = message.onOpen;
+		this.onMessageClose = message.onClose;
+	};
+
 MessageBox.prototype.open = 
 	function(){
 		this.element.style.display = 'block';
-		this.onOpen();
+		if(!this.currentMessage){
+			this.onOpen();
+		}
+		this.onMessageOpen();
 	};
 
-MessageBox.prototype.setText = 
-	function(header, text){
-		this.header.innerHTML = header;
-		this.text.innerHTML = text;
+MessageBox.prototype.next = 
+	function(){
+		if(this.isOpen()){
+			this.onMessageClose();
+		}
+		this.currentMessage++;
+		this.loadCurrentMessage();
+		if(this.isOpen()){
+			this.onMessageOpen();
+		}
 	};

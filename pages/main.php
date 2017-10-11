@@ -87,19 +87,22 @@
 	var fullScreenMessageBox  = 
 		new Lib.FullScreenMessageBox({
 			selector : 'full-screen-message-box',
-			onOpen : function(){},
-			onClose : function(){
-				this.setText(
-					'What you will find:',
-					'<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>'
-				);
-				this.clearButtons();
-				this.addButton({onClick : Lib.MessageBox.CLOSE(), label : 'Close (e)'});
-				this.onOpen =
-					function(){
+			messages : [
+				new Lib.Message({
+					header : 'Welcome to Faded',
+					text : 'Be cautious.  Everything that moves will hurt you.',
+					buttons : [Lib.MessageBox.BUTTON_NEXT],
+					onOpen : function(){},
+					onClose : function(){}
+				}),
+				new Lib.Message({
+					header : 'What you will find:',
+					text : '<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>',
+					buttons : [Lib.MessageBox.BUTTON_CLOSE],
+					onOpen : function(){
 						var self = this;
 						var which = false;
-						var interval = 
+						self.___interval = 
 							setInterval(function(){
 								var icons = self.element.querySelectorAll('.icon');
 								var classesToAdd = which ? ['sprite1'] : ['sprite2','flicker'];
@@ -115,20 +118,14 @@
 								}
 								which = !which;
 							}, 500);
-						this.onClose = 
-							function(){
-								clearInterval(interval);
-								game.play();
-							};
-					};
-				this.open();
-			},
-			buttons : [{onClick : Lib.MessageBox.CLOSE(), label : 'Next (e)'}]
+					},
+					onClose : function(){
+						clearInterval(self.___interval);
+						game.play();
+					}
+				})
+			]
 		});
-	fullScreenMessageBox.setText(
-		'Welcome to Faded', //header
-		'Be cautious.  Everything that moves will hurt you.'  //text
-	);
 	fullScreenMessageBox.open();
 	
 	//game.play();
