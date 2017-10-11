@@ -2,8 +2,6 @@
 
 ?>
 <section>
-	<h1>Main</h1>
-
 	<div class="faded">
 		<div id="view" style="display:inline-block;margin-right:1rem;vertical-align:top;">
 			<div id="frame"></div>
@@ -20,10 +18,7 @@
 		<div id="full-screen-message-box"></div>
 	</div>
 	<div class="section" style="line-height:3rem;">
-		<button onclick="checkTouch();">Check Touch</button>
-		<br/>
-		<button onclick="player.health -= 5;">Hurt</button>
-		<br/>
+		<!-- Side Stuff -->
 	</div>
 </section>
 <script>
@@ -129,20 +124,4 @@
 			]
 		});
 	fullScreenMessageBox.open();
-	
-	//game.play();
-	
-	function checkTouch(){
-		var pos = game.player.getPosition();
-		console.log('Player', pos);
-		console.log('Pickups', game.pickups);
-		for(var i = 0; i < game.pickups.length; i++){
-			var pickup = game.pickups[i];
-			var pos = pickup.getPosition();
-			console.log('--', pickup.selector, pos);
-			if(game.player.touches(pickup)){
-				console.log('-- Player touches ' + pickup.selector);
-			}
-		}
-	}
 </script>

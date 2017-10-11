@@ -33,10 +33,11 @@ p{
 
 section, .section{
 	padding:1rem;
+	text-align:center;
 }
 
 html,body{
-	background:#212121;
+	background:#000;
 }
 
 button{
@@ -44,6 +45,10 @@ button{
 	color:#212121;
 	border : none;
 	padding: 0.25rem;
+}
+
+.faded{
+	
 }
 
 #explainer{
