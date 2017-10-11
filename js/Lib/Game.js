@@ -78,13 +78,13 @@ Game.BLOCK_SIZE = 20;
 
 Game.prototype.handleMessage =
 	function(item, message, event){
-		this.paperMessageBox.setText(message.header, message.text);
+		this.paperMessageBox.loadMessage(message);
 		this.paperMessageBox.open();
 	};
 
 Game.prototype.handleScreenMessage =
 	function(item, message, event){
-		this.screenMessageBox.setText(message.header, message.text);
+		this.screenMessageBox.loadMessage(message);
 		this.screenMessageBox.open();
 	};
 
@@ -122,7 +122,7 @@ Game.prototype.load =
 		
 		this.papers = [];
 		for(var i = 0; i < level.papers.length; i++){
-			var paper = Paper.create(this.frame, level.papers[i]);
+			var paper = Paper.create(this.frame, {message : level.papers[i]});
 			paper.setPosition(this.map.findPosition(paper));
 			this.papers.push(paper);
 		}

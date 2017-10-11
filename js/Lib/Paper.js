@@ -8,8 +8,7 @@ var Paper =
 			args.placementRadius = Paper.PLACEMENT_RADIUS;
 		}
 		Pickup.call(this, args);
-		this.addProperty(args, 'header');
-		this.addProperty(args, 'text');
+		this.addProperty(args, 'message');
 	};
 
 Paper.ID = 0;
@@ -31,10 +30,7 @@ Paper.prototype.pickup =
 		var message = 
 			new MessageEvent({
 				target : this.element.parentElement,
-				message : new Message({
-					header : this.header,
-					text   : this.text
-				})
+				message : this.message
 			});
 		message.trigger();
 		Pickup.prototype.pickup.call(this, actor);

@@ -62,10 +62,11 @@
 				nobles : 0,
 				candles : 5,
 				papers : 
-					[{
-						'header' : 'This is a message',
-						'text'   : 'Text for a message'
-					}]
+					[new Lib.Message({
+						header : 'This is a header',
+						text : 'Text for a message',
+						buttons : [Lib.MessageBox.BUTTON_CLOSE]
+					})]
 			}),
 			new Lib.Level({
 				width : map_width*blockSize,
@@ -75,10 +76,11 @@
 				nobles : 0,
 				candles : 10,
 				papers : 
-					[{
-						'header' : 'This is a message',
-						'text'   : 'Text for a message'
-					}]
+					[new Lib.Message({
+						header : 'This is a header',
+						text : 'Text for a message',
+						buttons : [Lib.MessageBox.BUTTON_CLOSE]
+					})]
 			})
 		]
 	});
