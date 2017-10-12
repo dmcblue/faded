@@ -245,8 +245,13 @@
 	text-align:left;
 }
 .faded .message-box.full-screen-message-box h1{
+	height:1.4rem;
 	font-size:1.4rem;
+	line-height:1.4rem;
 	margin-bottom:0.5rem;
+}
+.faded .message-box.full-screen-message-box .message-box-text{
+	height:calc(100% - 1.9rem);
 }
 .faded .message-box.full-screen-message-box button.message-box-button{
 	position:absolute;

@@ -3,7 +3,7 @@ var MessageBox =
 		if(args.classes === undefined){
 			args.classes = [];
 		}
-		args.classes.push('message-box');
+		args.classes.push(MessageBox.CLASS);
 		Item.call(this, args);
 		this.addProperty(args,'onOpen', false, function(){});
 		this.addProperty(args,'onClose', false, function(){});
@@ -17,7 +17,8 @@ var MessageBox =
 		this.currentMessage = 0;
 		
 		var header = document.createElement('h1');
-		var text = document.createElement('p');
+		var text = document.createElement('div');
+		Tools.addClass(text, MessageBox.CLASS_TEXT);
 		this.element.appendChild(header);
 		this.element.appendChild(text);
 		this.close(true);
@@ -72,7 +73,9 @@ MessageBox.NEXT =
 	};
 MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
 MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
+MessageBox.CLASS = 'message-box';
 MessageBox.CLASS_BUTTON = 'message-box-button';
+MessageBox.CLASS_TEXT = 'message-box-text';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
 MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
 

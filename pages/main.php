@@ -16,6 +16,7 @@
 			<button onclick="game.toggle();this.innerHTML = game.isPlaying ? 'Pause' : 'Play';">Pause</button>
 		</div>
 		<div id="full-screen-message-box"></div>
+		<div id="full-screen-message-box-about"></div>
 	</div>
 	<div class="section" style="line-height:3rem;">
 		<!-- Side Stuff -->
@@ -123,5 +124,25 @@
 				})
 			]
 		});
-	fullScreenMessageBox.open();
+	//fullScreenMessageBox.open();
+	
+	var menus  = 
+		new Lib.FullScreenMessageBox({
+			selector : 'full-screen-message-box-about',
+			messages : [
+				new Lib.Message({
+					header : '',
+					text : '<h1 class="faded-intro">Faded</h1>',
+					buttons : [Lib.MessageBox.BUTTON_NEXT],
+					onOpen : function(){},
+					onClose : function(){}
+				}),
+				new Lib.Message({
+					header : '',
+					text : '<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/menus.php'); ?>',
+					buttons : []
+				})
+			]
+		});
+	menus.open();
 </script>

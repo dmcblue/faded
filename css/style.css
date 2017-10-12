@@ -51,6 +51,21 @@ button{
 	
 }
 
+.faded .message-box.full-screen-message-box h1.faded-intro{
+	margin-top:15%;
+	text-align:center;
+	text-transform: uppercase;
+}
+.faded .message-box.full-screen-message-box table.menu{
+	width:100%;
+	height:100%;
+}
+.faded .message-box.full-screen-message-box table.menu td{
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
 #explainer{
 	width:100%;
 }
