@@ -8,7 +8,7 @@ People go into the castle of the Dread Monarch to steal treasure. The messages l
 
 Wizard figures it out and writes that the Traveller is the Dread Monarch
 
-An unknown disaster called 'The Horror'(WC) begins plaguing the city.  The Monarch calls all the people into the castle to protect them and researches a solution.  Tries several things, some dark some with dire warnings.  One of them is summoning an entity '[name]', named a genie/spirit but actually an evil/demon.  We find out later the Horror was loosed by [name] to cause this.  On summoning, [name] offers to give the Monarch the power to help them.  Once the Monarch accpets
+
 
 
 
