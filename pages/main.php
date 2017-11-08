@@ -124,8 +124,8 @@
 				})
 			]
 		});
-	//fullScreenMessageBox.open();
-	
+	fullScreenMessageBox.open();
+	/*
 	var menus  = 
 		new Lib.FullScreenMessageBox({
 			selector : 'full-screen-message-box-about',
@@ -145,4 +145,5 @@
 			]
 		});
 	menus.open();
+	//*/
 </script>
