@@ -26,6 +26,11 @@ var MessageBox =
 		this.text = text;
 		
 		var self = this;
+		this.eventHandlers[MessageBox.EVENT_BACK] = 
+			function(item, data, event){
+				self.back();
+				event.stopPropagation(); //confine to this box
+			};
 		this.eventHandlers[MessageBox.EVENT_CLOSE] = 
 			function(item, data, event){
 				self.close();
@@ -45,6 +50,19 @@ var MessageBox =
 MessageBox.prototype = Object.create(Item.prototype);
 MessageBox.prototype.constructor = MessageBox;
 
+MessageBox.BACK = 
+	function(callback){
+		callback = callback || function(){};
+		return function(){
+			var event = 
+				new CEvent({
+					target : this.parentElement, 
+					type : MessageBox.EVENT_BACK, 
+					data : {}
+				});		
+			event.trigger();
+		};
+	};
 MessageBox.CLOSE = 
 	function(callback){
 		callback = callback || function(){};
@@ -71,11 +89,13 @@ MessageBox.NEXT =
 			event.trigger();
 		};
 	};
+MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)'};
 MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
 MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
 MessageBox.CLASS = 'message-box';
 MessageBox.CLASS_BUTTON = 'message-box-button';
 MessageBox.CLASS_TEXT = 'message-box-text';
+MessageBox.EVENT_BACK = 'faded_messagebox_event_back';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
 MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
 
@@ -86,6 +106,18 @@ MessageBox.prototype.addButton =
 		args.classes = args.classes || [];
 		args.classes.push(MessageBox.CLASS_BUTTON);
 		new Button(args);
+	};
+
+MessageBox.prototype.back = 
+	function(){
+		if(this.isOpen()){
+			this.onMessageClose();
+		}
+		this.currentMessage = Math.max(0, this.currentMessage - 1);
+		this.loadCurrentMessage();
+		if(this.isOpen()){
+			this.onMessageOpen();
+		}
 	};
 
 MessageBox.prototype.clearButtons = 

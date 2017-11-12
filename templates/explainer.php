@@ -26,7 +26,7 @@
 			[
 				'name' => 'Nobles',
 				'classes' => ['noble', 'sprite1', 'northeast',],
-				'description' => 'The aristocratic companions of the Monarch have been transformed into qucik, powerful zombies.  They will chase you down but, once they attack, will disappear to a new location.'
+				'description' => 'The aristocratic companions of the Monarch have been transformed into quick, powerful zombies.  They will chase you down but, once they attack, will disappear to a new location.'
 			],
 			[
 				'name' => 'Handmaidens',

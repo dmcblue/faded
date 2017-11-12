@@ -1,10 +1,10 @@
 <?php
 	$buttons = [[
 		'label' => 'Play',
-		'onClick' => '',
+		'onClick' => "menus.close();fullScreenMessageBox.open();",
 	],[
 		'label' => 'About',
-		'onClick' => '',
+		'onClick' => 'menus.next()',
 	]];
 ?>
 <table class="menu">

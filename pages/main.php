@@ -87,8 +87,8 @@
 			selector : 'full-screen-message-box',
 			messages : [
 				new Lib.Message({
-					header : 'Welcome to Faded',
-					text : 'Be cautious.  Everything that moves will hurt you.',
+					header : '',
+					text : '<h3 class="single-text">Be cautious.  Everything that moves will hurt you.</h3>',
 					buttons : [Lib.MessageBox.BUTTON_NEXT],
 					onOpen : function(){},
 					onClose : function(){}
@@ -96,7 +96,7 @@
 				new Lib.Message({
 					header : 'What you will find:',
 					text : '<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>',
-					buttons : [Lib.MessageBox.BUTTON_CLOSE],
+					buttons : [Lib.MessageBox.BUTTON_NEXT],
 					onOpen : function(){
 						var self = this;
 						var which = false;
@@ -121,26 +121,47 @@
 						clearInterval(self.___interval);
 						game.play();
 					}
+				}),
+				//ready set go, controls
+				new Lib.Message({
+					header : '',
+					text : 'Ready?',
+					buttons : [{onClick : Lib.MessageBox.CLOSE(), label : "I\'m Ready! (e)"}],
+					onOpen : function(){},
+					onClose : function(){}
 				})
 			]
 		});
-	fullScreenMessageBox.open();
-	/*
+	//fullScreenMessageBox.open();
+	//*
 	var menus  = 
 		new Lib.FullScreenMessageBox({
 			selector : 'full-screen-message-box-about',
 			messages : [
 				new Lib.Message({
 					header : '',
-					text : '<h1 class="faded-intro">Faded</h1>',
+					text : '<h1 class="faded-intro single-text">Faded</h1>',
 					buttons : [Lib.MessageBox.BUTTON_NEXT],
 					onOpen : function(){},
 					onClose : function(){}
 				}),
 				new Lib.Message({
 					header : '',
-					text : '<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/menus.php'); ?>',
+					text : '<?php 
+						echo Tools::getJavascriptMultiline(
+							__DIR__.'/../templates/menus.php'
+						); 
+					?>',
 					buttons : []
+				}),
+				new Lib.Message({
+					header : 'About',
+					text : '<?php 
+						echo Tools::getJavascriptMultiline(
+							__DIR__.'/../templates/about.php'
+						); 
+					?>',
+					buttons : [Lib.MessageBox.BUTTON_BACK]
 				})
 			]
 		});
