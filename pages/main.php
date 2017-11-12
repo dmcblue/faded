@@ -87,16 +87,52 @@
 			selector : 'full-screen-message-box',
 			messages : [
 				new Lib.Message({
+					alias : 'intro',
 					header : '',
-					text : '<h3 class="single-text">Be cautious.  Everything that moves will hurt you.</h3>',
+					text : '<h1 class="faded-intro single-text">Faded</h1>',
 					buttons : [Lib.MessageBox.BUTTON_NEXT],
 					onOpen : function(){},
 					onClose : function(){}
 				}),
 				new Lib.Message({
+					alias : 'mainMenu',
+					header : '',
+					text : '<?php 
+						echo Tools::getJavascriptMultiline(
+							__DIR__.'/../templates/menus.php'
+						); 
+					?>',
+					buttons : []
+				}),
+				new Lib.Message({
+					alias : 'about',
+					header : 'About',
+					text : '<?php 
+						echo Tools::getJavascriptMultiline(
+							__DIR__.'/../templates/about.php'
+						); 
+					?>',
+					buttons : [Lib.MessageBox.BUTTON_BACK]
+				}),
+				new Lib.Message({
+					alias : 'warning',
+					header : '',
+					text : '<h3 class="single-text">Be cautious.  Everything that moves will hurt you.</h3>',
+					buttons : [{
+						onClick : Lib.MessageBox.GOTO('mainMenu'), 
+						label : 'Back (e)', 
+						classes :[Lib.MessageBox.CLASS_BUTTON_BACK]
+					},
+						Lib.MessageBox.BUTTON_NEXT
+					],
+					onOpen : function(){},
+					onClose : function(){}
+				}),
+				new Lib.Message({
+					alias : 'explainer',
 					header : 'What you will find:',
 					text : '<?php echo Tools::getJavascriptMultiline(__DIR__.'/../templates/explainer.php'); ?>',
-					buttons : [Lib.MessageBox.BUTTON_NEXT],
+					buttons : [Lib.MessageBox.BUTTON_BACK, Lib.MessageBox.BUTTON_NEXT],
 					onOpen : function(){
 						var self = this;
 						var which = false;
@@ -124,47 +160,14 @@
 				}),
 				//ready set go, controls
 				new Lib.Message({
+					alias : 'ready',
 					header : '',
 					text : 'Ready?',
-					buttons : [{onClick : Lib.MessageBox.CLOSE(), label : "I\'m Ready! (e)"}],
+					buttons : [Lib.MessageBox.BUTTON_BACK, {onClick : Lib.MessageBox.CLOSE(), label : "I\'m Ready! (e)"}],
 					onOpen : function(){},
 					onClose : function(){}
 				})
 			]
 		});
-	//fullScreenMessageBox.open();
-	//*
-	var menus  = 
-		new Lib.FullScreenMessageBox({
-			selector : 'full-screen-message-box-about',
-			messages : [
-				new Lib.Message({
-					header : '',
-					text : '<h1 class="faded-intro single-text">Faded</h1>',
-					buttons : [Lib.MessageBox.BUTTON_NEXT],
-					onOpen : function(){},
-					onClose : function(){}
-				}),
-				new Lib.Message({
-					header : '',
-					text : '<?php 
-						echo Tools::getJavascriptMultiline(
-							__DIR__.'/../templates/menus.php'
-						); 
-					?>',
-					buttons : []
-				}),
-				new Lib.Message({
-					header : 'About',
-					text : '<?php 
-						echo Tools::getJavascriptMultiline(
-							__DIR__.'/../templates/about.php'
-						); 
-					?>',
-					buttons : [Lib.MessageBox.BUTTON_BACK]
-				})
-			]
-		});
-	menus.open();
-	//*/
+	fullScreenMessageBox.open();
 </script>

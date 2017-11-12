@@ -14,6 +14,10 @@ var MessageBox =
 				};
 			};
 		this.messages = args.messages || [];
+		this.aliasMap = {};
+		for(var i = 0, ilen = this.messages.length; i < ilen; i++){
+			this.aliasMap[this.messages[i].alias] = i;
+		}
 		this.currentMessage = 0;
 		
 		var header = document.createElement('h1');
@@ -34,6 +38,11 @@ var MessageBox =
 		this.eventHandlers[MessageBox.EVENT_CLOSE] = 
 			function(item, data, event){
 				self.close();
+				event.stopPropagation(); //confine to this box
+			};
+		this.eventHandlers[MessageBox.EVENT_GOTO] = 
+			function(item, data, event){
+				self.goto(data.alias);
 				event.stopPropagation(); //confine to this box
 			};
 		this.eventHandlers[MessageBox.EVENT_NEXT] = 
@@ -76,6 +85,19 @@ MessageBox.CLOSE =
 			event.trigger();
 		};
 	};
+MessageBox.GOTO = 
+	function(alias, callback){
+		callback = callback || function(){};
+		return function(){
+			var event = 
+				new CEvent({
+					target : this.parentElement, 
+					type : MessageBox.EVENT_GOTO, 
+					data : {alias : alias}
+				});		
+			event.trigger();
+		};
+	};
 MessageBox.NEXT = 
 	function(callback){
 		callback = callback || function(){};
@@ -89,15 +111,18 @@ MessageBox.NEXT =
 			event.trigger();
 		};
 	};
-MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)', classes : ['reverse']};
-MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
-MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
 MessageBox.CLASS = 'message-box';
 MessageBox.CLASS_BUTTON = 'message-box-button';
+MessageBox.CLASS_BUTTON_BACK = 'reverse';
 MessageBox.CLASS_TEXT = 'message-box-text';
+MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)', classes : [MessageBox.CLASS_BUTTON_BACK]};
+MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
+MessageBox.BUTTON_GOTO = {onClick : MessageBox.GOTO(), label : 'Next (e)'};//do not use directly
+MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
 MessageBox.EVENT_BACK = 'faded_messagebox_event_back';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
 MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
+MessageBox.EVENT_GOTO = 'faded_messagebox_event_goto';
 
 
 MessageBox.prototype.addButton = 
@@ -138,6 +163,18 @@ MessageBox.prototype.close =
 			if(this.currentMessage === this.messages.length - 1){
 				this.onClose();
 			}
+		}
+	};
+
+MessageBox.prototype.goto = 
+	function(alias){
+		if(this.isOpen()){
+			this.onMessageClose();
+		}
+		this.currentMessage = this.aliasMap[alias];
+		this.loadCurrentMessage();
+		if(this.isOpen()){
+			this.onMessageOpen();
 		}
 	};
 
