@@ -308,6 +308,7 @@
 
 #explainer{
 	width:100%;
+	margin-top:1rem;
 }
 #explainer > thead th{
 	font-size:1.2rem;

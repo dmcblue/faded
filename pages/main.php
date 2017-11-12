@@ -117,7 +117,7 @@
 				new Lib.Message({
 					alias : 'warning',
 					header : '',
-					text : '<h3 class="single-text">Be cautious.  Everything that moves will hurt you.</h3>',
+					text : '<h2 class="single-text">Be cautious.  Everything that moves will hurt you.</h2>',
 					buttons : [{
 						onClick : Lib.MessageBox.GOTO('mainMenu'), 
 						label : 'Back (e)', 
