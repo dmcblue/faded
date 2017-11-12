@@ -62,6 +62,8 @@
 
 .faded{
 	position:relative;
+	width:100%;
+	height:100%;
 }
 
 .faded *{
@@ -71,6 +73,25 @@
 	line-height:1.4rem;
 	margin: 0;
 	padding: 0;
+}
+
+.faded h1,h2,h3,h4,h5,h6{
+	
+}
+.faded h1{
+	font-size:1.4rem;
+	line-height:1.7rem;
+	margin:1.5rem 0 1rem;
+}
+.faded h2{
+	font-size:1.2rem;
+	line-height:1.4rem;
+	margin:1rem 0 0.75rem;
+}
+.faded h3{
+	font-size:1rem;
+	line-height:1.2rem;
+	margin:0.75rem 0 0.5rem;
 }
 
 .faded .view{
@@ -88,6 +109,33 @@
 .faded .frame{
 	display  : block;
 	background:#000;
+}
+
+.faded{
+	
+}
+
+.faded .single-text,
+.faded .message-box.full-screen-message-box .single-text{
+	margin-top:15%;
+	text-align:center;
+}
+.faded .message-box.full-screen-message-box h1.faded-intro{
+	margin-top:15%;
+	text-align:center;
+	text-transform: uppercase;
+}
+.faded .message-box.full-screen-message-box table.menu{
+	width:100%;
+	height:100%;
+}
+.faded .message-box.full-screen-message-box table.menu td{
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.faded ul,ol{
+	margin-left:2rem;
 }
 
 .faded .healthbar{
@@ -250,8 +298,9 @@
 	line-height:1.4rem;
 	margin-bottom:0.5rem;
 }
-.faded .message-box.full-screen-message-box .message-box-text{
-	height:calc(100% - 1.9rem);
+.faded .message-box/*.full-screen-message-box*/ .message-box-text{
+	height:calc(100% - 4.9rem);/*1.9 title, 3? for button*/
+	overflow:auto;
 }
 .faded .message-box.full-screen-message-box button.message-box-button{
 	position:absolute;
@@ -259,4 +308,36 @@
 	right:1rem;
 	background:transparent;
 	text-align:right;
+}
+
+
+
+#explainer{
+	width:100%;
+}
+#explainer > thead th{
+	font-size:1.2rem;
+	line-height:1.4rem;
+	padding-bottom:2rem;
+}
+#explainer table{
+	width:100%;
+}
+#explainer th,td{
+	vertical-align:top;
+}
+#explainer td.icons{
+	min-width:60px;
+	text-align:center;
+}
+#explainer table td{
+	padding-bottom:2rem;
+}
+#explainer table tr:last-child td {
+	padding-bottom:0;
+}
+#explainer table h2{
+	font-size:1.2rem;
+	line-height:1.4rem;
+	margin:0;
 }
