@@ -7,6 +7,6 @@ class Tools{
 		$content = ob_get_contents();
 		ob_end_clean();
 		//$content = file_get_contents($filepath);
-		return str_replace("\n", "\\\n", $content);
+		return str_replace(["\r","\n"], ["","\\\n"], $content);
 	}
 }
