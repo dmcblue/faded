@@ -89,7 +89,7 @@ MessageBox.NEXT =
 			event.trigger();
 		};
 	};
-MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)'};
+MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)', classes : ['reverse']};
 MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
 MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
 MessageBox.CLASS = 'message-box';

@@ -229,6 +229,21 @@
 	background:url('images/Paper.svg');
 }
 
+.faded .message-box button.message-box-button{
+	position:absolute;
+	bottom:1rem;
+	background:transparent;
+	cursor:pointer;
+}
+.faded .message-box button.message-box-button:not(.reverse){
+	right:1rem;
+	text-align:right;
+}
+.faded .message-box button.message-box-button.reverse{
+	left:1rem;
+	text-align:left;
+}
+
 .faded .message-box.paper-message-box{
 	position:absolute;
 	width:calc(80% - 2rem);
@@ -247,13 +262,6 @@
 .faded .message-box.paper-message-box h1{
 	font-size:1.4rem;
 }
-.faded .message-box.paper-message-box button.message-box-button{
-	position:absolute;
-	bottom:1rem;
-	right:1rem;
-	background:transparent;
-	text-align:right;
-}
 
 .faded .message-box.screen-message-box{
 	position:absolute;
@@ -270,13 +278,6 @@
 .faded .message-box.screen-message-box h1{
 	font-size:1.4rem;
 	margin-bottom:0.5rem;
-}
-.faded .message-box.screen-message-box button.message-box-button{
-	position:absolute;
-	bottom:1rem;
-	right:1rem;
-	background:transparent;
-	text-align:right;
 }
 
 .faded .message-box.full-screen-message-box{
@@ -301,13 +302,6 @@
 .faded .message-box/*.full-screen-message-box*/ .message-box-text{
 	height:calc(100% - 4.9rem);/*1.9 title, 3? for button*/
 	overflow:auto;
-}
-.faded .message-box.full-screen-message-box button.message-box-button{
-	position:absolute;
-	bottom:1rem;
-	right:1rem;
-	background:transparent;
-	text-align:right;
 }
 
 
