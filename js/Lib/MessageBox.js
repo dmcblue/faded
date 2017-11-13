@@ -158,7 +158,6 @@ MessageBox.prototype.addButton =
 		args.classes = args.classes || [];
 		args.classes.push(MessageBox.CLASS_BUTTON);
 		new Button(args);
-		console.log(args);
 	};
 
 MessageBox.prototype.back = 

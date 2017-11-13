@@ -62,21 +62,21 @@ var Keys =
 			},
 		propogate :
 			function(type, keynum, event){
-				for(var i = 0, ilen = Keys.SUBSCRIBERS[type].length; i < ilen; i++){
-					Keys.SUBSCRIBERS[type][i][Keys.INTERFACE_MAPPING[type]](keynum, event);
+				for(var prop in Keys.SUBSCRIBERS[type]){
+					if(Keys.SUBSCRIBERS[type].hasOwnProperty(prop)){
+						Keys.SUBSCRIBERS[type][prop][Keys.INTERFACE_MAPPING[type]](keynum, event);
+					}
 				}
 			},
 		subscribe :
 			function(type, item){
-				Keys.SUBSCRIBERS[type].push(item);
 				var newUniqueId = 'key_subscriber' + Keys.SUBSCRIBER_ID++;
-				Keys.SUBSCRIBER_MAP[type][newUniqueId] = Keys.SUBSCRIBERS[type].length - 1;
+				Keys.SUBSCRIBERS[type][newUniqueId] = item;
 				return newUniqueId;
 			},
 		unsubscribe :
 			function(type, uniqueId){
-				var index = Keys.SUBSCRIBER_MAP[type][uniqueId];
-				Keys.SUBSCRIBERS[type].splice(index, 1);
+				delete Keys.SUBSCRIBERS[type][uniqueId];
 			},
 		EVENT_TYPE_DOWN : 'keydown',
 		EVENT_TYPE_PRESS : 'keypress',
@@ -90,15 +90,10 @@ var Keys =
 			'keypress' : 'onKeyPress'
 		},
 		SUBSCRIBER_ID : 0,
-		SUBSCRIBER_MAP : {
+		SUBSCRIBERS : {
 			'keydown' :  {},
 			'keyup' : {},
 			'keypress' : {}
-		},
-		SUBSCRIBERS : {
-			'keydown' : [],
-			'keyup' : [],
-			'keypress' : []
 		},
 		KEY_SPACE         : 32,
 		KEY_NUM_0         : 48,

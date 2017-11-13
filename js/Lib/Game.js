@@ -72,6 +72,7 @@ var Game =
 			new HealthBar({
 				selector : this.healthSelector
 			});
+		this._uniqueKeyId = Keys.subscribe(Keys.EVENT_TYPE_UP, this);
 	};
 
 Game.prototype = Object.create(Base.prototype);
@@ -203,6 +204,13 @@ Game.prototype.nextLevel =
 		}
 	};
 
+Game.prototype[Keys.INTERFACE_METHOD_UP] = //onKeyUp
+	function(keynum, event){
+		if(keynum === Keys.KEY_P){
+			this.toggle();
+		}
+	};
+
 Game.prototype.pause =
 	function(){
 		this.isPlaying = false;
@@ -238,7 +246,6 @@ Game.prototype.toggle =
 Game.prototype.update =
 	function(){
 		if(this.isPlaying){
-				
 			var direction = Point.HERE;
 			if(Keys.isPressed(Keys.KEY_W) || Keys.isPressed(Keys.KEY_UP)){
 				direction = direction.add(Point.NORTH);
