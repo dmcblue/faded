@@ -58,6 +58,7 @@ var Game =
 		this.paperMessageBox  = 
 			new PaperMessageBox({
 				selector : this.paperMessageSelector,
+				onKeyUp : Lib.MessageBox.KEY_CLICK,
 				onOpen : messageOnOpen(this),
 				onClose : messageOnClose(this)
 			});
@@ -80,6 +81,7 @@ Game.BLOCK_SIZE = 20;
 
 Game.prototype.handleMessage =
 	function(item, message, event){
+		this.paperMessageBox.messages[0] = message;
 		this.paperMessageBox.loadMessage(message);
 		this.paperMessageBox.open();
 	};

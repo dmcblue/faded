@@ -261,6 +261,7 @@
 }
 .faded .message-box.paper-message-box h1{
 	font-size:1.4rem;
+	margin-top:0;
 }
 
 .faded .message-box.screen-message-box{

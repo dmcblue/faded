@@ -137,8 +137,8 @@ MessageBox.BUTTON_BACK = {
 };
 MessageBox.BUTTON_CLOSE = {
 	onClick : MessageBox.CLOSE(), 
-	label : 'Close (e)',
-	keyClick : Keys.KEY_E
+	label : 'Close (tab)',
+	keyClick : Keys.KEY_TAB
 };
 MessageBox.BUTTON_GOTO = {onClick : MessageBox.GOTO(), label : 'Next (e)'};//do not use directly
 MessageBox.BUTTON_NEXT = {
@@ -158,6 +158,7 @@ MessageBox.prototype.addButton =
 		args.classes = args.classes || [];
 		args.classes.push(MessageBox.CLASS_BUTTON);
 		new Button(args);
+		console.log(args);
 	};
 
 MessageBox.prototype.back = 

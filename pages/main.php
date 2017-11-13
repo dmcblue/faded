@@ -164,7 +164,7 @@
 				new Lib.Message({
 					alias : 'ready',
 					header : '',
-					text : 'Ready?',
+					text : '<h2 class="single-text">Ready?</h2>',
 					buttons : [
 						Lib.MessageBox.BUTTON_BACK, {
 							onClick : Lib.MessageBox.CLOSE(), 
