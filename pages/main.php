@@ -10,10 +10,6 @@
 		</div>
 		<div style="display:inline-block;height:4rem;vertical-align:top;">
 			<div id="health"></div>
-			
-			<br/>
-			
-			<button onclick="game.toggle();this.innerHTML = game.isPlaying ? 'Pause' : 'Play';">Pause</button>
 		</div>
 		<div id="full-screen-message-box"></div>
 		<div id="full-screen-message-box-about"></div>
@@ -159,6 +155,18 @@
 						clearInterval(self.___interval);
 						game.play();
 					}
+				}),
+				new Lib.Message({
+					alias : 'controls',
+					header : 'Controls:',
+					text : '<?php 
+						echo Tools::getJavascriptMultiline(
+							__DIR__.'/../templates/controls.php'
+						); 
+					?>',
+					buttons : [Lib.MessageBox.BUTTON_BACK, Lib.MessageBox.BUTTON_NEXT],
+					onOpen : function(){},
+					onClose : function(){}
 				}),
 				//ready set go, controls
 				new Lib.Message({

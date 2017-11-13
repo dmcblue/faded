@@ -129,9 +129,12 @@
 	width:100%;
 	height:100%;
 }
-.faded .message-box.full-screen-message-box table.menu td{
+.faded .message-box.full-screen-message-box table.menu td,
+.faded .message-box.full-screen-message-box table.menu td h2{
 	text-align:center;
 	vertical-align:middle;
+}
+.faded .message-box.full-screen-message-box table.menu td h2{
 	cursor:pointer;
 }
 .faded ul,ol{
@@ -335,5 +338,16 @@
 #explainer table h2{
 	font-size:1.2rem;
 	line-height:1.4rem;
+	margin:0;
+}
+
+#controls td{
+	padding:1rem;
+}
+#controls #movements td{
+	text-align:center;
+	padding:0;
+}
+#controls h2{
 	margin:0;
 }

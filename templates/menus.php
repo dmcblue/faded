@@ -11,7 +11,7 @@
 	<tr><td>&nbsp;</td></tr>
 	<?php foreach($buttons as $button): ?>
 	<tr>
-		<td onclick="<?php echo $button['onClick']; ?>"><?php echo $button['label']; ?></td>
+		<td onclick="<?php echo $button['onClick']; ?>"><h2><?php echo $button['label']; ?></h2></td>
 	</tr>
 	<?php endforeach; ?>
 	<tr><td>&nbsp;</td></tr>
