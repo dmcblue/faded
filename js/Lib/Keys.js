@@ -6,7 +6,7 @@ var Keys =
 			function(){
 				if(Keys.__init){return;}
 				document.addEventListener(
-					'keydown',
+					Keys.EVENT_TYPE_DOWN,
 					function(e){
 						var keynum;
 
@@ -15,14 +15,14 @@ var Keys =
 						} else if(e.which){ // Netscape/Firefox/Opera                   
 							keynum = e.which;
 						}
-
-						//alert(String.fromCharCode(keynum));
+						
 						Keys.__pressed[keynum] = true;
+						Keys.propogate(Keys.EVENT_TYPE_DOWN, keynum, e);
 					}
 				);
 
 				document.addEventListener(
-					'keyup',
+					Keys.EVENT_TYPE_UP,
 					function(e){
 						var keynum;
 
@@ -31,9 +31,26 @@ var Keys =
 						} else if(e.which){ // Netscape/Firefox/Opera                   
 							keynum = e.which;
 						}
-
-						//alert(String.fromCharCode(keynum));
+						
 						Keys.__pressed[keynum] = false;
+						Keys.propogate(Keys.EVENT_TYPE_UP, keynum, e);
+					}
+				);
+				
+				//NO keyPress...uses different key codes
+				//http://unixpapa.com/js/key.html
+				document.addEventListener(
+					Keys.EVENT_TYPE_PRESS,
+					function(e){
+						var keynum;
+
+						if(window.event) { // IE                    
+							keynum = e.keyCode;
+						} else if(e.which){ // Netscape/Firefox/Opera                   
+							keynum = e.which;
+						}
+						
+						Keys.propogate(Keys.EVENT_TYPE_PRESS, keynum, e);
 					}
 				);
 
@@ -43,6 +60,46 @@ var Keys =
 			function(keyCode){
 				return Keys.__pressed[keyCode] ? Keys.__pressed[keyCode] : false;
 			},
+		propogate :
+			function(type, keynum, event){
+				for(var i = 0, ilen = Keys.SUBSCRIBERS[type].length; i < ilen; i++){
+					Keys.SUBSCRIBERS[type][i][Keys.INTERFACE_MAPPING[type]](keynum, event);
+				}
+			},
+		subscribe :
+			function(type, item){
+				Keys.SUBSCRIBERS[type].push(item);
+				var newUniqueId = 'key_subscriber' + Keys.SUBSCRIBER_ID++;
+				Keys.SUBSCRIBER_MAP[type][newUniqueId] = Keys.SUBSCRIBERS[type].length - 1;
+				return newUniqueId;
+			},
+		unsubscribe :
+			function(type, uniqueId){
+				var index = Keys.SUBSCRIBER_MAP[type][uniqueId];
+				Keys.SUBSCRIBERS[type].splice(index, 1);
+			},
+		EVENT_TYPE_DOWN : 'keydown',
+		EVENT_TYPE_PRESS : 'keypress',
+		EVENT_TYPE_UP : 'keyup',
+		INTERFACE_METHOD_DOWN : 'onKeyDown',
+		INTERFACE_METHOD_PRESS : 'onKeyPress',
+		INTERFACE_METHOD_UP : 'onKeyUp',
+		INTERFACE_MAPPING : {
+			'keydown' : 'onKeyDown',
+			'keyup' : 'onKeyUp',
+			'keypress' : 'onKeyPress'
+		},
+		SUBSCRIBER_ID : 0,
+		SUBSCRIBER_MAP : {
+			'keydown' :  {},
+			'keyup' : {},
+			'keypress' : {}
+		},
+		SUBSCRIBERS : {
+			'keydown' : [],
+			'keyup' : [],
+			'keypress' : []
+		},
 		KEY_SPACE         : 32,
 		KEY_NUM_0         : 48,
 		KEY_NUM_1         : 49,

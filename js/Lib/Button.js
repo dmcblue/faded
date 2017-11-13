@@ -7,6 +7,7 @@ var Button =
 		Item.call(this, args);
 		this.addProperty(args, 'onClick', false, function(){});
 		this.addProperty(args, 'label', false, 'Close (E)');
+		this.addProperty(args, 'keyClick', false, -1, parseInt);
 		
 		this.element.innerHTML = this.label;
 		this.element.addEventListener('click', this.onClick, false);
@@ -19,7 +20,7 @@ Button.ID = 0;
 
 Button.createElement =
 	function(frame, id){
-		if(id === undefined){id = 'item' + Item.ID++;}
+		if(id === undefined){id = 'button' + Button.ID++;}
 		var element = document.createElement('button');
 		element.id = id;
 		frame.element.appendChild(element);

@@ -7,6 +7,7 @@ var MessageBox =
 		Item.call(this, args);
 		this.addProperty(args,'onOpen', false, function(){});
 		this.addProperty(args,'onClose', false, function(){});
+		this.addProperty(args,Keys.INTERFACE_METHOD_UP, false, function(){});
 		var onclick =
 			function(self){
 				return function(){
@@ -98,6 +99,19 @@ MessageBox.GOTO =
 			event.trigger();
 		};
 	};
+MessageBox.KEY_CLICK = 
+	function(keynum, event){
+		for(var i = 0, ilen = this.messages[this.currentMessage].buttons.length; 
+			i < ilen; i++
+		){
+			var button = this.messages[this.currentMessage].buttons[i];
+			if(button.keyClick === keynum){
+				var event = new CustomEvent('click');
+				document.getElementById(button.selector).dispatchEvent(event);
+				return;
+			}
+		}
+	};
 MessageBox.NEXT = 
 	function(callback){
 		callback = callback || function(){};
@@ -115,10 +129,23 @@ MessageBox.CLASS = 'message-box';
 MessageBox.CLASS_BUTTON = 'message-box-button';
 MessageBox.CLASS_BUTTON_BACK = 'reverse';
 MessageBox.CLASS_TEXT = 'message-box-text';
-MessageBox.BUTTON_BACK = {onClick : MessageBox.BACK(), label : 'Back (e)', classes : [MessageBox.CLASS_BUTTON_BACK]};
-MessageBox.BUTTON_CLOSE = {onClick : MessageBox.CLOSE(), label : 'Close (e)'};
+MessageBox.BUTTON_BACK = {
+	onClick : MessageBox.BACK(), 
+	label : 'Back (q)', 
+	classes : [MessageBox.CLASS_BUTTON_BACK],
+	keyClick : Keys.KEY_Q
+};
+MessageBox.BUTTON_CLOSE = {
+	onClick : MessageBox.CLOSE(), 
+	label : 'Close (e)',
+	keyClick : Keys.KEY_E
+};
 MessageBox.BUTTON_GOTO = {onClick : MessageBox.GOTO(), label : 'Next (e)'};//do not use directly
-MessageBox.BUTTON_NEXT = {onClick : MessageBox.NEXT(), label : 'Next (e)'};
+MessageBox.BUTTON_NEXT = {
+	onClick : MessageBox.NEXT(), 
+	label : 'Next (e)',
+	keyClick : Keys.KEY_E
+};
 MessageBox.EVENT_BACK = 'faded_messagebox_event_back';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
 MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
@@ -157,6 +184,7 @@ MessageBox.prototype.clearButtons =
 
 MessageBox.prototype.close = 
 	function(init){
+		Keys.unsubscribe(Keys.EVENT_TYPE_UP, this._uniqueKeyId);
 		this.element.style.display = 'none';
 		if(!init){
 			this.onMessageClose();
@@ -206,6 +234,7 @@ MessageBox.prototype.open =
 		if(!this.currentMessage){
 			this.onOpen();
 		}
+		this._uniqueKeyId = Keys.subscribe(Keys.EVENT_TYPE_UP, this);
 		this.onMessageOpen();
 	};
 

@@ -85,6 +85,7 @@
 	var fullScreenMessageBox  = 
 		new Lib.FullScreenMessageBox({
 			selector : 'full-screen-message-box',
+			onKeyUp : Lib.MessageBox.KEY_CLICK,
 			messages : [
 				new Lib.Message({
 					alias : 'intro',
@@ -120,8 +121,9 @@
 					text : '<h2 class="single-text">Be cautious.  Everything that moves will hurt you.</h2>',
 					buttons : [{
 						onClick : Lib.MessageBox.GOTO('mainMenu'), 
-						label : 'Back (e)', 
-						classes :[Lib.MessageBox.CLASS_BUTTON_BACK]
+						label : 'Back (q)', 
+						classes :[Lib.MessageBox.CLASS_BUTTON_BACK],
+						keyClick : Lib.Keys.KEY_Q
 					},
 						Lib.MessageBox.BUTTON_NEXT
 					],
@@ -163,7 +165,12 @@
 					alias : 'ready',
 					header : '',
 					text : 'Ready?',
-					buttons : [Lib.MessageBox.BUTTON_BACK, {onClick : Lib.MessageBox.CLOSE(), label : "I\'m Ready! (e)"}],
+					buttons : [
+						Lib.MessageBox.BUTTON_BACK, {
+							onClick : Lib.MessageBox.CLOSE(), 
+							label : "I\'m Ready! (e)",
+							keyClick : Lib.Keys.KEY_E
+						}],
 					onOpen : function(){},
 					onClose : function(){}
 				})
