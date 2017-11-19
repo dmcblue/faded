@@ -99,7 +99,17 @@
 							__DIR__.'/../templates/menus.php'
 						); 
 					?>',
-					buttons : []
+					buttons : [{ //Hidden buttons to catch key presses
+						onClick : Lib.MessageBox.NEXT(), 
+						label : '',  
+						classes : [Lib.MessageBox.CLASS_BUTTON_BACK],
+						keyClick : Lib.Keys.KEY_Q
+					},{
+						onClick : Lib.MessageBox.GOTO('warning'), 
+						label : '',
+						classes : [Lib.MessageBox.CLASS_BUTTON_NEXT],
+						keyClick : Lib.Keys.KEY_E
+					}]
 				}),
 				new Lib.Message({
 					alias : 'about',
@@ -153,7 +163,6 @@
 					},
 					onClose : function(){
 						clearInterval(self.___interval);
-						game.play();
 					}
 				}),
 				new Lib.Message({
@@ -180,7 +189,9 @@
 							keyClick : Lib.Keys.KEY_E
 						}],
 					onOpen : function(){},
-					onClose : function(){}
+					onClose : function(){
+						game.play();
+					}
 				})
 			]
 		});

@@ -1,18 +1,18 @@
 <?php
 	$stuffs = [
-		'Good Stuff*' => [
+		'Good Stuff' => [
 			[
-				'name' => 'Candles',
+				'name' => 'Candles*',
 				'classes' => ['pickup','candle'],
 				'description' => 'Candles give you health.'
 			],
 			[
-				'name' => 'Exits',
+				'name' => 'Exits*',
 				'classes' => ['pickup','exit'],
 				'description' => 'Escape through these doors to ascend to the next story of the castle.'
 			],
 			[
-				'name' => 'Messages',
+				'name' => 'Messages*',
 				'classes' => ['pickup','paper'],
 				'description' => 'Along your way, you may find notes left behind by other explorers attempting to plunder the treasures of the Dread Monarch\\\'s castle.'
 			],

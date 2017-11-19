@@ -1,9 +1,9 @@
 <?php
 	$buttons = [[
-		'label' => 'Play',
+		'label' => 'Play (e)',
 		'onClick' => "fullScreenMessageBox.goto(\'warning\');",
 	],[
-		'label' => 'About',
+		'label' => 'About (q)',
 		'onClick' => 'fullScreenMessageBox.next()',
 	]];
 ?>
