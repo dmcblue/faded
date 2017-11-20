@@ -1,0 +1,1 @@
+- Add about, story in messages, don't need for gameplay, for story, just like amnesia.
