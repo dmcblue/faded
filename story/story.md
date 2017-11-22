@@ -1,10 +1,19 @@
 An unknown disaster called 'The Horror'(WC) begins plaguing the city.  The Monarch calls all the people into the castle to protect them and researches a solution.  Tries several things, some dark, some with dire warnings.  One of them is summoning an entity 'Kataban', named a genie/spirit but actually an evil/demon, who can give the Monarch an army strong enough to conquer the world.  We find out later the Horror was loosed by Kataban to cause this.  On summoning, Kataban offers to give the Monarch the power to help them.  Once the Monarch accepts, the people are turned? and the Monarch is placed under obligation/cursed.
 The Monarch loses track of itself, spending days in the castle trying to rescue those who enter from the cursed.  The Monarch's magical/mental energy is thrown apart by continually going mad, creating the candles.
 
+Become Demon's servant
+Become own sovereign
+Let things loose on the world
+Go back and let the Horror conquer you?
+ - Accept destruction and have Kataban search another town for a victor
+
 ## Four Options/Thrones:
 
-- Conquerer - You accept the curse of Kataban, becoming the leader of its army on earth, destroying the Horror? in exchange for your free will.  You regain your power (collect all the candles and stop losing light).  You break free of the castle with your army of undead, destroying every town and city in your wake, placing the entire world under the shadow of Kataban.
-- Saint - Monarch is destroyed
+- Conquerer - You accept the curse of Kataban, becoming the leader of its army on earth, destroying the Horror? in exchange for your free will.  You regain your power (collect all the candles and stop losing light).  You break free of the castle with your army of undead, destroying every town and city in your wake, placing the entire world under the shadow of Kataban. You remain a mindless servant of Kataban, wreaking havok on the world. Despite your desire to save the world, you have enslaved them
+- Saint - Monarch is destroyed.  Perhaps taken by Kataban for torture.  The power keeping the undead army inside the castle is broken and the army begins mindlessly wandering the earth, destroying town after town. The initial onslaught marrs the world forever more and the undead remain a source of fear and danger every afterwards.
+- Sovereign - You take the power for yourself and lead the army out to conquer the world while retaining your free will.  Wanton destruction and death follow, as you delve into the darkest parts of necromancy.  Eventually, the kingdoms of the earth join together to fight you and you are defeated.  Your spirit is forever imprisoned in a sealed dungeon.
+- Martyr - You reject the deal with Kataban.  The Horror swallows your town and castle.  It then goes on to attack other townes for a champion for Kataban.
+
 
 
 
