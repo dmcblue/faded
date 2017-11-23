@@ -9,10 +9,10 @@ Go back and let the Horror conquer you?
 
 ## Four Options/Thrones:
 
-- Conquerer - You accept the curse of Kataban, becoming the leader of its army on earth, destroying the Horror? in exchange for your free will.  You regain your power (collect all the candles and stop losing light).  You break free of the castle with your army of undead, destroying every town and city in your wake, placing the entire world under the shadow of Kataban. You remain a mindless servant of Kataban, wreaking havok on the world. Despite your desire to save the world, you have enslaved them
-- Saint - Monarch is destroyed.  Perhaps taken by Kataban for torture.  The power keeping the undead army inside the castle is broken and the army begins mindlessly wandering the earth, destroying town after town. The initial onslaught marrs the world forever more and the undead remain a source of fear and danger every afterwards.
-- Sovereign - You take the power for yourself and lead the army out to conquer the world while retaining your free will.  Wanton destruction and death follow, as you delve into the darkest parts of necromancy.  Eventually, the kingdoms of the earth join together to fight you and you are defeated.  Your spirit is forever imprisoned in a sealed dungeon.
-- Martyr - You reject the deal with Kataban.  The Horror swallows your town and castle.  It then goes on to attack other townes for a champion for Kataban.
+- Conquerer/Pawn - You accept the curse of Kataban, becoming the leader of its army on earth, destroying the Horror? in exchange for your free will.  You regain your power (collect all the candles and stop losing light).  You break free of the castle with your army of undead, destroying every town and city in your wake, placing the entire world under the shadow of Kataban. You remain a mindless servant of Kataban, wreaking havok on the world. Despite your desire to save your town, you have enslaved them
+- Saint/Negligent - Monarch is destroyed.  Perhaps taken by Kataban for torture.  The power keeping the undead army inside the castle is broken and the army begins mindlessly wandering the earth, destroying town after town. The initial onslaught mars the world forever more and the undead remain a source of fear and danger every afterwards.
+- Sovereign/Tyrant - You take the power for yourself and lead the army out to conquer the world while retaining your free will.  Wanton destruction and death follow, as you delve into the darkest parts of necromancy.  Eventually, the kingdoms of the earth join together to fight you and you are defeated.  Your spirit is forever imprisoned in a sealed dungeon.
+- Martyr/Coward - You reject the deal with Kataban.  The Horror swallows your town and castle.  It then goes on to attack other town's for a champion for Kataban.  The fate of the area is left to another.
 
 
 
