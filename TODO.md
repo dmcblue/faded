@@ -2,3 +2,4 @@
 
 - Create Throne Objects
 - Create boss? like Steward
+- Fifth throne gives you full life;

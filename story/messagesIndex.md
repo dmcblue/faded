@@ -24,17 +24,17 @@
 
 # 4
 
-- 
-- 
-- 
-- 
+- Grand Magus Uial of the Torin; Enclave; Nobles
+- Steward Maurin; Steward; Thrones in summoning Kataban
+- (illegible), Monarch of (illegible); Monarch; Throne = choice
+- Self; Partial recognition of self
 - 
 
 # 5
 
-- 
-- 
-- 
+- S. Elisi Hedstig; Searcher; Kataban = demon
+- Steward Maurin; Steward; Betrayed, turns to monster
+- (illegible), Monarch of (illegible); Monarch; Riddle, question, army, aid
 - 
 - 
 

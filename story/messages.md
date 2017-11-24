@@ -73,12 +73,16 @@ Explain
 
 - Explain the need for thrones, selecting one
 - Nobles
+- 
 
 ### 5
 
 - Betrayal
-- 
+- Kataban is actually a demon
+- Horror is servant to Kataban
 
+
+Need to explain Monarch = character
 
 
 ## Messages
@@ -151,5 +155,33 @@ On the second day, I found a library with piles of notes everywhere.  All on sub
 ### 4
 
 13 of Naivarn, 952
-
+I found Awalat. Put up a mighty fight, from the looks of it.  The young mage would have been Grand Magus in but a few years with such talents; Archmage before long.  The final straw seemed to have been the Nobles.  While the townspeople are merely mindless undead, the nobility of the castle have been transformed into cruelly ravenous creatures.  Their speed is incredible. And as soon as they attack, they disappear, only to charge out of the darkness again.  A foul death for such a noble mage as Awalat.
 - Grand Magus Uial of the Torin
+
+12 of Auvur, 950
+The Monarch has locked the doors to the throne room, warning me the experiments inside were highly dangerous.  Our Majesty has had a more positive mood since finding a strange book in the library.  I have never seen it before, despite wandering those shelves a thousand times.  The Monarch says the book tells of a spirit, Kataban, who may yet save us but may ask a high price.  Our Majesty seems prepared for whatever self-sacrifice is necessary to save the people. My admiration knows no bounds. I inquired about safety and the response was that the power of the four Thrones of the Ancestors would be sufficient. But the Monarch's grim expression as the throne room door closed left me feeling uneasy. I said loudly as it shut that I would help in anyway, whatever the danger.
+- Steward Maurin
+
+29 of Auvur, 950
+As I sit in this darkness, my very life leaves me in despair. My people forever tormented. The thrones of my ancestors corrupted by the terrible choices that awaits me above.  I cannot face this decision nor the people that I have failed.
+- (illegible), Monarch of (illegible)
+
+There is a truth here I cannot admit. As I find more and more details...how many times have I read these words?  I pray it isn't true.  Let there be an end to these terrible halls and for all that they contain.
+
+
+
+
+### 5
+
+31 of Herbsur, 972
+I found the book of summoning, finally. But when I opened the page for the great spirit, the word 'Betrayer' was written by hand over and over upon the instructions.  A loose page stuffed inside contained a passage copied from another book: "From 'Lost Powers of Ancient Ages': Kataban, ancient demon of trickery, delights in torturing souls with dreadful choices. Beware lest ye call on this evil, for Kataban's word, though always kept and true, never fails to contain a hidden damnation for the unwary soul." There is no hope for our village. But truly I would prefer our village perish than to suffer the evils that have taken this place.
+- S. Elisi Hedstig
+
+17 of Auvur, 950
+After two days of rituals, the Monarch burst out of the throne room and worked in the library for two days more, not stopping for sleep.  Then returned to the throne room for an hour more, when I heard yelling within.  I forced the doors open only to find the Monarch, sitting horror stuck on the throne, muttering over and over "The Horror is the servant, Kataban the Lord and we, the fools." I tried to help the Monarch up, but was pushed away as Our Majesty ran from the room. I fell against the throne and a chill coursed through my body.  I hear dreadful noises from below and something wretched is happening within me. Where has Our Monarch gone?  May we yet be saved...
+- Steward Maurin
+
+14 of Auvur, 950
+It has worked! The ritual contacted the spirit and it agreed to summon a vast army of aide. In return, Kataban asked me merely to answer a riddle concerning the question, "Who are you?".  These spirits are strange but it is a small matter if it brings safety to my people.  I make haste now to study the spirit's history to best answer the riddle.
+- (illegible), Monarch of (illegible)
+
