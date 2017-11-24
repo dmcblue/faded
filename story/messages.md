@@ -32,7 +32,7 @@ Romina Hyba - Treasure Hunter
 
 Months
 -----
-Herbsur | x 
+Herbsur | x x
 Felbur  | xx
 Bridbur | x
 Kalsurn | x
@@ -72,10 +72,12 @@ Explain
 ### 4
 
 - Explain the need for thrones, selecting one
+- Nobles
 
 ### 5
 
-
+- Betrayal
+- 
 
 
 
@@ -109,11 +111,11 @@ We have successfully entered the 'Dark Castle'. How many have tried their luck i
 Why am I here?  Was I explorer like the others? No other explanation. I awoke in the darkness only find the tattered pages of those before me.  What fate did I suffer?  How am I still alive among these horrors?
 
 12 of Naivarn, 952
-Indeed, the brief report from Awalat has proved true.  I can only imagine what fate he suffered here.  Wretched undead roam the hallways seeking the rend the flesh of the living.  By their clothing, I fear they are the former denizens of the abandoned town just outside.  But they seem bound by these walls; some power holds them here.  I can sense it is not a benevolent force; evil reigns here.  But if so, why keep such dark creatures restrained here?  Something is unfinished in this castle...
+Indeed, the brief report from Awalat has proved true.  I can only imagine what fate the young mage suffered here.  Wretched undead roam the hallways seeking the rend the flesh of the living.  By their clothing, I fear they are the former denizens of the abandoned town just outside.  But they seem bound by these walls; some power holds them here.  I can sense it is not a benevolent force; evil reigns here.  But if so, why keep such dark creatures restrained here?  Something is unfinished in this castle...
 - Grand Magus Uial of the Torin
 
 4 of Auvur, 950
-The seige continues.  The Horror is held back only by the gates of the town.  Everyone has been brought within the gates, but I fear we may need to bring everyone inside the castle walls soon. Our beloved Monarch continues searching every possible means to save our people.  Every possible means.  I fear such research will led us to something darker than even the Horror...
+The siege continues.  The Horror is held back only by the gates of the town.  Everyone has been brought within the gates, but I fear we may need to bring everyone inside the castle walls soon. Our beloved Monarch continues searching every possible means to save our people.  Every possible means.  I fear such research will led us to something darker than even the Horror...
 - Steward Maurin
 
 30 of Simbur, 1204
@@ -138,7 +140,13 @@ I mustered power enough to briefly report to the Enclave. But the power here mus
 The undead attacked as soon as I entered the castle.  The legends all fall short of the true horrors hidden within these walls.  I tried to run but the monsters were everywhere. I fell. I knew my fate as they ripped apart my flesh.  Then a light filled the room.  Through the blood, I saw a bright figure calling to the undead.  They charged after it, ravenous for another meal, and the figure ran down a hallway.  An inch from death, I passed out.  When I awoke, I found myself in an alcove, hidden from the undead.  How did I get here? As I peered into the long hallway, I saw the bright figure disappearing up a stairwell.  Was it the one who saved me?  Does it know a means of escape? When I regained my strength, I ascended the same steps and have been following its trail ever since.
 - T. Sinhuan
 
+The candles, the figure of light all the journals speak of, what do they have to do with this place?  Can I find this person? Can they help me?
+\
+What happened here so long ago? What happened to me that I am here?
 
+9 of Herbsur, 1098
+On the second day, I found a library with piles of notes everywhere.  All on subjects of summoning great power; someone seemed desperate, dangerous or mad. Among them I finally found the word I've been searching for all these years, 'Kataban'. As the notes say, the powerful spirit who resides in the realm of the dead and loves games and wagers.  Anyone who summons Kataban may ask for aid from the spirit's powers, which overshadow all magics in the living realms. If I find the source these notes come from, I have found all I shall ever need on this earth!
+- Chen ed Dal
 
 ### 4
 
