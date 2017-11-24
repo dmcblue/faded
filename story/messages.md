@@ -142,3 +142,6 @@ The undead attacked as soon as I entered the castle.  The legends all fall short
 
 ### 4
 
+13 of Naivarn, 952
+
+- Grand Magus Uial of the Torin
