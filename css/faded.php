@@ -212,6 +212,11 @@
 	border-radius:0%;
 }
 
+.faded .steward{
+	width : 80px;
+	height : 80px;
+}<?php movable(".faded .steward", "Noble"); ?>
+
 .faded .candle{
 	width : 40px;
 	height : 40px;
