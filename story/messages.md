@@ -146,7 +146,7 @@ The undead attacked as soon as I entered the castle.  The legends all fall short
 
 The candles, the figure of light all the journals speak of, what do they have to do with this place?  Can I find this person? Can they help me?
 \
-What happened here so long ago? What happened to me that I am here?
+What happened here so long ago? Why am I here?
 
 9 of Herbsur, 1098
 On the second day, I found a library with piles of notes everywhere.  All on subjects of summoning great power; someone seemed desperate, dangerous or mad. Among them I finally found the word I've been searching for all these years, 'Kataban'. As the notes say, the powerful spirit who resides in the realm of the dead and loves games and wagers.  Anyone who summons Kataban may ask for aid from the spirit's powers, which overshadow all magics in the living realms. If I find the source these notes come from, I have found all I shall ever need on this earth!
@@ -163,7 +163,7 @@ The Monarch has locked the doors to the throne room, warning me the experiments 
 - Steward Maurin
 
 29 of Auvur, 950
-As I sit in this darkness, my very life leaves me in despair. My people forever tormented. The thrones of my ancestors corrupted by the terrible choices that awaits me above.  I cannot face this decision nor the people that I have failed.
+As I sit in this darkness, my very life flees me in despair. My people forever tormented. The thrones of my ancestors corrupted by the terrible choices that awaits me above.  I cannot face this decision nor the people that I have failed.
 - (illegible), Monarch of (illegible)
 
 There is a truth here I cannot admit. As I find more and more details...how many times have I read these words?  I pray it isn't true.  Let there be an end to these terrible halls and for all that they contain.
@@ -185,3 +185,6 @@ After two days of rituals, the Monarch burst out of the throne room and worked i
 It has worked! The ritual contacted the spirit and it agreed to summon a vast army of aide. In return, Kataban asked me merely to answer a riddle concerning the question, "Who are you?".  These spirits are strange but it is a small matter if it brings safety to my people.  I make haste now to study the spirit's history to best answer the riddle.
 - (illegible), Monarch of (illegible)
 
+11 of Herbsur, 1098
+I found the body of a Grand Magus from the Torin Enclave.  How foolish have I been to enter these halls? If a Grand Magus cannot stand against the evils here, what chance do I have?  I read the Torin's journal and I understand why this place is so forgotten. Unable to break the evils here, he spent his last hours setting magical wards to turn aside the interest of travelers and to warn mages of the dangers within.  This last act delayed him long enough for the Steward to find him and deliver a mortal blow. There is no escape, such will be my fate too I suppose... 
+- Chen ed Dal
