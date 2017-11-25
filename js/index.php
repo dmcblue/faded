@@ -39,6 +39,7 @@
 					'Zombie',
 					'Ghost',
 					'Noble',
+					'Steward',
 					'Pickup',
 					'Candle',
 					'Exit',

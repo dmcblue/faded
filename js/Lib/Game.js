@@ -162,7 +162,7 @@ Game.prototype.load =
 
 		this.frame.updatePosition(this.player);
 		this.mobs = [];
-		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles);
+		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles).concat(this.stewards);
 		this.pickups = [];
 		this.pickups = this.papers;
 		this.luminousPickups = this.candles;
