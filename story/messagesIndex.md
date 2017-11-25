@@ -36,6 +36,6 @@
 - Steward Maurin; Steward; Betrayed, turns to monster
 - (illegible), Monarch of (illegible); Monarch; Riddle, question, army, aid
 - Chen ed Dal; explorer; wards, steward
-- 
+- Self; Existential crisis
 
 
