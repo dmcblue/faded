@@ -10,12 +10,12 @@ var Steward =
 			args.classes = [];
 		}
 		args.classes.push('steward');
-		Noble.call(this, args);
+		Chaser.call(this, args);
 		this.counterMove = new Counter({turns : Steward.TURNS_MOVE});
 		this.counterAttack = new Counter({turns : Steward.TURNS_ATTACK});
 	};
 
-Steward.prototype = Object.create(Noble.prototype);
+Steward.prototype = Object.create(Chaser.prototype);
 Steward.prototype.constructor = Steward;
 
 Steward.DAMAGE = 10;

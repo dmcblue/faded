@@ -3,11 +3,12 @@ var Level =
 		Base.call(this, args);
 		this.addProperty(args, 'width', true, null, parseInt);
 		this.addProperty(args, 'height', true, null, parseInt);
-		this.addProperty(args, 'zombies', true, null, parseInt);
-		this.addProperty(args, 'ghosts', true, null, parseInt);
-		this.addProperty(args, 'nobles', true, null, parseInt);
-		this.addProperty(args, 'candles', true, null, parseInt);
-		this.addProperty(args, 'papers', false, {});
+		this.addProperty(args, 'zombies', false, 0, parseInt);
+		this.addProperty(args, 'ghosts', false, 0, parseInt);
+		this.addProperty(args, 'nobles', false, 0, parseInt);
+		this.addProperty(args, 'stewards', false, 0, parseInt);
+		this.addProperty(args, 'candles', false, 0, parseInt);
+		this.addProperty(args, 'papers', false, []);
 	};
 
 Level.prototype = Object.create(Base.prototype);

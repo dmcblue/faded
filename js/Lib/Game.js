@@ -146,6 +146,13 @@ Game.prototype.load =
 			this.nobles.push(noble);
 		}
 		
+		this.stewards = [];
+		for(var i = 0; i < level.stewards; i++){
+			var steward = Steward.create(this.frame);
+			steward.setPosition(this.map.findPosition(steward));
+			this.stewards.push(steward);
+		}
+		
 		this.exit = Exit.create(this.frame, {game : this});
 		this.exit.setPosition(this.map.findPosition(this.exit));
 		var minDistance = level.width/4;
