@@ -28,7 +28,7 @@
 - Steward Maurin; Steward; Thrones in summoning Kataban
 - (illegible), Monarch of (illegible); Monarch; Throne = choice
 - Self; Partial recognition of self
-- 
+- Tabar Demburo; Explorer; AAAAAAA, also terrible afterlife.
 
 # 5
 

@@ -35,7 +35,7 @@ Months
 Herbsur | x x
 Felbur  | xx
 Bridbur | x
-Kalsurn | x
+Kalsurn | xx
 Naivarn | x
 Auvur   | x x
 Simbur  | X
@@ -168,7 +168,9 @@ As I sit in this darkness, my very life flees me in despair. My people forever t
 
 There is a truth here I cannot admit. As I find more and more details...how many times have I read these words?  I pray it isn't true.  Let there be an end to these terrible halls and for all that they contain.
 
-
+2 of Kalsurn, 1099
+This place is death. There is nothing here, no treasure, no light.  I hear a pounding above that drives fear into my heart, though I thought there was no more room for terror therein. I fear living a second more in this place but I fear death here may bring a fate still worse.
+- Tabar Demburo
 
 
 ### 5
