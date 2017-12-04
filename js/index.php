@@ -44,6 +44,8 @@
 					'Candle',
 					'Exit',
 					'Paper',
+					'ThroneEvent',
+					'Throne',
 				),
 		);
 	

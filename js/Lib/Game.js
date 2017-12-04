@@ -19,6 +19,12 @@ var Game =
 				self.handleMessage(item, data.message);
 				event.stopPropagation(); //confine to this game
 			};
+			
+		this.frame.eventHandlers[ThroneEvent.EVENT_SEND] = 
+			function(item, data, event){
+				self.handleScreenMessage(item, data.message);
+				event.stopPropagation(); //confine to this game
+			};
 		
 		this.frame.eventHandlers[Candle.EVENT_PICKUP] = 
 			function(item, data, event){
