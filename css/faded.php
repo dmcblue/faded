@@ -237,6 +237,27 @@
 	background:url('images/Paper.svg');
 }
 
+.faded .throne{
+	width : 40px;
+	height : 40px;
+}
+
+.faded .throne.bloodstone{
+	background:url('images/Throne_Bloodstone.svg');
+}
+.faded .throne.damned{
+	background:url('images/Throne_Damned.svg');
+}
+.faded .throne.malachite{
+	background:url('images/Throne_Malachite.svg');
+}
+.faded .throne.opal{
+	background:url('images/Throne_Opal.svg');
+}
+.faded .throne.silver{
+	background:url('images/Throne_Silver.svg');
+}
+
 .faded .message-box button.message-box-button{
 	position:absolute;
 	bottom:1rem;

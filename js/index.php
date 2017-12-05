@@ -46,6 +46,7 @@
 					'Paper',
 					'ThroneEvent',
 					'Throne',
+					'DamnedThrone',
 				),
 		);
 	
