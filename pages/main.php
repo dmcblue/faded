@@ -53,7 +53,8 @@
 				ghosts : 0,
 				nobles : 0,
 				candles : 5,
-				stewards :1,
+				stewards :0,
+				damnedThrones : 1,
 				papers : 
 					[new Lib.Message({
 						header : 'This is a header',

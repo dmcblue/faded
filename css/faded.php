@@ -102,7 +102,8 @@
 }
 
 .faded .movable,
-.faded .pickup{
+.faded .pickup,
+.faded .mapItem{
 	position : absolute;
 }
 
@@ -241,13 +242,13 @@
 	width : 40px;
 	height : 40px;
 }
-
-.faded .throne.bloodstone{
-	background:url('images/Throne_Bloodstone.svg');
-}
-.faded .throne.damned{
-	background:url('images/Throne_Damned.svg');
-}
+<?php sprites(
+	".faded .throne", 
+	array(
+		'Throne_Bloodstone.svg' => array('.bloodstone'), 
+		'Throne_Damned.svg' => array('.damned')
+	)
+); ?>
 .faded .throne.malachite{
 	background:url('images/Throne_Malachite.svg');
 }

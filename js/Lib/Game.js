@@ -159,6 +159,20 @@ Game.prototype.load =
 			this.stewards.push(steward);
 		}
 		
+		this.thrones = [];
+		for(var i = 0; i < level.thrones; i++){
+			var throne = Throne.create(this.frame, level.thrones[i]);
+			throne.setPosition(this.map.findPosition(throne));
+			this.thrones.push(throne);
+		}
+		
+		this.damnedThrones = [];
+		for(var i = 0; i < level.damnedThrones; i++){
+			var damnedThrone = DamnedThrone.create(this.frame);
+			damnedThrone.setPosition(this.map.findPosition(damnedThrone));
+			this.damnedThrones.push(damnedThrone);
+		}
+		
 		this.exit = Exit.create(this.frame, {game : this});
 		this.exit.setPosition(this.map.findPosition(this.exit));
 		var minDistance = level.width/4;
@@ -171,7 +185,7 @@ Game.prototype.load =
 		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles).concat(this.stewards);
 		this.pickups = [];
 		this.pickups = this.papers;
-		this.luminousPickups = this.candles;
+		this.luminousPickups = this.candles.concat(this.damnedThrones);
 		
 		this.mask  = 
 			Mask.create(

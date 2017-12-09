@@ -3,7 +3,7 @@ var MapItem =
 		if(args.classes === undefined){
 			args.classes = [];
 		}
-		//args.classes.push('character');
+		args.classes.push('mapItem');
 		Item.call(this, args);
 		this.addProperty(args, 'placementRadius', true, null, parseInt);    //in px
 	};

@@ -28,7 +28,7 @@ DamnedThrone.create =
 		return new DamnedThrone(args);
 	};
 
-DamnedThrone.prototype.interact = 
+DamnedThrone.prototype.pickup = 
 	function(actor){
 		actor.heal(DamnedThrone.HEALING_FACTOR);
 	};
