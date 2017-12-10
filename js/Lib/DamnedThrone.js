@@ -11,7 +11,7 @@ var DamnedThrone =
 		this.addProperty(args, 'luminosity', false, DamnedThrone.LUMINOSITY, parseInt);
 	};
 
-DamnedThrone.HEALING_FACTOR = 25;
+DamnedThrone.HEALING_FACTOR = 100;
 DamnedThrone.ID = 0;
 DamnedThrone.LUMINANCE  = 3; //distance
 DamnedThrone.LUMINOSITY = 6; //strength
@@ -28,7 +28,7 @@ DamnedThrone.create =
 		return new DamnedThrone(args);
 	};
 
-DamnedThrone.prototype.pickup = 
+DamnedThrone.prototype.interact = 
 	function(actor){
 		actor.heal(DamnedThrone.HEALING_FACTOR);
 	};
