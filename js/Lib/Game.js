@@ -198,7 +198,8 @@ Game.prototype.load =
 					position : new Point(0, 0)
 				}
 			);
-		this.mask.set([this.player], this.luminousPickups);
+		var luminants = this.luminousPickups.concat(this.luminousItems);
+		this.mask.set([this.player], luminants);
 		
 		this.updateInterval = 
 			setInterval(
@@ -338,6 +339,7 @@ Game.prototype.update =
 			this.player.update();
 			this.frame.updatePosition(this.player);
 			this.health.set(this.player.health);
-			this.mask.set([this.player], this.luminousPickups);
+			var luminants = this.luminousPickups.concat(this.luminousItems);
+			this.mask.set([this.player], luminants);
 		}
 	};
