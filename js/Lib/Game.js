@@ -182,11 +182,15 @@ Game.prototype.load =
 
 		this.frame.updatePosition(this.player);
 		this.mobs = [];
-		this.mobs = this.zombies.concat(this.ghosts).concat(this.nobles).concat(this.stewards);
+		this.mobs = 
+			this.zombies.concat(this.ghosts)
+						.concat(this.nobles)
+						.concat(this.stewards);
 		this.pickups = [];
 		this.pickups = this.papers;
 		this.luminousPickups = this.candles;
 		this.luminousItems = this.damnedThrones;
+		this.interactables = this.damnedThrones.concat(this.thrones);
 		
 		this.mask  = 
 			Mask.create(
@@ -320,10 +324,10 @@ Game.prototype.update =
 						this.luminousPickups.splice(i--, 1);
 					}
 				}
-				for(var i = 0; i < this.luminousItems.length; i++){
-					var luminousItem = this.luminousItems[i];
-					if(this.player.touches(luminousItem)){
-						luminousItem.interact(this.player);
+				for(var i = 0; i < this.interactables.length; i++){
+					var interactable = this.interactables[i];
+					if(this.player.touches(interactable)){
+						interactable.interact(this.player);
 					}
 				}
 				if(this.player.touches(this.exit)){
