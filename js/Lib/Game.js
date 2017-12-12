@@ -160,7 +160,7 @@ Game.prototype.load =
 		}
 		
 		this.thrones = [];
-		for(var i = 0; i < level.thrones; i++){
+		for(var i = 0; i < level.thrones.length; i++){
 			var throne = Throne.create(this.frame, level.thrones[i]);
 			throne.setPosition(this.map.findPosition(throne));
 			this.thrones.push(throne);

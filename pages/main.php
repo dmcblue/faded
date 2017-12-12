@@ -55,6 +55,14 @@
 				candles : 5,
 				stewards :0,
 				damnedThrones : 1,
+				thrones : [{
+					classes : ['bloodstone'],
+					message : new Lib.Message({
+						header : 'This is a throne header',
+						text : 'Text for a throne message',
+						buttons : [Lib.MessageBox.BUTTON_CLOSE]
+					})
+				}],
 				papers : 
 					[new Lib.Message({
 						header : 'This is a header',
