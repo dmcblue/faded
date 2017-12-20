@@ -64,13 +64,14 @@ var Game =
 		this.paperMessageBox  = 
 			new PaperMessageBox({
 				selector : this.paperMessageSelector,
-				onKeyUp : Lib.MessageBox.KEY_CLICK,
+				onKeyUp : Lib.MessageBox.KEY_CLICK, //shouldn't use Lib
 				onOpen : messageOnOpen(this),
 				onClose : messageOnClose(this)
 			});
 		this.screenMessageBox  = 
 			new ScreenMessageBox({
 				selector : this.screenMessageSelector,
+				onKeyUp : Lib.MessageBox.KEY_CLICK, //shouldn't use Lib
 				onOpen : messageOnOpen(this),
 				onClose : messageOnClose(this)
 			});
@@ -95,6 +96,7 @@ Game.prototype.handleMessage =
 
 Game.prototype.handleScreenMessage =
 	function(item, message, event){
+		this.screenMessageBox.messages[0] = message;
 		this.screenMessageBox.loadMessage(message);
 		this.screenMessageBox.open();
 	};
