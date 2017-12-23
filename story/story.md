@@ -10,9 +10,28 @@ Go back and let the Horror conquer you?
 ## Four Options/Thrones:
 
 - Conquerer/Pawn (Malachite) - You accept the curse of Kataban, becoming the leader of its army on earth, destroying the Horror? in exchange for your free will.  You regain your power (collect all the candles and stop losing light).  You break free of the castle with your army of undead, destroying every town and city in your wake, placing the entire world under the shadow of Kataban. You remain a mindless servant of Kataban, wreaking havok on the world. Despite your desire to save your town, you have enslaved them
+	
+	Accept the offer of the demon Kataban to be his champion and lead his army of undead to conquer the world.
+	
+	Giving up your free will, you become a slave to Kataban.  You and the army of undead break free from the castle walls and begin an unstoppable conquest of the world.  After a century of unending war, all of humanity is destroyed and Kataban rules the earth through you. But you remain forever his minion with no will of your own.
+	
 - Saint/Negligent (Bloodstone) - Monarch is destroyed.  Perhaps taken by Kataban for torture.  The power keeping the undead army inside the castle is broken and the army begins mindlessly wandering the earth, destroying town after town. The initial onslaught mars the world forever more and the undead remain a source of fear and danger every afterwards.
+
+	Sacrifice yourself to break your curse.
+
+	Without the Dread Monarch and freed from Kataban's control, the army of undead breaks free of the castle and roams aimlessly across the world.  Consumed with bloodlust, they wreak havok upon the kingdoms of humanity.  The wandering dead continue to be found for centuries to come, remaining a source of fear and myth forevermore.
+
 - Sovereign/Tyrant (Silver) - You take the power for yourself and lead the army out to conquer the world while retaining your free will.  Wanton destruction and death follow, as you delve into the darkest parts of necromancy.  Eventually, the kingdoms of the earth join together to fight you and you are defeated.  Your spirit is forever imprisoned in a sealed dungeon.
+
+	Use the power the demon Kataban has invested in you to throw off his control and take the the undead army for your own ends.
+
+	Delving into the depths of necromancy, you summon the strength to fight Kataban's control.  Your army bursts from the castle and goes on a path of destruction across the earth. Only by joining forces in desperation after decades spent on the edge of annihilation, the kingdoms of humanity are able to defeat your army. The Dread Monarch's soul is then forever sealed in dungeon, forgotten to time.
+
 - Martyr/Coward (Opal) - You reject the deal with Kataban.  The Horror swallows your town and castle.  It then goes on to attack other town's for a champion for Kataban.  The fate of the area is left to another.
+
+	Reject Kataban's offer at your own peril.
+
+	Kataban's minion, the Horror, destroys the castle and all your former subjects.  It then goes on to another town to force another to summon Kataban and receive his offer of being his champion on earth.
 
 
 Metals: Iron, Gold, Stone, Copper, Silver, Brass, Bronze, Steel, Antimony, Orichalcum, Platinum, Diamond, Emerald, Ruby, Granite
