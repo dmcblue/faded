@@ -385,6 +385,7 @@ Game.prototype.update =
 			this.player.update();
 			this.frame.updatePosition(this.player);
 			this.health.set(this.player.health);
+			this.health.update();
 			var luminants = this.luminousPickups.concat(this.luminousItems);
 			this.mask.set([this.player], luminants);
 		}

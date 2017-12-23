@@ -8,7 +8,7 @@
 			<div id="paper-message-box"></div>
 			<div id="screen-message-box"></div>
 		</div>
-		<div style="display:inline-block;height:4rem;vertical-align:top;">
+		<div style="display:inline-block;vertical-align:top;padding-top:150px;padding-left:4rem;">
 			<div id="health"></div>
 		</div>
 		<div id="full-screen-message-box"></div>

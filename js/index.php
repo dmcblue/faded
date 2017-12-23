@@ -23,7 +23,6 @@
 					'PaperMessageBox',
 					'ScreenMessageBox',
 					'FullScreenMessageBox',
-					'HealthBar',
 					'MapItem',
 					'Movable',
 					'Sprite',
@@ -47,6 +46,7 @@
 					'ThroneEvent',
 					'Throne',
 					'DamnedThrone',
+					'HealthBar',
 				),
 		);
 	

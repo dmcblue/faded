@@ -144,16 +144,40 @@
 
 .faded .healthbar{
 	position :relative;
-	width : 1rem;
-	height : 100%;
+	display:table-cell;
+	width : 40px;
+	height : 150px;
 	background : none;
+	vertical-align:bottom;
 }
 
-.faded .healthbar .health{
-	position : absolute;
-	bottom : 0;
-	width : 100%;
-	background : yellow;
+.faded .healthbar .healthbar-top{
+	width : 40px;
+	height : 40px;
+	background:url('images/CandleHealth_Top.svg');
+	background-repeat:no-repeat;
+	background-size:contain;
+}<?php 
+	sprites(
+		".faded .healthbar .healthbar-top", 
+		array(
+			'CandleHealth_Top.svg' => array(' '), 
+			'CandleHealth2_Top.svg' => array('.flicker')
+		)
+	); 
+?>
+.faded .healthbar .healthbar-middle{
+	width : 40px;
+	background:url('images/CandleHealth_Middle.svg');
+	background-repeat:repeat-y;
+	background-size:40px 40px;
+}
+.faded .healthbar .healthbar-bottom{
+	width : 40px;
+	height : 40px;
+	background:url('images/CandleHealth_Bottom.svg');
+	background-repeat:no-repeat;
+	background-size:contain;
 }
 
 .faded .character{
