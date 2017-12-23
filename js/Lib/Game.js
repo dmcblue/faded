@@ -12,17 +12,24 @@ var Game =
 		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
+		this.addProperty(args, 'toMainMenu', false, function(){
+			location.reload();
+		}); //ms
 		
 		var self = this;
 		this.frame.eventHandlers[MessageEvent.EVENT_SEND] = 
 			function(item, data, event){
-				self.handleMessage(item, data.message);
+				self.handleMessage(item, data.message, event);
 				event.stopPropagation(); //confine to this game
 			};
 			
 		this.frame.eventHandlers[ThroneEvent.EVENT_SEND] = 
 			function(item, data, event){
-				self.handleScreenMessage(item, data.message);
+				self.handleScreenMessage(
+					item, 
+					[data.choice, data.consequence], 
+					event
+				);
 				event.stopPropagation(); //confine to this game
 			};
 		
@@ -34,18 +41,39 @@ var Game =
 		
 		this.frame.eventHandlers[Player.EVENT_DEATH] = 
 			function(item, data, event){
-				self.screenMessageBox.loadMessage(new Message({
-					header : "Dun Dun Dun.", 
-					text : "You died.",
-					buttons :[{
-						label : "Restart Level",
-						onClick : function(){
-							self.restartLevel();
-							self.screenMessageBox.close();
-						}
-					}]
-				}));
-				self.screenMessageBox.open();
+				self.handleScreenMessage(
+					item, 
+					[new Message({
+						header : "Dun Dun Dun.", 
+						text : "You died.",
+						buttons :[{
+							label : "Restart Level",
+							onClick : function(){
+								self.restartLevel();
+								self.screenMessageBox.close();
+							}
+						}]
+					})],
+					event
+				);
+				event.stopPropagation(); //confine to this game
+			};
+		
+		this.frame.eventHandlers[Throne.EVENT_END] = 
+			function(item, data, event){
+				self.handleScreenMessage(item, data.message, event);
+				event.stopPropagation(); //confine to this game
+			};
+		
+		this.frame.eventHandlers[Game.EVENT_RESTART] = 
+			function(item, data, event){
+				self.restart();
+				event.stopPropagation(); //confine to this game
+			};
+		
+		this.frame.eventHandlers[Game.EVENT_TO_MAIN_MENU] = 
+			function(item, data, event){
+				self.toMainMenu();
 				event.stopPropagation(); //confine to this game
 			};
 		
@@ -86,6 +114,8 @@ Game.prototype = Object.create(Base.prototype);
 Game.prototype.constructor = Game;
 
 Game.BLOCK_SIZE = 20;
+Game.EVENT_RESTART = 'faded_game_event_restart';
+Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
 
 Game.prototype.handleMessage =
 	function(item, message, event){
@@ -95,9 +125,9 @@ Game.prototype.handleMessage =
 	};
 
 Game.prototype.handleScreenMessage =
-	function(item, message, event){
-		this.screenMessageBox.messages[0] = message;
-		this.screenMessageBox.loadMessage(message);
+	function(item, messages, event){
+		this.screenMessageBox.messages = messages;
+		this.screenMessageBox.loadMessage(messages[0]);
 		this.screenMessageBox.open();
 	};
 
@@ -262,6 +292,7 @@ Game.prototype.restart =
 		clearInterval(this.updateInterval);
 		this.currentLevel = 0;
 		this.load();
+		this.screenMessageBox.close();
 		this.play();
 	};
 

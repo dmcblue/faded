@@ -57,11 +57,10 @@
 				damnedThrones : 1,
 				thrones : [{
 					classes : ['bloodstone'],
-					message : new Lib.Message({
-						header : 'This is a throne header',
-						text : 'Text for a throne message',
-						buttons : [Lib.MessageBox.BUTTON_CLOSE]
-					})
+					choiceHeader : 'This is a throne header',
+					choiceText : 'Text for a throne message',
+					consequenceHeader : 'End game header',
+					consequenceText : 'End game text'
 				}],
 				papers : 
 					[new Lib.Message({

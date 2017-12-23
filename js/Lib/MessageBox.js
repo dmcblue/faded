@@ -188,9 +188,9 @@ MessageBox.prototype.close =
 		this.element.style.display = 'none';
 		if(!init){
 			this.onMessageClose();
-			if(this.currentMessage === this.messages.length - 1){
+			//if(this.currentMessage === this.messages.length - 1){
 				this.onClose();
-			}
+			//}
 		}
 	};
 
