@@ -1,8 +1,8 @@
 var level = {
 	width : map_width*blockSize,
 	height : map_height*blockSize,
-	zombies : 1,
-	ghosts : 1,
+	zombies : 7,
+	ghosts : 4,
 	nobles : 0,
 	candles : 10,
 	papers : 

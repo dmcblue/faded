@@ -1,11 +1,11 @@
 var level = {
 	width : map_width*blockSize,
 	height : map_height*blockSize,
-	zombies : 0,
-	ghosts : 0,
-	nobles : 0,
-	candles : 5,
-	stewards :0,
+	zombies : 6,
+	ghosts : 2,
+	nobles : 2,
+	candles : 10,
+	stewards : 1,
 	damnedThrones : 1,
 	thrones : [{
 		classes : ['malachite'],
