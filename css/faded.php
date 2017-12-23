@@ -201,7 +201,7 @@
 .faded .frame.grid.mask{
 	position:relative;
 	background:transparent;
-	z-index:5;
+	z-index:1005;
 }
 .faded .grid.mask td{
 	background:rgba(0,0,0,1);
@@ -304,7 +304,7 @@
 	height:calc(80% - 2rem);
 	margin: 10%;
 	padding: 1rem;
-	z-index:10;
+	z-index:1010;
 	background:#C7B299;
 	
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -323,7 +323,7 @@
 	width:calc(100% - 4rem);
 	height:calc(100% - 4rem);
 	padding: 2rem;
-	z-index:15;
+	z-index:1015;
 	background:rgba(0,0,0,0.9);
 }
 .faded .message-box.screen-message-box *{
@@ -341,7 +341,7 @@
 	width:calc(100% - 4rem);
 	height:calc(100% - 4rem);
 	padding: 2rem;
-	z-index:15;
+	z-index:1015;
 	background:#000;
 }
 .faded .message-box.full-screen-message-box *{

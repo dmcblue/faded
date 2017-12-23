@@ -140,6 +140,32 @@ Game.prototype.handleScreenMessage =
 		this.screenMessageBox.open();
 	};
 
+Game.prototype.layerSprites =
+	function(items){
+		var sprites = [];
+		for(var i = 0, ilen = items.length; i < ilen; i++){
+			var y = 
+				(parseInt(items[i].element.style.top.replace('px','')) || 0)
+				//+ (items[i].height || 0);
+			sprites.push({
+				top : y,
+				index : i
+			});
+		}
+		sprites.sort(function(a, b){
+			if(a.top > b.top){
+				return 1;
+			}else if(a.top < b.top){
+				return -1;
+			}
+			return 0;
+		});
+		var index = 0;
+		for(var i = 0, ilen = sprites.length; i < ilen; i++){
+			items[sprites[i].index].element.style['z-index'] = index++;
+		}
+	};
+
 Game.prototype.load =
 	function(){
 		var level = this.levels[this.currentLevel];
@@ -388,5 +414,14 @@ Game.prototype.update =
 			this.health.update();
 			var luminants = this.luminousPickups.concat(this.luminousItems);
 			this.mask.set([this.player], luminants);
+			
+			this.layerSprites(
+				this.interactables
+					.concat([this.player])
+					.concat(this.pickups)
+					.concat(this.luminousPickups)
+					.concat(this.interactables)
+					.concat([this.exit])
+				);
 		}
 	};
