@@ -47,9 +47,18 @@ var Game =
 						header : "Dun Dun Dun.", 
 						text : "You died.",
 						buttons :[{
-							label : "Restart Level",
+							label : "Restart Level (e)",
+							keyClick : Keys.KEY_E,
 							onClick : function(){
 								self.restartLevel();
+								self.screenMessageBox.close();
+							}
+						},{
+							label : "Restart Game (q)",
+							classes :[Lib.MessageBox.CLASS_BUTTON_BACK],
+							keyClick : Keys.KEY_Q,
+							onClick : function(){
+								self.restart();
 								self.screenMessageBox.close();
 							}
 						}]
