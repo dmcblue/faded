@@ -144,9 +144,7 @@ Game.prototype.layerSprites =
 	function(items){
 		var sprites = [];
 		for(var i = 0, ilen = items.length; i < ilen; i++){
-			var y = 
-				(parseInt(items[i].element.style.top.replace('px','')) || 0)
-				//+ (items[i].height || 0);
+			var y = (parseInt(items[i].element.style.top.replace('px','')) || 0);
 			sprites.push({
 				top : y,
 				index : i
