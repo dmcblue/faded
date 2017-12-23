@@ -14,9 +14,6 @@
 		<div id="full-screen-message-box"></div>
 		<div id="full-screen-message-box-about"></div>
 	</div>
-	<div class="section" style="line-height:3rem;">
-		<!-- Side Stuff -->
-	</div>
 </section>
 <script>
 	var map_width   = 50,

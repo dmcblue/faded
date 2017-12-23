@@ -238,11 +238,15 @@ Game.prototype.load =
 			this.damnedThrones.push(damnedThrone);
 		}
 		
-		this.exit = Exit.create(this.frame, {game : this});
-		this.exit.setPosition(this.map.findPosition(this.exit));
-		var minDistance = level.width/4;
-		while(this.exit.getPosition().distanceTo(this.player.getPosition()) < minDistance){
+		this.exits = [];
+		if(this.currentLevel < this.levels.length - 1){
+			this.exit = Exit.create(this.frame, {game : this});
 			this.exit.setPosition(this.map.findPosition(this.exit));
+			var minDistance = level.width/4;
+			while(this.exit.getPosition().distanceTo(this.player.getPosition()) < minDistance){
+				this.exit.setPosition(this.map.findPosition(this.exit));
+			}
+			this.exits.push(this.exit);
 		}
 
 		this.frame.updatePosition(this.player);
@@ -396,8 +400,14 @@ Game.prototype.update =
 						interactable.interact(this.player);
 					}
 				}
-				if(this.player.touches(this.exit)){
-					this.exit.pickup(this.player);
+				//if(this.player.touches(this.exit)){
+				//	this.exit.pickup(this.player);
+				//}
+				for(var i = 0; i < this.exits.length; i++){
+					var exit = this.exits[i];
+					if(this.player.touches(exit)){
+						exit.pickup(this.player);
+					}
 				}
 			}
 			
@@ -419,7 +429,7 @@ Game.prototype.update =
 					.concat(this.pickups)
 					.concat(this.luminousPickups)
 					.concat(this.interactables)
-					.concat([this.exit])
+					.concat(this.exits)
 				);
 		}
 	};
