@@ -46,43 +46,8 @@
 		interval : 100,
 		blockSize : blockSize,
 		levels : [
-			new Lib.Level({
-				width : map_width*blockSize,
-				height : map_height*blockSize,
-				zombies : 0,
-				ghosts : 0,
-				nobles : 0,
-				candles : 5,
-				stewards :0,
-				damnedThrones : 1,
-				thrones : [{
-					classes : ['bloodstone'],
-					choiceHeader : 'This is a throne header',
-					choiceText : 'Text for a throne message',
-					consequenceHeader : 'End game header',
-					consequenceText : 'End game text'
-				}],
-				papers : 
-					[new Lib.Message({
-						header : 'This is a header',
-						text : 'Text for a message',
-						buttons : [Lib.MessageBox.BUTTON_CLOSE]
-					})]
-			}),
-			new Lib.Level({
-				width : map_width*blockSize,
-				height : map_height*blockSize,
-				zombies : 1,
-				ghosts : 1,
-				nobles : 0,
-				candles : 10,
-				papers : 
-					[new Lib.Message({
-						header : 'This is a header',
-						text : 'Text for a message',
-						buttons : [Lib.MessageBox.BUTTON_CLOSE]
-					})]
-			})
+			new Lib.Level(<?php echo Tools::getLevel('1'); ?>),
+			new Lib.Level(<?php echo Tools::getLevel('2'); ?>)
 		]
 	});
 	game.load();
