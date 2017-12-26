@@ -86,6 +86,39 @@ var Game =
 				event.stopPropagation(); //confine to this game
 			};
 		
+		this.frame.eventHandlers[Game.EVENT_REQUEST_NEXT_LEVEL] = 
+			function(item, data, event){
+				if(self.readMesssages < self.papers.length){
+					self.handleScreenMessage(
+						item, 
+						[new Message({
+							header : "", 
+							text : "There are still messages left on this level. Are you sure you want to go the next floor of the castle?",
+							buttons :[{
+								label : "Yes (r)",
+								keyClick : Keys.KEY_R,
+								onClick : function(){
+									Pickup.prototype.pickup.call(data.exit, self.player);
+									self.nextLevel();
+									self.screenMessageBox.close();
+								}
+							},{
+								label : "No, I'll stay here (q)",
+								classes :[Lib.MessageBox.CLASS_BUTTON_BACK],
+								keyClick : Keys.KEY_Q,
+								onClick : function(){
+									self.screenMessageBox.close();
+								}
+							}]
+						})],
+						event
+					);
+				}else{
+					self.nextLevel();
+				}
+				event.stopPropagation(); //confine to this game
+			};
+		
 		var messageOnOpen =
 			function(self){
 				return function(){
@@ -123,6 +156,7 @@ Game.prototype = Object.create(Base.prototype);
 Game.prototype.constructor = Game;
 
 Game.BLOCK_SIZE = 20;
+Game.EVENT_REQUEST_NEXT_LEVEL = 'faded_game_event_request_next_level';
 Game.EVENT_RESTART = 'faded_game_event_restart';
 Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
 
@@ -131,6 +165,7 @@ Game.prototype.handleMessage =
 		this.paperMessageBox.messages[0] = message;
 		this.paperMessageBox.loadMessage(message);
 		this.paperMessageBox.open();
+		this.readMesssages++;
 	};
 
 Game.prototype.handleScreenMessage =
@@ -240,7 +275,7 @@ Game.prototype.load =
 		
 		this.exits = [];
 		if(this.currentLevel < this.levels.length - 1){
-			this.exit = Exit.create(this.frame, {game : this});
+			this.exit = Exit.create(this.frame);
 			this.exit.setPosition(this.map.findPosition(this.exit));
 			var minDistance = level.width/4;
 			while(this.exit.getPosition().distanceTo(this.player.getPosition()) < minDistance){
@@ -260,6 +295,8 @@ Game.prototype.load =
 		this.luminousPickups = this.candles;
 		this.luminousItems = this.damnedThrones;
 		this.interactables = this.damnedThrones.concat(this.thrones);
+		
+		this.readMesssages = 0;
 		
 		this.mask  = 
 			Mask.create(

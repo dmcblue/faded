@@ -6,7 +6,6 @@ var Exit =
 		args.classes.push('exit');
 		if(args.placementRadius === undefined){args.placementRadius = Exit.PLACEMENT_RADIUS;}
 		Pickup.call(this, args);
-		this.addProperty(args,'game');
 	};
 
 Exit.ID = 0;
@@ -25,6 +24,14 @@ Exit.create =
 
 Exit.prototype.pickup = 
 	function(actor){
-		Pickup.prototype.pickup.call(this, actor);
-		this.game.nextLevel();
+		var event = 
+			new CEvent({
+				target : this.element.parentElement, 
+				type : Game.EVENT_REQUEST_NEXT_LEVEL, 
+				data : {exit:this}
+			});
+		
+		//Pickup.prototype.pickup.call(this, actor);
+		
+		event.trigger();
 	};
