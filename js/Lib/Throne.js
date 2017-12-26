@@ -10,8 +10,6 @@ var Throne =
 		MapItem.call(this, args);
 		this.addProperty(args, 'choiceHeader');
 		this.addProperty(args, 'choiceText');
-		this.addProperty(args, 'choiceKey', false, Keys.KEY_R);
-		this.addProperty(args, 'choiceLabel', false, 'Accept (r)');
 		this.addProperty(args, 'consequenceHeader');
 		this.addProperty(args, 'consequenceText');
 	};
@@ -33,59 +31,18 @@ Throne.create =
 
 Throne.prototype.interact = 
 	function(actor){
-		var parent = this.element.parentElement;
 		var event = 
 			new ThroneEvent({
-				target : parent,
-				choice : 
-					new Lib.Message({
+				target : this.element.parentElement,
+				choice : {
 						header : this.choiceHeader,
-						text   : this.choiceText,
-						buttons : 
-							[{
-								onClick : MessageBox.CLOSE(), 
-								label : 'Back (q)', 
-								classes : [MessageBox.CLASS_BUTTON_BACK],
-								keyClick : Keys.KEY_Q
-							},{
-								onClick : MessageBox.NEXT(), 
-								label : this.choiceLabel,
-								keyClick : this.choiceKey
-							}]
-					}),
+						text   : this.choiceText
+					},
 				consequence : 
-					new Lib.Message({
+					{
 						header : this.consequenceHeader,
-						text   : this.consequenceText,
-						buttons : [{
-							label : "New Game (e)",
-							keyClick : Keys.KEY_E,
-							onClick : function(){
-								var event = 
-									new CEvent({
-										target : parent, 
-										type : Game.EVENT_RESTART, 
-										data : {}
-									});
-								
-								event.trigger();
-							}
-						},{
-							label : "Main Menu (q)",
-							classes :[Lib.MessageBox.CLASS_BUTTON_BACK],
-							keyClick : Keys.KEY_Q,
-							onClick : function(){
-								var event = 
-									new CEvent({
-										target : parent, 
-										type : Game.EVENT_TO_MAIN_MENU, 
-										data : {}
-									});
-								
-								event.trigger();
-							}
-						}]
-					})
+						text   : this.consequenceText
+					}
 			});
 		event.trigger();
 	};

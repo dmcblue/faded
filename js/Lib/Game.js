@@ -27,7 +27,56 @@ var Game =
 			function(item, data, event){
 				self.handleScreenMessage(
 					item, 
-					[data.choice, data.consequence], 
+					[new Lib.Message({
+						header : data.choice.header,
+						text   : data.choice.text,
+						buttons : 
+							[{
+								onClick : MessageBox.CLOSE(), 
+								label : 'Back (q)', 
+								classes : [MessageBox.CLASS_BUTTON_BACK],
+								keyClick : Keys.KEY_Q
+							},{
+								onClick : MessageBox.NEXT(), 
+								label : 'Accept (r)',
+								keyClick : Keys.KEY_R
+							}]
+					}), new Lib.Message({
+						header : data.consequence.header,
+						text   : data.consequence.text,
+						buttons : [MessageBox.BUTTON_NEXT]
+					}), new Lib.Message({
+						header : '',
+						text   : 'The end.<br/><br/>Thank you for playing.',
+						buttons : [{
+							label : "New Game (e)",
+							keyClick : Keys.KEY_E,
+							onClick : function(){
+								var event = 
+									new CEvent({
+										target : self.frame.element, 
+										type : Game.EVENT_RESTART, 
+										data : {}
+									});
+								
+								event.trigger();
+							}
+						},{
+							label : "Main Menu (q)",
+							classes :[Lib.MessageBox.CLASS_BUTTON_BACK],
+							keyClick : Keys.KEY_Q,
+							onClick : function(){
+								var event = 
+									new CEvent({
+										target : self.frame.element, 
+										type : Game.EVENT_TO_MAIN_MENU, 
+										data : {}
+									});
+								
+								event.trigger();
+							}
+						}]
+					})], 
 					event
 				);
 				event.stopPropagation(); //confine to this game
