@@ -100,7 +100,6 @@ var Game =
 								onClick : function(){
 									Pickup.prototype.pickup.call(data.exit, self.player);
 									self.nextLevel();
-									self.screenMessageBox.close();
 								}
 							},{
 								label : "No, I'll stay here (q)",
@@ -325,7 +324,7 @@ Game.prototype.nextLevel =
 		this.currentLevel++;
 		if(this.currentLevel < this.levels.length){
 			this.load();
-			this.play();
+			this.startLevel();
 		}else{
 			var self = this;
 			this.screenMessageBox.loadMessage(new Message({
@@ -367,7 +366,7 @@ Game.prototype.restart =
 		this.currentLevel = 0;
 		this.load();
 		this.screenMessageBox.close();
-		this.play();
+		this.startLevel();
 	};
 
 Game.prototype.restartLevel =
@@ -375,7 +374,21 @@ Game.prototype.restartLevel =
 		this.pause();
 		clearInterval(this.updateInterval);
 		this.load();
-		this.play();
+		this.startLevel();
+	};
+
+Game.prototype.startLevel =
+	function(){
+		var self = this;
+		this.screenMessageBox.loadMessage(new Message({
+			header : "", 
+			text : "",
+			buttons :[]
+		}));
+		this.screenMessageBox.open();
+		this.screenMessageBox.fadeOut(function(){
+			self.play();
+		});
 	};
 
 Game.prototype.toggle =
@@ -437,9 +450,7 @@ Game.prototype.update =
 						interactable.interact(this.player);
 					}
 				}
-				//if(this.player.touches(this.exit)){
-				//	this.exit.pickup(this.player);
-				//}
+				
 				for(var i = 0; i < this.exits.length; i++){
 					var exit = this.exits[i];
 					if(this.player.touches(exit)){

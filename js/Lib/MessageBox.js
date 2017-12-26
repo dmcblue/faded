@@ -8,6 +8,10 @@ var MessageBox =
 		this.addProperty(args,'onOpen', false, function(){});
 		this.addProperty(args,'onClose', false, function(){});
 		this.addProperty(args,Keys.INTERFACE_METHOD_UP, false, function(){});
+		
+		this.addProperty(args,'timeoutTime', false, MessageBox.TIMEOUT_TIME);
+		this.addProperty(args,'timeoutSteps', false, MessageBox.TIMEOUT_STEPS);
+		
 		var onclick =
 			function(self){
 				return function(){
@@ -150,6 +154,8 @@ MessageBox.EVENT_BACK = 'faded_messagebox_event_back';
 MessageBox.EVENT_CLOSE = 'faded_messagebox_event_close';
 MessageBox.EVENT_NEXT = 'faded_messagebox_event_next';
 MessageBox.EVENT_GOTO = 'faded_messagebox_event_goto';
+MessageBox.TIMEOUT_TIME = 1000;
+MessageBox.TIMEOUT_STEPS = 10;
 
 
 MessageBox.prototype.addButton = 
@@ -183,14 +189,30 @@ MessageBox.prototype.clearButtons =
 	};
 
 MessageBox.prototype.close = 
-	function(init){
+	function(init, callback){
+		callback = callback || function(){};
 		Keys.unsubscribe(Keys.EVENT_TYPE_UP, this._uniqueKeyId);
 		this.element.style.display = 'none';
 		if(!init){
+			callback();
 			this.onMessageClose();
-			//if(this.currentMessage === this.messages.length - 1){
-				this.onClose();
-			//}
+			this.onClose();
+		}
+	};
+	
+MessageBox.prototype.fadeOut = 
+	function(callback){
+		callback = callback || function(){};
+		var self = this;
+		var opacity = window.getComputedStyle(this.element, null).getPropertyValue('opacity');
+		if(opacity > 0){
+			this.element.style.opacity = Math.max(opacity - 1/this.timeoutSteps, 0);
+			setTimeout(function(){
+				self.fadeOut(callback);
+			}, this.timeoutTime/this.timeoutSteps);
+		}else{
+			this.close(false, callback);
+			this.element.style.opacity = 1;
 		}
 	};
 
