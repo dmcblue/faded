@@ -43,10 +43,11 @@
 		interval : 100,
 		blockSize : blockSize,
 		levels : [
-			/*new Lib.Level(<?php echo Tools::getLevel('1'); ?>),
+			new Lib.Level(<?php echo Tools::getLevel('test'); ?>),
+			new Lib.Level(<?php echo Tools::getLevel('1'); ?>),
 			new Lib.Level(<?php echo Tools::getLevel('2'); ?>),
 			new Lib.Level(<?php echo Tools::getLevel('3'); ?>),
-			new Lib.Level(<?php echo Tools::getLevel('4'); ?>),*/
+			new Lib.Level(<?php echo Tools::getLevel('4'); ?>),
 			new Lib.Level(<?php echo Tools::getLevel('5'); ?>)
 		]
 	});

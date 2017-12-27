@@ -3,7 +3,7 @@ var level = {
 	height : map_height*blockSize,
 	zombies : 6,
 	ghosts : 3,
-	nobles : 3,
+	nobles : 2,
 	candles : 12,
 	papers : 
 		[new Lib.Message({
