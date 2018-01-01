@@ -28,3 +28,12 @@ no-time
 
 tremelo
 extreme tempo,pitch changes
+
+
+
+Lights and Shadow
+Morphing Glass
+ABS Pipe reverse
+80s wavepad
+grand piano thin air
+funky organ
