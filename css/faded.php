@@ -392,6 +392,11 @@
 	margin:0;
 }
 
+#controls,
+#controls > table{
+	width: 100%;
+	height: 100%;
+}
 #controls td{
 	padding:1rem;
 }
