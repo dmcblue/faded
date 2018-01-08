@@ -4,6 +4,7 @@ var Steward =
 		if(args.speedFactor === undefined){args.speedFactor = Steward.SPEED_FACTOR;}
 		if(args.sightFactor === undefined){args.sightFactor = Steward.SIGHT_FACTOR;}
 		if(args.placementRadius === undefined){args.placementRadius = Steward.PLACEMENT_RADIUS;}
+		if(args.radiusType === undefined){args.radiusType = Item.RADIUS_TYPE_CIRCLE;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Steward.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Steward.SPRITE_CLASSES;}
 		if(args.classes === undefined){

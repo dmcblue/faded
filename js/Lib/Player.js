@@ -6,6 +6,8 @@ var Player =
 		if(args.speedFactor === undefined){args.speedFactor = Player.SPEED_FACTOR;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Player.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Player.SPRITE_CLASSES;}
+		//if(args.radius === undefined){args.radius = Player.RADIUS;}
+		if(args.radiusType === undefined){args.radiusType = Item.RADIUS_TYPE_CIRCLE;}
 		if(args.classes === undefined){
 			args.classes = [];
 		}
@@ -26,6 +28,7 @@ Player.HEALTH_MAX = 100;
 Player.LUMINANCE = 4; //distance
 Player.LUMINOSITY = 10; //strength
 Player.PLACEMENT_RADIUS = 50;
+Player.RADIUS = 20;//circular
 Player.SPEED_FACTOR = 0.8;
 Player.SPRITE_CLASSES = ['sprite1','sprite2'];
 Player.SPRITE_COUNTER = 2;

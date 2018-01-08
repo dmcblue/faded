@@ -506,6 +506,13 @@ Game.prototype.update =
 						exit.pickup(this.player);
 					}
 				}
+				
+				console.log(
+					this.interactables[0], 
+					this.player,
+					this.interactables[0].getPosition().distanceTo(this.player.getPosition()),
+					this.player.radius + this.interactables[0].radius,
+				);
 			}
 			
 			for(var i = 0; i < this.candles.length; i++){

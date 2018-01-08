@@ -5,6 +5,7 @@ var Candle =
 		}
 		args.classes.push('candle');
 		if(args.placementRadius === undefined){args.placementRadius = Candle.PLACEMENT_RADIUS;}
+		if(args.radiusType === undefined){args.radiusType = Item.RADIUS_TYPE_CIRCLE;}
 		Pickup.call(this, args);
 		this.addProperty(args, 'luminance', false, Candle.LUMINANCE, parseInt);
 		this.addProperty(args, 'luminosity', false, Candle.LUMINOSITY, parseInt);

@@ -14,7 +14,12 @@ var Item =
 		}
 		this.addProperty(args,'width', false, this.element.offsetWidth, parseInt);    //in px
 		this.addProperty(args,'height', false, this.element.offsetHeight, parseInt);   //in px
-		this.addProperty(args,'radius', false, (this.width + this.height)/4, parseFloat);   //in px
+		
+		if(args.radius !== undefined){
+			this.radius = args.radius;
+		}else{
+			this.setRadius(args.radiusType);
+		}
 		if(!this.hasOwnProperty('eventHandlers')){
 			this.addProperty(args,'eventHandlers', false, {});
 		}
@@ -25,6 +30,8 @@ Item.prototype = Object.create(Base.prototype);
 Item.prototype.constructor = Item;
 
 Item.ID = 0;
+Item.RADIUS_TYPE_CIRCLE = 'item_radius_type_circle';
+Item.RADIUS_TYPE_RECTANGLE = 'item_radius_type_rectangle';
 
 Item.create = 
 	function(frame, args, id){
@@ -47,6 +54,15 @@ Item.createElement =
 Item.prototype.addClass =
 	function(className){
 		Tools.addClass(this.element, className);
+	};
+
+Item.prototype.getCenterPosition = 
+	function(){
+		var position = this.getPosition();
+		return this.getPosition().add(new Point(
+			this.width/2,
+			this.height/2
+		));
 	};
 
 Item.prototype.getPosition =
@@ -84,8 +100,23 @@ Item.prototype.setPosition =
 		this.element.style.top  = Math.round(y) + 'px';
 	};
 
+Item.prototype.setRadius = 
+	function(type){
+		if(type === undefined){
+			type = Item.RADIUS_TYPE_RECTANGLE;
+		}
+		var r = 0;
+		if(type === Item.RADIUS_TYPE_CIRCLE){
+			r = (this.width + this.height)/4;
+		}else/* if(type === Item.RADIUS_TYPE_RECTANGLE)*/{
+			r = Math.sqrt((this.width*this.width + this.height*this.height))/2;
+		}
+		
+		this.radius = parseFloat(r);
+	};
+
 Item.prototype.touches = 
 	function(item){
 		//maybe cache position
-		return this.getPosition().distanceTo(item.getPosition()) < this.radius + item.radius;
+		return this.getCenterPosition().distanceTo(item.getCenterPosition()) < this.radius + item.radius;
 	};

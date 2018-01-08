@@ -4,6 +4,7 @@ var Noble =
 		if(args.speedFactor === undefined){args.speedFactor = Noble.SPEED_FACTOR;}
 		if(args.sightFactor === undefined){args.sightFactor = Noble.SIGHT_FACTOR;}
 		if(args.placementRadius === undefined){args.placementRadius = Noble.PLACEMENT_RADIUS;}
+		if(args.radiusType === undefined){args.radiusType = Item.RADIUS_TYPE_CIRCLE;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Noble.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Noble.SPRITE_CLASSES;}
 		if(args.classes === undefined){

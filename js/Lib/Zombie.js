@@ -4,6 +4,7 @@ var Zombie =
 		if(args.speedFactor === undefined){args.speedFactor = Zombie.SPEED_FACTOR;}
 		if(args.sightFactor === undefined){args.sightFactor = Zombie.SIGHT_FACTOR;}
 		if(args.placementRadius === undefined){args.placementRadius = Zombie.PLACEMENT_RADIUS;}
+		if(args.radiusType === undefined){args.radiusType = Item.RADIUS_TYPE_CIRCLE;}
 		if(args.spriteCounter === undefined){args.spriteCounter = Zombie.SPRITE_COUNTER;}
 		if(args.spriteClasses === undefined){args.spriteClasses = Zombie.SPRITE_CLASSES;}
 		if(args.classes === undefined){

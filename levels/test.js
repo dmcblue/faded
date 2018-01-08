@@ -1,10 +1,11 @@
 var level = {
 	width : map_width*blockSize,
 	height : map_height*blockSize,
-	zombies : 4,
+	zombies : 0,
 	ghosts : 0,
 	nobles : 0,
 	candles : 10,
+	damnedThrones : 0,
 	papers : 
 		[new Lib.Message({
 			header : 'Hi message',

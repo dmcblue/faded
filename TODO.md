@@ -1,4 +1,4 @@
-- Add about, story in messages, don't need for gameplay, for story, just like amnesia.
-
-- Create Throne Objects
-- Fifth throne gives you full life;
+- Better placement of map items
+- Music 2/5
+- Text indicator of health %
+- Better map
