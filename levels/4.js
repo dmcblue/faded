@@ -30,5 +30,11 @@ var level = {
 			header : '2 of Kalsurn, 1099',
 			text : 'This place is death. There is nothing here, no treasure, no light.  I hear a pounding above that drives fear into my heart, though I thought there was no more room for terror therein. I fear living a second more in this place but I fear death here may bring a fate still worse.<br/><br/>- Tabar Demburo',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})]
+		})],
+	mapBuilder :  
+		new Lib.MapBuilderRectangle({
+			rectangleSize : 10,
+			cols : map_width,
+			rows : map_height
+		})
 }

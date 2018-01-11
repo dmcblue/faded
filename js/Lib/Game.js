@@ -13,7 +13,7 @@ var Game =
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
 		this.addProperty(args, 'toMainMenu', false, function(){
-			location.reload();
+			location.reload();//TODO
 		}); //ms
 		
 		var self = this;
@@ -258,7 +258,8 @@ Game.prototype.load =
 					width : level.width, 
 					height : level.width, 
 					blockSize : this.blockSize,
-					position : new Point(0, 0)
+					position : new Point(0, 0),
+					builder : level.mapBuilder
 				}
 			);
 		

@@ -26,6 +26,13 @@ Base.prototype.addProperty =
 
 Base.prototype.getClass = 
 	function(){
-		console.log(this);
+		//console.log(this);
 		return this[this.prototype !== undefined ? 'prototype' : '__proto__'].constructor.name;
+	};
+
+Base.prototype.ensure =
+	function(methodName){
+		if(!this[this.prototype !== undefined ? 'prototype' : '__proto__'].hasOwnProperty(methodName)){
+			throw this.getClass() + " missing required method '" + methodName + "'";
+		}
 	};

@@ -26,5 +26,11 @@ var level = {
 			header : '18 of Bridbur, 951',
 			text : 'My suspicions were true. There is a demonic presence here, something far beyond human. Whether I have its identity correct remains to be seen. I pray I am wrong. Otherwise, this dark place, these horrors and abominations are only the beginning. My only hope is that I can alert the Enclave in time.<br/><br/>- Mage Awalat of the Torin',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})]
+		})],
+	mapBuilder :  
+		new Lib.MapBuilderRectangle({
+			rectangleSize : 10,
+			cols : map_width,
+			rows : map_height
+		})
 }

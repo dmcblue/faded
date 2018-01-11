@@ -29,6 +29,8 @@
 					'Frame',
 					'View',
 					'Grid',
+					'MapBuilderInterface',
+					'MapBuilderRectangle',
 					'Map',
 					'Mask',
 					'Character',

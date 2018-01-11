@@ -30,5 +30,11 @@ var level = {
 			header : '9 of Herbsur, 1098',
 			text : 'On the second day, I found a library with piles of notes everywhere.  All on subjects of summoning great power; someone seemed desperate, dangerous or mad. Among them I finally found the word I\'ve been searching for all these years, \'Kataban\'. As the notes say, the powerful spirit who resides in the realm of the dead and loves games and wagers.  Anyone who summons Kataban may ask for aid from the spirit\'s powers, which overshadow all magics in the living realms. If I find the source these notes come from, I have found all I shall ever need on this earth!<br/><br/>- Chen ed Dal',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})]
+		})],
+	mapBuilder :  
+		new Lib.MapBuilderRectangle({
+			rectangleSize : 10,
+			cols : map_width,
+			rows : map_height
+		})
 }

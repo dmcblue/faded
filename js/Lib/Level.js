@@ -3,6 +3,7 @@ var Level =
 		Base.call(this, args);
 		this.addProperty(args, 'width', true, null, parseInt);
 		this.addProperty(args, 'height', true, null, parseInt);
+		this.addProperty(args, 'mapBuilder', true);
 		this.addProperty(args, 'zombies', false, 0, parseInt);
 		this.addProperty(args, 'ghosts', false, 0, parseInt);
 		this.addProperty(args, 'nobles', false, 0, parseInt);

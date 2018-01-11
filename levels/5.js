@@ -57,5 +57,11 @@ var level = {
 			header : '',
 			text : 'Why this fate? What have I done to deserve this? And the people, the steward, the explorer, the mages? For all my efforts, were any saved? After all these endless moments of darkness, I being to ask terrible questions.  Is there such a thing as being saved in this awful world? Do we deserve saving? Is there anything to our lives without our power to force our fates, or do gentle moments and high values hold meaning beyond our cruel ends? This is end, this is the end, this is the end...',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})]
+		})],
+	mapBuilder :  
+		new Lib.MapBuilderRectangle({
+			rectangleSize : 10,
+			cols : map_width,
+			rows : map_height
+		})
 }

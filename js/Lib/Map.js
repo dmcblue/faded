@@ -5,13 +5,11 @@ var Map =
 		}
 		args.classes.push('map');
 		Grid.call(this, args);
-		if(args.arr === undefined){
-			var times = Math.round((this.rows+this.cols)/1);
-			this.arr = this.makeArray(times, 10, 10);
-		}else{
-			this.arr = args.arr;
-		}
+		this.addProperty(args, 'builder');
+		this.arr = this.builder.build();
 		this.cache = null;
+		
+		//set classes in HTML
 		var cnt = 0;
 		for(var i = 0, ilen = this.arr.length; i < ilen; i++){
 			var row = this.arr[i];
@@ -20,7 +18,6 @@ var Map =
 				cnt += this.arr[i][j];
 			}
 		}
-		//console.log('count', cnt);
 	};
 
 Map.prototype = Object.create(Grid.prototype);

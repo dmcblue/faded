@@ -30,5 +30,11 @@ var level = {
 			header : '1 of Kalsurn, 1142',
 			text : 'We have successfully entered the \'Dark Castle\'. How many have tried their luck in these halls, hunting for treasures in its belly?  I suspect such adventurers are the only one\'s to enter here in decades.  I feel so proud to walk where so many of my brethren have walked, but where they have failed or fled, I will prevail.<br/><br/>- Romina Hyba',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})]
+		})],
+	mapBuilder :  
+		new Lib.MapBuilderRectangle({
+			rectangleSize : 10,
+			cols : map_width,
+			rows : map_height
+		})
 }
