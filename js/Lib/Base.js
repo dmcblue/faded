@@ -27,12 +27,39 @@ Base.prototype.addProperty =
 Base.prototype.getClass = 
 	function(){
 		//console.log(this);
-		return this[this.prototype !== undefined ? 'prototype' : '__proto__'].constructor.name;
+		return this.getPrototype().constructor.name;
+	};
+
+Base.prototype.getPrototype = 
+	function(){
+		return this[this.prototype !== undefined ? 'prototype' : '__proto__'];
 	};
 
 Base.prototype.ensure =
-	function(methodName){
-		if(!this[this.prototype !== undefined ? 'prototype' : '__proto__'].hasOwnProperty(methodName)){
-			throw this.getClass() + " missing required method '" + methodName + "'";
+	function(methodName, parameters){
+		if(!this.getPrototype().hasOwnProperty(methodName)){
+			throw this.getClass() 
+				+ " missing required method '" + methodName + "'";
+		}
+		
+		parameters = parameters || [];
+		
+		var functionParameters = 
+			Tools.getFunctionParameters(this.getPrototype()[methodName]);
+		var valid = parameters.length === functionParameters.length;
+		
+		for(
+			var i = 0, ilen = parameters.length; 
+			i < ilen && valid; 
+			i++
+		){
+			valid = valid && parameters[i] === functionParameters[i];
+		}
+		
+		if(!valid){
+			throw this.getClass() 
+				+ " method '" + methodName + "' "
+				+"parameters ('" + functionParameters.join("','") + "') " 
+				+ " do not match Interface parameters ('" + parameters.join("','") + "') ";
 		}
 	};
