@@ -56,6 +56,15 @@ Item.prototype.addClass =
 		Tools.addClass(this.element, className);
 	};
 
+Item.prototype.getBoundingBox =
+	function(){
+		var position = this.getPosition();
+		return [
+			position,
+			position.add(new Point(this.width, this.height))
+		];
+	};
+
 Item.prototype.getCenterPosition = 
 	function(){
 		var position = this.getPosition();

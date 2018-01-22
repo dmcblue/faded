@@ -32,5 +32,6 @@ var level = {
 			rectangleSize : 10,
 			cols : map_width,
 			rows : map_height
-		})
+		}),
+	mapPositioner : new Lib.MapItemPositionerRandom()
 }

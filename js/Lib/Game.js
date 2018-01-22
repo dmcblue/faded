@@ -259,7 +259,8 @@ Game.prototype.load =
 					height : level.width, 
 					blockSize : this.blockSize,
 					position : new Point(0, 0),
-					builder : level.mapBuilder
+					builder : level.mapBuilder,
+					positioner : level.mapPositioner
 				}
 			);
 		
@@ -507,13 +508,6 @@ Game.prototype.update =
 						exit.pickup(this.player);
 					}
 				}
-				
-				console.log(
-					this.interactables[0], 
-					this.player,
-					this.interactables[0].getPosition().distanceTo(this.player.getPosition()),
-					this.player.radius + this.interactables[0].radius,
-				);
 			}
 			
 			for(var i = 0; i < this.candles.length; i++){

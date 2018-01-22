@@ -25,6 +25,24 @@ var Tools =
 				}
 				return clonedArray;
 			},
+		getFunctionParameters :
+			function(func){
+				//https://davidwalsh.name/javascript-arguments
+				// First match everything inside the function argument parens.
+				var args = func.toString().match(/function\s*.*?\(([^)]*)\)/);
+				if(args === null){
+					return [];
+				}
+				args = args[1];
+				// Split the arguments string into an array comma delimited.
+				return args.split(',').map(function(arg) {
+				  // Ensure no inline comments are parsed and trim the whitespace.
+				  return arg.replace(/\/\*.*\*\//, '').trim();
+				}).filter(function(arg) {
+				  // Ensure no undefined values are added.
+				  return arg;
+				});
+			},
 		inRange :
 			function(min, val, max){
 				return Math.max(Math.min(val, max), min);

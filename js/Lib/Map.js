@@ -7,6 +7,7 @@ var Map =
 		Grid.call(this, args);
 		this.addProperty(args, 'builder');
 		this.arr = this.builder.build();
+		this.addProperty(args, 'positioner');
 		this.cache = null;
 		
 		//set classes in HTML
@@ -120,22 +121,38 @@ Map.prototype.check =
 			&& this.arr[sw.x][sw.y];
 	};
 
-Map.prototype.cloneArray = 
-	function(){
-		var clonedArray = [];
-		for(var i = 0, ilen = this.arr.length; i < ilen; i++){
-			var clonedRow = [];
-			for(var j = 0, jlen = this.arr[i].length; j < jlen; j++){
-				clonedRow.push(this.arr[i][j]);
+Map.prototype.isValidPositionOnArray =
+	function(array, position, mapItem, blockSize){
+		var boundingBox = mapItem.getBoundingBox();
+		var 
+			topLeft = boundingBox[0].scale(1/blockSize).floor().add(position),
+			bottomRight = boundingBox[1].scale(1/blockSize).ceil().add(position),
+			valid = topLeft.x >= 0 && topLeft.y >= 0
+				&& bottomRight.x < array.length
+				&& bottomRight.y < array[0].length
+		;
+		
+		for(
+			var i = topLeft.x, ilen = bottomRight.x + 1;
+			i < ilen && valid;
+			i++
+		){
+			for(
+				var j = topLeft.y, jlen = bottomRight.y + 1;
+				j < jlen && valid;
+				j++
+			){
+				valid = valid && (array[i][j] !== Map.STATE_UNWALKABLE);
 			}
-			clonedArray.push(clonedRow);
 		}
 		
-		return clonedArray;
+		return valid;
 	};
 
 Map.prototype.findPosition =
 	function(character, tries){
+		return this.positioner.findAndSetPosition(this, character, this.blockSize);
+		/*
 		if(tries === undefined){tries = Map.TRIES;}
 		if(!this.cache){this.resetCache();}
 		
@@ -168,6 +185,7 @@ Map.prototype.findPosition =
 		}
 		
 		return position;//.scale(this.blockSize);
+		//*/
 	};
 
 Map.prototype._findPosition =
@@ -203,67 +221,22 @@ Map.prototype._findPosition =
 		return new Point(x, y);
 	};
 
-Map.prototype.makeArray =
-	function(rounds, width, height){
-		var 
-			rows = Math.round(this.height/this.blockSize),
-			cols = Math.round(this.height/this.blockSize)
-		;
-		
-		var arr = [];
-		for(var i = 0; i < rows; i++){
-			var row = [];
-			for(var j = 0; j < cols; j++){
-				row.push(Map.STATE_UNWALKABLE);
-			}
-			arr.push(row);
-		}
-		
-		var 
-			w = Tools.randomInteger(3, width, true),
-			h = Tools.randomInteger(3, height, true),
-			x = Math.round(cols/2),
-			y = Math.round(rows/2),
-			rects = []
-		;
-		for(var i = 0; i < rounds; i++){
-			//console.log(w, h, x, y);
-			rects.push({w:w, h:h, x:x, y:y});
-			
-			for(var j = 0; j < h; j++){
-				for(var k = 0; k < w; k++){
-					arr[x + k][y + j] = Map.STATE_WALKABLE;
-				}
-			}
-			
-			var rect = rects[Tools.randomInteger(0, rects.length)];
-			
-			if(Tools.randomBoolean()){
-				x = Tools.randomBoolean() ? rect.x : rect.x + rect.w - 1;
-				y = Tools.randomInteger(rect.y + 1, rect.y + rect.h - 1, true);
-			}else{
-				y = Tools.randomBoolean() ? rect.y : rect.y + rect.h - 1;
-				x = Tools.randomInteger(rect.x + 1, rect.x + rect.w - 1, true);
-			}
-			w = Tools.randomInteger(3, width, true);
-			h = Tools.randomInteger(3, height, true);
-			if(Tools.randomBoolean()){
-				x = Tools.inRange(0, x - w, cols);
-			}else{
-				w = Tools.inRange(0, w, cols - x);
-			}
-			
-			if(Tools.randomBoolean()){
-				y = Tools.inRange(0, y - h, rows);
-			}else{
-				h = Tools.inRange(0, h, rows - y);
-			}
-		}
-		
-		return arr;
+Map.prototype.getHeight = 
+	function(){
+		return this.arr[0].length;
+	};
+
+Map.prototype.getWidth = 
+	function(){
+		return this.arr.length;
 	};
 
 Map.prototype.resetCache =
 	function(){
-		this.cache = Tools.clonePlane(this.arr);//this.cloneArray();
+		this.cache = Tools.clonePlane(this.arr);
+	};
+
+Map.prototype.toArray = 
+	function(){
+		return Tools.clonePlane(this.arr);
 	};

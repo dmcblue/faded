@@ -31,6 +31,8 @@
 					'Grid',
 					'MapBuilderInterface',
 					'MapBuilderRectangle',
+					'MapItemPositionerInterface',
+					'MapItemPositionerRandom',
 					'Map',
 					'Mask',
 					'Character',
