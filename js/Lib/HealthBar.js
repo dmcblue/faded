@@ -18,8 +18,13 @@ var HealthBar =
 		bottom.className = HealthBar.CLASS_BOTTOM;
 		this.element.appendChild(bottom);
 		
+		var text = document.createElement('div');
+		text.className = HealthBar.CLASS_TEXT;
+		this.element.appendChild(text);
+		
 		this.top = top;
 		this.bar = mid;
+		this.text = text;
 		
 		this.maxBarHeight = this.height - top.offsetHeight - bottom.offsetHeight;
 		
@@ -33,11 +38,13 @@ HealthBar.prototype.constructor = HealthBar;
 HealthBar.CLASS_TOP = 'healthbar-top';
 HealthBar.CLASS_MIDDLE = 'healthbar-middle';
 HealthBar.CLASS_BOTTOM = 'healthbar-bottom';
+HealthBar.CLASS_TEXT = 'healthbar-text';
 
 HealthBar.prototype.set =
 	function(health){
 		var height = (health/100)*this.maxBarHeight;
 		this.bar.style.height = Math.round(height > 0 ? height : 0) + 'px';
+		this.text.innerHTML = health + '%';
 	};
 
 HealthBar.prototype.update =
