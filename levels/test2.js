@@ -1,6 +1,6 @@
 var level = {
-	width : map_width*blockSize,
-	height : map_height*blockSize,
+	width : 12*blockSize,
+	height : 12*blockSize,
 	zombies : 1,
 	ghosts : 0,
 	nobles : 0,
@@ -21,9 +21,9 @@ var level = {
 	}*/],
 	mapBuilder :  
 		new Lib.MapBuilderFromSchema({
-			schema : '<?php echo Tools::getMap("test"); ?>'
+			schema : '<?php echo Tools::getMap("test2"); ?>'
 		}),
 	mapPositioner : new Lib.MapItemPositionerFromSchema({
-		schema : '<?php echo Tools::getMap("test"); ?>'
+		schema : '<?php echo Tools::getMap("test2"); ?>'
 	})
 }

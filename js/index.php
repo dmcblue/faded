@@ -31,8 +31,10 @@
 					'Grid',
 					'MapBuilderInterface',
 					'MapBuilderRectangle',
+					'MapBuilderFromSchema',
 					'MapItemPositionerInterface',
 					'MapItemPositionerRandom',
+					'MapItemPositionerFromSchema',
 					'Map',
 					'Mask',
 					'Character',
@@ -51,6 +53,7 @@
 					'Throne',
 					'DamnedThrone',
 					'HealthBar',
+					'MapSchema',
 				),
 		);
 	
