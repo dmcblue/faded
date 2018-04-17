@@ -60,8 +60,8 @@ MapSchema.getObjectSymbol =
 MapSchema.schemaIndexToArrayPosition =
 	function(schema, index){
 		var lineLength = schema.indexOf('\n') + 1;
-		var y = Math.floor(index/lineLength);
-		var x = index - (y * lineLength);
+		var x = Math.floor(index/lineLength);
+		var y = index - (x * lineLength);
 		
 		return new Point(x, y);
 	};
@@ -70,8 +70,8 @@ MapSchema.arrayPositionToSchemaIndex =
 	function(schema, position){
 		var lineLength = schema.indexOf('\n') + 1;
 		var index = 
-			(position.y * lineLength)
-			+ position.x
+			(position.x * lineLength)
+			+ position.y
 		;
 		
 		return index;
@@ -90,5 +90,5 @@ MapSchema.stringToArray =
 			}
 		}
 		
-		return arr;
+		return Tools.transposePlane(arr);
 	};

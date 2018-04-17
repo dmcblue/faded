@@ -1,17 +1,17 @@
 var level = {
 	width : map_width*blockSize,
 	height : map_height*blockSize,
-	zombies : 1,
+	zombies : 0,
 	ghosts : 0,
 	nobles : 0,
-	candles : 2,
+	candles : 0,
 	damnedThrones : 0,
 	papers : 
-		[new Lib.Message({
+		[/*new Lib.Message({
 			header : 'Hi message',
 			text : 'Message text',
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
-		})],
+		})*/],
 	thrones : [/*{
 		classes : ['malachite'],
 		choiceHeader : 'Throne of the Conquerer &amp; the Pawn',
@@ -21,9 +21,9 @@ var level = {
 	}*/],
 	mapBuilder :  
 		new Lib.MapBuilderFromSchema({
-			schema : '<?php echo Tools::getMap("test"); ?>'
+			schema : '<?php echo Tools::getMap("1"); ?>'
 		}),
 	mapPositioner : new Lib.MapItemPositionerFromSchema({
-		schema : '<?php echo Tools::getMap("test"); ?>'
+		schema : '<?php echo Tools::getMap("1"); ?>'
 	})
 }

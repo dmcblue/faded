@@ -43,6 +43,21 @@ var Tools =
 				  return arg;
 				});
 			},
+		initPlane :
+			function(width, height, initialValue){
+				if(initialValue === undefined){
+					initialValue = 0;
+				}
+				var array = [];
+				for(var i = 0, ilen = width; i < ilen; i++){
+					var row = [];
+					for(var j = 0, jlen = height; j < jlen; j++){
+						row[j] = initialValue;
+					}
+					array.push(row);
+				}
+				return array;
+			},
 		inRange :
 			function(min, val, max){
 				return Math.max(Math.min(val, max), min);
@@ -65,6 +80,10 @@ var Tools =
 				var added = inclusive ? 1 : 0;
 				return Math.floor(Math.random() * (max - min + added)) + min;
 			},
+		randomItem :
+			function(arr){
+				return arr[Tools.randomInteger(0, arr.length, false)];
+			},
 		removeClass :
 			function(element, className){
 				var index = -1;
@@ -84,5 +103,16 @@ var Tools =
 					classes.splice(i, 1);
 					element.className = classes.join(' ');
 				}
+			},
+		transposePlane :
+			function(array){
+				console.log(array);
+				var clonedArray = Tools.initPlane(array[0].length, array.length);
+				for(var i = 0, ilen = array.length; i < ilen; i++){
+					for(var j = 0, jlen = array[i].length; j < jlen; j++){
+						clonedArray[j][i] = array[i][j];
+					}
+				}
+				return clonedArray;
 			}
 	};

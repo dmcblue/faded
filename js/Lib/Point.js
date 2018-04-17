@@ -27,6 +27,22 @@ Point.DOWN_RIGHT  = Point.SE = Point.SOUTH_EAST = new Point({ x : Point.DIAGONAL
 Point.DOWN_LEFT   = Point.SW = Point.SOUTH_WEST = new Point({ x : -1 * Point.DIAGONAL,  y : Point.DIAGONAL });
 Point.UP_LEFT     = Point.NW = Point.NORTH_WEST = new Point({ x : -1 * Point.DIAGONAL,  y : -1 * Point.DIAGONAL });
 
+Point.DIRECTIONS = [
+	Point.N, 
+	Point.NE, 
+	Point.E,
+	Point.SE,
+	Point.S,
+	Point.SW,
+	Point.W,
+	Point.NW
+];
+
+Point.getRandomDirection = 
+	function(){
+		return Tools.randomItem(Point.DIRECTIONS);
+	};
+
 Point.prototype.absCeil =
 	function(){
 		return new Point(

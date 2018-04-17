@@ -32,8 +32,8 @@ var level = {
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
 		})],
 	mapBuilder :  
-		new Lib.MapBuilderRectangle({
-			rectangleSize : 10,
+		new Lib.MapBuilderRectangleV2({
+			rectangleSize : 8,
 			cols : map_width,
 			rows : map_height
 		}),
