@@ -28,10 +28,10 @@ var level = {
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
 		})],
 	mapBuilder :  
-		new Lib.MapBuilderRectangle({
+		new Lib.MapBuilderRectangleV2({
 			rectangleSize : 10,
 			cols : map_width,
 			rows : map_height
 		}),
-	mapPositioner : new Lib.MapItemPositionerRandom()
+	mapPositioner : new Lib.MapItemPositionerRandomV2()
 }

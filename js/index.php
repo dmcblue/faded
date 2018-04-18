@@ -36,6 +36,7 @@
 					'MapBuilderRectangleV2',
 					'MapItemPositionerInterface',
 					'MapItemPositionerRandom',
+					'MapItemPositionerRandomV2',
 					'MapItemPositionerFromSchema',
 					'Map',
 					'Mask',

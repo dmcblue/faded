@@ -64,5 +64,5 @@ var level = {
 			cols : map_width,
 			rows : map_height
 		}),
-	mapPositioner : new Lib.MapItemPositionerRandom()
+	mapPositioner : new Lib.MapItemPositionerRandomV2()
 }
