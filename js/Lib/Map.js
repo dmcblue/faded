@@ -8,6 +8,7 @@ var Map =
 		this.addProperty(args, 'builder');
 		this.arr = this.builder.build();
 		this.addProperty(args, 'positioner');
+		this.positioner.reset();
 		this.cache = null;
 		
 		//set classes in HTML

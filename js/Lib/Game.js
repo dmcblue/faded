@@ -3,8 +3,6 @@ var Game =
 		Base.call(this, args);
 		OnKeyUpInterface.call(this, args);
 		this.isPlaying = false;
-		//this.addProperty(args, 'mapSelector');
-		//this.addProperty(args, 'maskSelector');
 		this.addProperty(args, 'healthSelector');
 		this.addProperty(args, 'screenMessageSelector');
 		this.addProperty(args, 'paperMessageSelector');
@@ -93,6 +91,7 @@ var Game =
 		
 		this.frame.eventHandlers[Player.EVENT_DEATH] = 
 			function(item, data, event){
+				self.endLevel();
 				self.handleScreenMessage(
 					item, 
 					[new Message({
@@ -211,6 +210,13 @@ Game.BLOCK_SIZE = 20;
 Game.EVENT_REQUEST_NEXT_LEVEL = 'faded_game_event_request_next_level';
 Game.EVENT_RESTART = 'faded_game_event_restart';
 Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
+
+Game.prototype.endLevel =
+	function(){
+		this.playerPause();
+		this.musicPlayer.destroy();
+		clearInterval(this.updateInterval);
+	};
 
 Game.prototype.handleMessage =
 	function(item, message, event){
@@ -378,9 +384,7 @@ Game.prototype.load =
 
 Game.prototype.nextLevel =
 	function(){
-		this.playerPause();
-		this.musicPlayer.destroy();
-		clearInterval(this.updateInterval);
+		this.endLevel();
 		this.currentLevel++;
 		if(this.currentLevel < this.levels.length){
 			this.load();
@@ -439,8 +443,6 @@ Game.prototype.playerToggle =
 
 Game.prototype.restart =
 	function(){
-		this.pause();
-		clearInterval(this.updateInterval);
 		this.currentLevel = 0;
 		this.load();
 		this.screenMessageBox.close();
@@ -449,8 +451,6 @@ Game.prototype.restart =
 
 Game.prototype.restartLevel =
 	function(){
-		this.pause();
-		clearInterval(this.updateInterval);
 		this.load();
 		this.startLevel();
 	};

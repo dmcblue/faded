@@ -1,11 +1,7 @@
 var MapItemPositionerRandomV2 = 
 	function(args){
 		MapItemPositionerInterface.call(this, args);
-		this.cache = {
-			dictionary : {},
-			list : [],
-			map : []
-		};
+		this.reset();
 	};
 
 MapItemPositionerRandomV2.prototype = Object.create(MapItemPositionerInterface.prototype);
@@ -70,6 +66,15 @@ MapItemPositionerRandomV2.prototype.findAndSetPosition =
 		var position = this.findPosition(map, item, blockSize);
 		this.setPosition(position, map, item, blockSize);
 		return position;
+	};
+
+MapItemPositionerRandomV2.prototype.reset =
+	function(){
+		this.cache = {
+			dictionary : {},
+			list : [],
+			map : []
+		};
 	};
 
 MapItemPositionerRandomV2.prototype.setPosition =

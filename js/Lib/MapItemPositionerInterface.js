@@ -3,6 +3,7 @@ var MapItemPositionerInterface =
 		Base.call(this, args);
 		this.ensure('findPosition', ['map', 'item', 'blockSize']);
 		this.ensure('findAndSetPosition', ['map', 'item', 'blockSize']);
+		this.ensure('reset');
 		this.ensure('setPosition', ['position', 'map', 'item', 'blockSize']);
 	};
 

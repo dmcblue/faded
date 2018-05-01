@@ -2,7 +2,7 @@ var MapItemPositionerFromSchema =
 	function(args){
 		MapItemPositionerInterface.call(this, args);
 		this.addProperty(args, 'schema');
-		this.cache = '' + this.schema;
+		this.reset();
 	};
 
 MapItemPositionerFromSchema.prototype = Object.create(MapItemPositionerInterface.prototype);
@@ -22,6 +22,11 @@ MapItemPositionerFromSchema.prototype.findAndSetPosition =
 		var position = this.findPosition(map, item, blockSize);
 		this.setPosition(position, map, item, blockSize);
 		return position;
+	};
+
+MapItemPositionerFromSchema.prototype.reset =
+	function(){
+		this.cache = '' + this.schema;
 	};
 
 MapItemPositionerFromSchema.prototype.setPosition =
