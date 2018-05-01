@@ -64,5 +64,6 @@ var level = {
 			cols : map_width,
 			rows : map_height
 		}),
-	mapPositioner : new Lib.MapItemPositionerRandomV2()
+	mapPositioner : new Lib.MapItemPositionerRandomV2(),
+	music:'music/8.mp3'
 }

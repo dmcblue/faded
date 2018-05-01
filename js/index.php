@@ -9,6 +9,7 @@
 					'Tools',
 					'Type',
 					'Keys',
+					'OnKeyUpInterface',
 					'Message',
 					'Game',
 					'Level',
@@ -57,6 +58,7 @@
 					'DamnedThrone',
 					'HealthBar',
 					'MapSchema',
+					'MusicPlayer',
 				),
 		);
 	

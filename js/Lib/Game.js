@@ -1,6 +1,7 @@
 var Game = 
 	function(args){
 		Base.call(this, args);
+		OnKeyUpInterface.call(this, args);
 		this.isPlaying = false;
 		//this.addProperty(args, 'mapSelector');
 		//this.addProperty(args, 'maskSelector');
@@ -12,7 +13,7 @@ var Game =
 		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
-		this.addProperty(args, 'toMainMenu', false, function(){
+		this.addProperty(args, 'onToMainMenu', false, function(){
 			location.reload();//TODO
 		}); //ms
 		
@@ -49,9 +50,11 @@ var Game =
 						header : '',
 						text   : 'The end.<br/><br/>Thank you for playing.',
 						buttons : [{
-							label : "New Game (e)",
-							keyClick : Keys.KEY_E,
+							label : "New Game (r)",
+							keyClick : Keys.KEY_R,
 							onClick : function(){
+								self.playerPause();
+								self.musicPlayer.destroy();
 								var event = 
 									new CEvent({
 										target : self.frame.element, 
@@ -198,6 +201,7 @@ var Game =
 				selector : this.healthSelector
 			});
 		this._uniqueKeyId = Keys.subscribe(Keys.EVENT_TYPE_UP, this);
+		this.musicPlayer = new MusicPlayer();
 	};
 
 Game.prototype = Object.create(Base.prototype);
@@ -361,6 +365,10 @@ Game.prototype.load =
 		var luminants = this.luminousPickups.concat(this.luminousItems);
 		this.mask.set([this.player], luminants);
 		
+		if(level.music){
+			this.musicPlayer.setSource(level.music);
+		}
+		
 		this.updateInterval = 
 			setInterval(
 				(function(self){return function(){self.update();};})(this), 
@@ -370,7 +378,8 @@ Game.prototype.load =
 
 Game.prototype.nextLevel =
 	function(){
-		this.pause();
+		this.playerPause();
+		this.musicPlayer.destroy();
 		clearInterval(this.updateInterval);
 		this.currentLevel++;
 		if(this.currentLevel < this.levels.length){
@@ -396,7 +405,7 @@ Game.prototype.nextLevel =
 Game.prototype[Keys.INTERFACE_METHOD_UP] = //onKeyUp
 	function(keynum, event){
 		if(keynum === Keys.KEY_P){
-			this.toggle();
+			this.playerToggle();
 		}
 	};
 
@@ -408,6 +417,24 @@ Game.prototype.pause =
 Game.prototype.play =
 	function(){
 		this.isPlaying = true;
+	};
+
+Game.prototype.playerPause =
+	function(){
+		this.musicPlayer.pause();
+		this.pause();
+	};
+
+Game.prototype.playerPlay =
+	function(){
+		this.musicPlayer.play();
+		this.play();
+	};
+
+Game.prototype.playerToggle =
+	function(){
+		this.musicPlayer.toggle();
+		this.toggle();
 	};
 
 Game.prototype.restart =
@@ -431,6 +458,7 @@ Game.prototype.restartLevel =
 Game.prototype.startLevel =
 	function(){
 		var self = this;
+		this.musicPlayer.reset();
 		this.screenMessageBox.loadMessage(new Message({
 			header : "", 
 			text : "",
@@ -440,11 +468,19 @@ Game.prototype.startLevel =
 		this.screenMessageBox.fadeOut(function(){
 			self.play();
 		});
+		this.musicPlayer.play();
 	};
 
 Game.prototype.toggle =
 	function(){
 		this.isPlaying = !this.isPlaying;
+	};
+
+Game.prototype.toMainMenu =
+	function(){
+		this.playerPause();
+		this.musicPlayer.destroy();
+		this.onToMainMenu();
 	};
 
 Game.prototype.update =

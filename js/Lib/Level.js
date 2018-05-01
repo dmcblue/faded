@@ -13,6 +13,7 @@ var Level =
 		this.addProperty(args, 'papers', false, []);
 		this.addProperty(args, 'thrones', false, []);
 		this.addProperty(args, 'damnedThrones', false, 0, parseInt);
+		this.addProperty(args, 'music', false, false);
 	};
 
 Level.prototype = Object.create(Base.prototype);
