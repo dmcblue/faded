@@ -35,6 +35,8 @@
 					'MapBuilderRectangle',
 					'MapBuilderFromSchema',
 					'MapBuilderRectangleV2',
+					'MapBuilderRectangleV3',
+					'MapBuilderRectangleV4',
 					'MapItemPositionerInterface',
 					'MapItemPositionerRandom',
 					'MapItemPositionerRandomV2',

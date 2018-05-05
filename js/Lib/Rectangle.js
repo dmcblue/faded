@@ -23,3 +23,11 @@ var Rectangle =
 Rectangle.prototype = Object.create(Base.prototype);
 Rectangle.prototype.constructor = Rectangle;
 
+Rectangle.prototype.getRandomPoint =
+	function(){
+		return new Point(
+			Tools.randomInteger(this.x, this.x + this.width, false),
+			Tools.randomInteger(this.y, this.y + this.height, false)
+		);
+	};
+

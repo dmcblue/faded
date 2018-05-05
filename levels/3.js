@@ -32,10 +32,11 @@ var level = {
 			buttons : [Lib.MessageBox.BUTTON_CLOSE]
 		})],
 	mapBuilder :  
-		new Lib.MapBuilderRectangle({
-			rectangleSize : 10,
+		new Lib.MapBuilderRectangleV3({
+			rectangleSize : 6,
 			cols : map_width,
-			rows : map_height
+			rows : map_height,
+			rounds: 50
 		}),
 	mapPositioner : new Lib.MapItemPositionerRandomV2(),
 	music:'music/5.mp3'

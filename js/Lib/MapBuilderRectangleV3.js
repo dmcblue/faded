@@ -1,16 +1,16 @@
-var MapBuilderRectangleV2 = 
+var MapBuilderRectangleV3 = 
 	function(args){
 		MapBuilderInterface.call(this, args);
 		this.addProperty(args, 'rectangleSize', false, 10, parseInt);
 		this.addProperty(args, 'rows', false, 10, parseInt);
 		this.addProperty(args, 'cols', false, 10, parseInt);
-		this.addProperty(args, 'rounds', false, (this.rows + this.cols), parseInt);
+		this.addProperty(args, 'rounds', false, Math.round((this.rows + this.cols)/5), parseInt);
 	};
 
-MapBuilderRectangleV2.prototype = Object.create(MapBuilderInterface.prototype);
-MapBuilderRectangleV2.prototype.constructor = MapBuilderRectangleV2;
+MapBuilderRectangleV3.prototype = Object.create(MapBuilderInterface.prototype);
+MapBuilderRectangleV3.prototype.constructor = MapBuilderRectangleV3;
 
-MapBuilderRectangleV2.DIRECTIONS = [
+MapBuilderRectangleV3.DIRECTIONS = [
 	Point.N,
 	Point.E,
 	Point.S,
@@ -25,7 +25,7 @@ MapBuilderRectangleV2.DIRECTIONS = [
 	Point.NW
 ];
 
-MapBuilderRectangleV2.prototype.adjustDimensions =
+MapBuilderRectangleV3.prototype.adjustDimensions =
 	function(direction, width, height){
 		var w = width, h = height, temp = 0;
 		switch(direction){
@@ -51,7 +51,7 @@ MapBuilderRectangleV2.prototype.adjustDimensions =
 		return {width : w, height : h};
 	};
 
-MapBuilderRectangleV2.prototype.calculateCoverage = 
+MapBuilderRectangleV3.prototype.calculateCoverage = 
 	function(arr){
 		var covered = 0;
 		for(var i = 0, ilen = arr.length; i < ilen; i++){
@@ -65,7 +65,7 @@ MapBuilderRectangleV2.prototype.calculateCoverage =
 		return covered / (arr.length * arr[0].length);
 	};
 
-MapBuilderRectangleV2.prototype.getAddPoint =
+MapBuilderRectangleV3.prototype.getAddPoint =
 	function(rectangle, direction){
 		var 
 			x = rectangle.x, 
@@ -80,50 +80,34 @@ MapBuilderRectangleV2.prototype.getAddPoint =
 		
 		switch(direction){
 			case Point.N: 
-				//y = rectangle.y - rectangle.height + offsetY;
-				//x = rectangle.x + offsetX;
 				y = rectangle.y + offsetY;
 				x = rectangle.x + halfWidth;
 				break;
 			case Point.NE: 
-				//y = rectangle.y - rectangle.height + offsetY;
-				//x = rectangle.x + rectangle.width - offsetX;
 				y = rectangle.y + offsetY;
 				x = rectangle.x + rectangle.width - offsetX;
 				break;
 			case Point.E: 
-				//y = rectangle.y + offsetY;
-				//x = rectangle.x + rectangle.width - offsetX;
 				y = rectangle.y + halfHeight;
 				x = rectangle.x + rectangle.width - offsetX;
 				break;
 			case Point.SE: 
-				//y = rectangle.y + rectangle.height - offsetY;
-				//x = rectangle.x + rectangle.width - offsetX;
 				y = rectangle.y + rectangle.height - offsetY;
 				x = rectangle.x + rectangle.width - offsetX;
 				break;
 			case Point.S: 
-				//y = rectangle.y + rectangle.height - offsetY;
-				//x = rectangle.x + offsetX;
 				y = rectangle.y + rectangle.height - offsetY;
 				x = rectangle.x + halfWidth;
 				break;
 			case Point.SW: 
-				//y = rectangle.y + rectangle.height - offsetY;
-				//x = rectangle.x - rectangle.width + offsetX;
 				y = rectangle.y + rectangle.height - offsetY;
 				x = rectangle.x + offsetX;
 				break;
 			case Point.W: 
-				//y = rectangle.y + offsetY;
-				//x = rectangle.x - rectangle.width + offsetX;
 				y = rectangle.y + halfHeight;
 				x = rectangle.x + offsetX;
 				break;
 			case Point.NW: 
-				//y = rectangle.y - rectangle.height + offsetY;
-				//x = rectangle.x - rectangle.width + offsetX;
 				y = rectangle.y + offsetY;
 				x = rectangle.x + offsetX;
 				break;
@@ -133,12 +117,12 @@ MapBuilderRectangleV2.prototype.getAddPoint =
 		return new Point(x, y);
 	};
 
-MapBuilderRectangleV2.prototype.getDirection = 
+MapBuilderRectangleV3.prototype.getDirection = 
 	function(){
-		return Tools.randomItem(MapBuilderRectangleV2.DIRECTIONS);
+		return Tools.randomItem(MapBuilderRectangleV3.DIRECTIONS);
 	};
 
-MapBuilderRectangleV2.prototype.getNewOrigin = 
+MapBuilderRectangleV3.prototype.getNewOrigin = 
 	function(addPoint, direction, width, height){
 		var 
 			x = 0, 
@@ -193,7 +177,7 @@ MapBuilderRectangleV2.prototype.getNewOrigin =
  * @param {number} width
  * @param {number} height
  */
-MapBuilderRectangleV2.prototype.createRectangle =
+MapBuilderRectangleV3.prototype.createRectangle =
 	function(map, origin, width, height){
 		if(origin.x < 0){
 			width += -origin.x;
@@ -213,9 +197,50 @@ MapBuilderRectangleV2.prototype.createRectangle =
 		return new Rectangle(origin, width, height);
 	};
 	
-MapBuilderRectangleV2.prototype.build = 
+MapBuilderRectangleV3.prototype.build = 
 	function(){
 		var arr = Tools.initPlane(this.cols, this.rows, Map.STATE_UNWALKABLE);
+		
+		//create list of seeds
+		var quarterWidth = Math.round(this.cols/4);
+		var quarterHeight = Math.round(this.rows/4);
+		var seedPositions = [];
+		seedPositions.push(new Point(quarterWidth, quarterHeight));
+		seedPositions.push(new Point(quarterWidth*3, quarterHeight));
+		seedPositions.push(new Point(quarterWidth*3, quarterHeight*3));
+		seedPositions.push(new Point(quarterWidth, quarterHeight*3));
+		seedPositions.push(new Point(quarterWidth*2, quarterHeight*2));
+		//build small cluster for each seed
+		var rectangles = [];
+		for(var i = 0, ilen = seedPositions.length; i < ilen; i++){
+			rectangles.push(this.buildCluster(seedPositions[i], arr, this.rounds));
+		}
+		//connect seeds
+		for(var i = 0, ilen = rectangles.length; i < ilen; i++){
+			var nextIndex = (i + 1)%rectangles.length;
+			//select random rectangle from each in pair
+			var start = Tools.randomItem(rectangles[i]).getRandomPoint();
+			var end = Tools.randomItem(rectangles[nextIndex]).getRandomPoint();
+			arr = this.drawLine(arr, start, end, 3);
+		}
+		
+		return arr;
+	};
+
+MapBuilderRectangleV3.prototype.isNew =
+	function(map, rect){
+		var totsNew = true;
+		for(var i = rect.x, ilen = rect.x + rect.width; i < ilen; i++){
+			for(var j = rect.y, jlen = rect.y + rect.height; j < jlen; j++){
+				totsNew = totsNew && map[i][j] === Map.STATE_UNWALKABLE;
+			}
+		}
+		
+		return totsNew;
+	};
+
+MapBuilderRectangleV3.prototype.buildCluster = 
+	function(seedPosition, arr, rounds){
 		//Create rectangle
 		//one tenth of the average dimension
 		var 
@@ -230,14 +255,14 @@ MapBuilderRectangleV2.prototype.build =
 		rectangles.push(new Rectangle({
 			x : 
 				Tools.randomInteger(
-					center.x - startOffset, 
-					center.x + startOffset, 
+					seedPosition.x - startOffset, 
+					seedPosition.x + startOffset, 
 					true
 				),
 			y : 
 				Tools.randomInteger(
-					center.y - startOffset, 
-					center.y + startOffset, 
+					seedPosition.y - startOffset, 
+					seedPosition.y + startOffset, 
 					true
 				),
 			width : 
@@ -256,7 +281,7 @@ MapBuilderRectangleV2.prototype.build =
 		
 		//while (rounds and map coverage < max coverage)
 		var count = 0;var tots = 0;
-		while(count < this.rounds && this.calculateCoverage(arr) < .75){
+		while(count < rounds && this.calculateCoverage(arr) < .75){
 			//Select Rectangle from Rectangles
 			var 
 				rectangle = Tools.randomItem(rectangles),
@@ -301,38 +326,108 @@ MapBuilderRectangleV2.prototype.build =
 					arr[i][j] = Map.STATE_WALKABLE;
 				}
 			}
-			
-			if(isNew){
-				console.log('totally new', {
-					rectangle : rectangle,
-					newRectangle : newRectangle,
-					origin : origin,
-					dimensions : dimensions,
-					addPoint : addPoint,
-					direction : direction,
-					width : width,
-					height : height
-				});tots++;
-			}else{
-				console.log('not new');
-			}
-			
 			//Add rectangle to Rectangles
 			rectangles.push(newRectangle);
 			count++;
 		}
-		console.log(rectangles.length, tots);
-		return arr;
+		
+		return rectangles;
 	};
 
-MapBuilderRectangleV2.prototype.isNew =
-	function(map, rect){
-		var totsNew = true;
-		for(var i = rect.x, ilen = rect.x + rect.width; i < ilen; i++){
-			for(var j = rect.y, jlen = rect.y + rect.height; j < jlen; j++){
-				totsNew = totsNew && map[i][j] === Map.STATE_UNWALKABLE;
+MapBuilderRectangleV3.prototype.drawLine =
+	function(map, start, end, width){
+		var
+			slope = (end.y - start.y)/(end.x - start.x),
+			drawn = 0,
+			x = start.x,
+			y = start.y,
+			halfWidthLower = Math.floor((width - 1)/2),
+			halfWidthUpper = Math.ceil((width - 1)/2)
+		;
+		
+		var 
+			offset = end.y - slope*end.x
+		;
+		
+		if(!isFinite(slope)){
+			//vertical line
+			for(var i = Math.min(start.y, end.y), ilen = Math.max(start.y, end.y); i <= ilen; i++){
+				//map[start.x][i] = Map.STATE_WALKABLE;
+				this.drawRectangle(
+					map,
+					new Rectangle(
+						start.x - halfWidthLower, 
+						i - halfWidthLower,
+						width, 
+						width
+					)
+				);
+			}
+		}else if(Math.abs(slope) <= 1){
+			//0 to 45 degrees
+			var 
+				xDistance = Math.abs(start.x - end.x) || 1,
+				increment = start.x < end.x ? 1 : -1		
+			;
+			while(drawn <= xDistance){
+				y = Math.round(slope*x + offset);
+
+				//map[x][y] = Map.STATE_WALKABLE;	
+				this.drawRectangle(
+					map,
+					new Rectangle(
+						x - halfWidthLower, 
+						y - halfWidthLower,
+						width, 
+						width
+					)
+				);
+
+				drawn++;
+				x += increment;
+			}
+		}else{
+			//45 to 90
+			var 
+				yDistance = Math.abs(start.y - end.y) || 1,
+				increment = start.y < end.y ? 1 : -1		
+			;
+			
+			while(drawn <= yDistance){
+				x = Math.round((y - offset)/slope);
+				//map[x][y] = Map.STATE_WALKABLE;	
+				this.drawRectangle(
+					map,
+					new Rectangle(
+						x - halfWidthLower, 
+						y - halfWidthLower,
+						width, 
+						width
+					)
+				);
+
+				drawn++;
+				y += increment;
 			}
 		}
 		
-		return totsNew;
+		return map;
+	};
+
+MapBuilderRectangleV3.prototype.drawRectangle =
+	function(map, rectangle){
+		var
+			width = map.length,
+			height = map[0].length
+		;
+		
+		for(var i = rectangle.x, ilen = rectangle.x + rectangle.width; i < ilen; i++){
+			for(var j = rectangle.y, jlen = rectangle.y + rectangle.height; j < jlen; j++){
+				if(
+					Tools.isInRange(0, i, width) && Tools.isInRange(0, j, height)
+				){
+					map[i][j] = Map.STATE_WALKABLE;
+				}
+			}
+		}		
 	};

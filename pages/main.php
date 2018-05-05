@@ -16,6 +16,8 @@
 	</div>
 </section>
 <script>
+	//var audio = new Audio('music/1.mp3');audio.volume = 0.1;audio.play();
+	
 	var map_width   = 50,
 		map_height  = 50,
 		view_width  = 500,

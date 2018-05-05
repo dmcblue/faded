@@ -1,7 +1,7 @@
 var MapItemPositionerRandom = 
 	function(args){
 		MapItemPositionerInterface.call(this, args);
-		this.cache = null;
+		this.reset();
 	};
 
 MapItemPositionerRandom.prototype = Object.create(MapItemPositionerInterface.prototype);
@@ -48,6 +48,11 @@ MapItemPositionerRandom.prototype.findAndSetPosition =
 		var position = this.findPosition(map, item, blockSize);
 		this.setPosition(position, map, item, blockSize);
 		return position;
+	};
+
+MapItemPositionerRandom.prototype.reset =
+	function(){
+		this.cache = null;
 	};
 
 MapItemPositionerRandom.prototype.setPosition =
