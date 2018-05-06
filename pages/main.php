@@ -1,5 +1,5 @@
 <?php
-
+	$images = array_diff(scandir(__DIR__."/../css/images"), array('.','..'));
 ?>
 <section>
 	<div class="faded">
@@ -16,7 +16,17 @@
 	</div>
 </section>
 <script>
-	//var audio = new Audio('music/1.mp3');audio.volume = 0.1;audio.play();
+	var preloadImages = <?php echo json_encode(array_values($images)); ?>;
+	
+	window.onload = function(){
+		var preloader = new Lib.Preloader();
+		
+		for(var i = 0, ilen = preloadImages.length; i < ilen; i++){
+			preloader.add(Lib.Preloader.TYPE_IMAGE, "css/images/" + preloadImages[i]);
+		}
+		
+		preloader.loadAll();
+	};
 	
 	var map_width   = 50,
 		map_height  = 50,

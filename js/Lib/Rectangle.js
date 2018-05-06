@@ -1,11 +1,13 @@
 var Rectangle = 
 	function(){
 		if(arguments.length > 3){
+			Base.call(this, {});
 			this.x = parseFloat(arguments[0]);
 			this.y = parseFloat(arguments[1]);
 			this.width = parseFloat(arguments[2]);
 			this.height = parseFloat(arguments[3]);
 		}else if(arguments.length > 2){
+			Base.call(this, {});
 			this.x = parseFloat(arguments[0].x);
 			this.y = parseFloat(arguments[0].y);
 			this.width = parseFloat(arguments[1]);

@@ -11,12 +11,6 @@ MusicPlayer.prototype.constructor = MusicPlayer;
 MusicPlayer.DEFAULT_VOLUME = 0.1;
 MusicPlayer.INTERVAL_END_CHECK = 50;
 
-MusicPlayer.prototype.destroy =
-	function(){
-		this.pause();
-		clearInterval(this.endedInterval);
-	};
-
 MusicPlayer.prototype.pause =
 	function(){
 		this.isPlaying = false;
@@ -37,14 +31,15 @@ MusicPlayer.prototype.reset =
 MusicPlayer.prototype.seek =
 	function(time){
 		//this.player.fastSeek(time);
+		//fastSeek doesn't work in Chrome
 		this.player.currentTime = time;
 	};
 
 MusicPlayer.prototype.setSource =
-	function(source){
+	function(source, loop){
 		this.player = new Audio(source);
 		this.player.volume = MusicPlayer.DEFAULT_VOLUME;
-		this.player.loop = true;
+		this.player.loop = loop === undefined ? false : loop;
 	};
 
 MusicPlayer.prototype.toggle =

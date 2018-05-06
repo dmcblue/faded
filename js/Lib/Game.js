@@ -10,6 +10,7 @@ var Game =
 		this.addProperty(args, 'frame');
 		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
+		this.addProperty(args, 'soundDeath', false, Game.SOUND_DEATH);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
 		this.addProperty(args, 'onToMainMenu', false, function(){
 			location.reload();//TODO
@@ -52,7 +53,6 @@ var Game =
 							keyClick : Keys.KEY_R,
 							onClick : function(){
 								self.playerPause();
-								self.musicPlayer.destroy();
 								var event = 
 									new CEvent({
 										target : self.frame.element, 
@@ -92,6 +92,9 @@ var Game =
 		this.frame.eventHandlers[Player.EVENT_DEATH] = 
 			function(item, data, event){
 				self.endLevel();
+				self.musicPlayer.pause();
+				self.musicPlayer.setSource(self.soundDeath, false);
+				self.musicPlayer.play();
 				self.handleScreenMessage(
 					item, 
 					[new Message({
@@ -210,11 +213,11 @@ Game.BLOCK_SIZE = 20;
 Game.EVENT_REQUEST_NEXT_LEVEL = 'faded_game_event_request_next_level';
 Game.EVENT_RESTART = 'faded_game_event_restart';
 Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
+Game.SOUND_DEATH = "music/death.mp3";
 
 Game.prototype.endLevel =
 	function(){
 		this.playerPause();
-		this.musicPlayer.destroy();
 		clearInterval(this.updateInterval);
 	};
 
@@ -372,7 +375,7 @@ Game.prototype.load =
 		this.mask.set([this.player], luminants);
 		
 		if(level.music){
-			this.musicPlayer.setSource(level.music);
+			this.musicPlayer.setSource(level.music, true);
 		}
 		
 		this.updateInterval = 
@@ -479,7 +482,6 @@ Game.prototype.toggle =
 Game.prototype.toMainMenu =
 	function(){
 		this.playerPause();
-		this.musicPlayer.destroy();
 		this.onToMainMenu();
 	};
 
