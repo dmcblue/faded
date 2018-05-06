@@ -11,6 +11,7 @@ var Game =
 		this.addProperty(args, 'blockSize', false, Game.BLOCK_SIZE);
 		this.addProperty(args, 'currentLevel', false, 0, parseInt);
 		this.addProperty(args, 'soundDeath', false, Game.SOUND_DEATH);
+		this.addProperty(args, 'soundHurt', false, Game.SOUND_HURT);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
 		this.addProperty(args, 'onToMainMenu', false, function(){
 			location.reload();//TODO
@@ -88,6 +89,11 @@ var Game =
 				self.mask.staticsSet = false;
 				event.stopPropagation(); //confine to this game
 			};
+		
+		this.frame.eventHandlers[Player.EVENT_HURT] = 
+			function(item, data, event){
+				self.soundEffects.play('hurt');
+			};	
 		
 		this.frame.eventHandlers[Player.EVENT_DEATH] = 
 			function(item, data, event){
@@ -204,6 +210,8 @@ var Game =
 			});
 		this._uniqueKeyId = Keys.subscribe(Keys.EVENT_TYPE_UP, this);
 		this.musicPlayer = new MusicPlayer();
+		this.soundEffects = new SoundEffectManager();
+		this.soundEffects.add('hurt', this.soundHurt);
 	};
 
 Game.prototype = Object.create(Base.prototype);
@@ -214,6 +222,7 @@ Game.EVENT_REQUEST_NEXT_LEVEL = 'faded_game_event_request_next_level';
 Game.EVENT_RESTART = 'faded_game_event_restart';
 Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
 Game.SOUND_DEATH = "music/death.mp3";
+Game.SOUND_HURT = "music/hurt.mp3";
 
 Game.prototype.endLevel =
 	function(){

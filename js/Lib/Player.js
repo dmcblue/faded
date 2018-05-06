@@ -23,6 +23,7 @@ Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
 Player.EVENT_DEATH = 'faded_player_event_death';
+Player.EVENT_HURT = 'faded_player_event_hurt';
 Player.ID = 0;
 Player.HEALTH_MAX = 100;
 Player.LUMINANCE = 4; //distance
@@ -48,14 +49,23 @@ Player.prototype.heal =
 	};
 
 Player.prototype.hurt =
-	function(damage){
+	function(damage, fromEnemy){
 		this.health = Math.max(this.health - damage, 0);
+		if(fromEnemy){
+			var event = 
+				new CEvent({
+					target : this.element.parentElement, 
+					type : Player.EVENT_HURT, 
+					data : {}
+				});
+			event.trigger();
+		}
 	};
 
 Player.prototype.update =
 	function(){
 		if(this.counterFade.updateAndCheck()){
-			this.hurt(1);
+			this.hurt(1, false);
 		}
 		this.element.style.opacity = (this.health/100);
 		this.luminosity = 5 + (this.health/100)*5;

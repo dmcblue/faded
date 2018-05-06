@@ -1,4 +1,1 @@
-- Better placement of map items
-- Music 2/5
-- Text indicator of health %
-- Better map
+- Sound effects

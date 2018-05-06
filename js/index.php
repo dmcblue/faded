@@ -61,6 +61,7 @@
 					'HealthBar',
 					'MapSchema',
 					'MusicPlayer',
+					'SoundEffectManager',
 					'Preloader',
 				),
 		);

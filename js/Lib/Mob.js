@@ -9,5 +9,5 @@ Mob.prototype.constructor = Mob;
 
 Mob.prototype.attack =
 	function(player){
-		player.hurt(this.damage);
+		player.hurt(this.damage, true);
 	};
