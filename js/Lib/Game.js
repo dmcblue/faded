@@ -13,9 +13,11 @@ var Game =
 		this.addProperty(args, 'soundDeath', false, Game.SOUND_DEATH);
 		this.addProperty(args, 'soundHurt', false, Game.SOUND_HURT);
 		this.addProperty(args, 'interval', true, null, parseInt); //ms
+		this.addProperty(args, 'volume', false, Game.VOLUME_DEFAULT, parseFloat);
 		this.addProperty(args, 'onToMainMenu', false, function(){
 			location.reload();//TODO
 		}); //ms
+		this.isMuted = false;
 		
 		var self = this;
 		this.frame.eventHandlers[MessageEvent.EVENT_SEND] = 
@@ -209,8 +211,8 @@ var Game =
 				selector : this.healthSelector
 			});
 		this._uniqueKeyId = Keys.subscribe(Keys.EVENT_TYPE_UP, this);
-		this.musicPlayer = new MusicPlayer();
-		this.soundEffects = new SoundEffectManager();
+		this.musicPlayer = new MusicPlayer({volume : this.volume});
+		this.soundEffects = new SoundEffectManager({volume : this.volume});
 		this.soundEffects.add('hurt', this.soundHurt);
 	};
 
@@ -223,6 +225,11 @@ Game.EVENT_RESTART = 'faded_game_event_restart';
 Game.EVENT_TO_MAIN_MENU = 'faded_game_event_to_main_menu';
 Game.SOUND_DEATH = "music/death.mp3";
 Game.SOUND_HURT = "music/hurt.mp3";
+Game.VOLUME_DEFAULT = 0.1;
+Game.VOLUME_MAX = 1;
+Game.VOLUME_MIN = 0;
+Game.VOLUME_MUTE = 0;
+Game.VOLUME_STEP = 0.025;
 
 Game.prototype.endLevel =
 	function(){
@@ -423,6 +430,22 @@ Game.prototype[Keys.INTERFACE_METHOD_UP] = //onKeyUp
 		if(keynum === Keys.KEY_P){
 			this.playerToggle();
 		}
+		
+		if(keynum === Keys.KEY_M){
+			if(this.isMuted){
+				this.unmute();
+			}else{
+				this.mute();
+			}
+		}
+		
+		if(keynum === Keys.KEY_N){
+			this.incrementVolume();
+		}
+		
+		if(keynum === Keys.KEY_B){
+			this.decrementVolume();
+		}
 	};
 
 Game.prototype.pause =
@@ -578,4 +601,47 @@ Game.prototype.update =
 					.concat(this.exits)
 				);
 		}
+	};
+
+Game.prototype.setVolume =
+	function(volume){
+		this.volume = volume;
+		this.musicPlayer.setVolume(this.volume);
+		this.soundEffects.setVolume(this.volume);
+	};
+
+Game.prototype.incrementVolume =
+	function(){
+		this.setVolume(
+			Tools.inRange(
+				Game.VOLUME_MIN, 
+				this.volume + Game.VOLUME_STEP, 
+				Game.VOLUME_MAX
+			)
+		);
+	};
+
+Game.prototype.decrementVolume =
+	function(){
+		this.setVolume(
+			Tools.inRange(
+				Game.VOLUME_MIN, 
+				this.volume - Game.VOLUME_STEP, 
+				Game.VOLUME_MAX
+			)
+		);
+	};
+
+Game.prototype.mute =
+	function(){
+		var volume = this.volume;
+		this.setVolume(0);
+		this.volume = volume;
+		this.isMuted = true;
+	};
+
+Game.prototype.unmute =
+	function(){
+		this.setVolume(this.volume);
+		this.isMuted = false;
 	};

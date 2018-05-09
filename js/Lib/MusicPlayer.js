@@ -3,12 +3,12 @@ var MusicPlayer =
 		if(args === undefined){args = {};}
 		Base.call(this, args);
 		this.isPlaying = false;
+		this.addProperty(args, 'volume', true, null, parseFloat);
 	};
 
 MusicPlayer.prototype = Object.create(Base.prototype);
 MusicPlayer.prototype.constructor = MusicPlayer;
 
-MusicPlayer.DEFAULT_VOLUME = 0.1;
 MusicPlayer.INTERVAL_END_CHECK = 50;
 
 MusicPlayer.prototype.pause =
@@ -38,7 +38,7 @@ MusicPlayer.prototype.seek =
 MusicPlayer.prototype.setSource =
 	function(source, loop){
 		this.player = new Audio(source);
-		this.player.volume = MusicPlayer.DEFAULT_VOLUME;
+		this.player.volume = this.volume;
 		this.player.loop = loop === undefined ? false : loop;
 	};
 
@@ -49,4 +49,10 @@ MusicPlayer.prototype.toggle =
 		}else{
 			this.play();
 		}
+	};
+
+MusicPlayer.prototype.setVolume =
+	function(volume){
+		this.player.volume = volume;
+		this.volume = volume;
 	};
