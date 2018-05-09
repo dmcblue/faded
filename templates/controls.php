@@ -55,6 +55,27 @@
 					</table>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2">
+					<h2>Sound</h2>
+					<table>
+						<tbody>
+							<tr>
+								<td><h2>Decrease Volume</h2></td>
+								<td>B</td>
+							</tr>
+							<tr>
+								<td><h2>Increase Volume</h2></td>
+								<td>N</td>
+							</tr>
+							<tr>
+								<td><h2>Mute / Unmute</h2></td>
+								<td>M</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
