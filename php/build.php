@@ -41,6 +41,10 @@
 	//start new build
 	mkdir($BUILD_DIR);
 	
+	//Meta
+	copy(__DIR__.'/../meta/preview.png', $BUILD_DIR . "/preview.png");
+	copy(__DIR__.'/../meta/favicon.png', $BUILD_DIR . "/favicon.png");
+	
 	//CSS
 	mkdir($BUILD_DIR . "/css");
 	$getFile($location . "/css/faded.php", $BUILD_DIR . "/css/faded.css");

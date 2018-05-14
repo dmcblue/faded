@@ -1,2 +1,3 @@
-- Volume controls to description
--  Brown the walls or something
+- Autopickup candels
+- Brown the walls or something?
+- how to make messages useful
