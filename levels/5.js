@@ -66,5 +66,5 @@ var level = {
 			rounds: 50
 		}),
 	mapPositioner : new Lib.MapItemPositionerRandomV2(),
-	music:'music/8.mp3'
+	music:'music/10.mp3'
 }
