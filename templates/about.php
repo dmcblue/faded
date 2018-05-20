@@ -11,6 +11,10 @@
 	<p>
 		I love games like Skyrim which have intense exploration, world building and story.  But I realized it was difficult to design this type of game without the endless killing of monsters.  Without the violence, there is no challenge and it becomes <em>Sightseeing: The Game</em>.  Regardless of what you think about video game violence, it\'s undeniable game design has over-relied on the killing-mechanic to give game play challenge and prevent boredom, to the point where we barely even consider the possibility of designing these games any other way.  So this seemed like an interesting challenge from a design standpoint.
 	</p>
+	<h2>Music</h2>
+	<p>
+		You can download the music on <a href="https://dmcblue.bandcamp.com/album/faded">Bandcamp</a>.
+	</p>
 	<h2>While playing</h2>
 	<p>
 		Min size browser : 900x600
